@@ -1,0 +1,318 @@
+{
+  "format": "holdr.card-import",
+  "version": 2,
+  "contractVersion": 1,
+  "source": "chase-api",
+  "parserVersion": "holdr-ext-chase@0.1.0",
+  "issuer": "chase",
+  "currency": "USD",
+  "owner": "joint",
+  "cards": [
+    "3391",
+    "7720"
+  ],
+  "bindingId": "bnd_bjjfdgkfhajiajbmnjoepjcjbhmjmnmg",
+  "bindingVersion": 3,
+  "captureId": "cpt_bjkkiphfhmpaejphffpdngkfaoamnjfc",
+  "observedAt": "2026-10-16T14:05:09.123Z",
+  "mode": "isolated-read",
+  "coverage": [
+    {
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "status": "posted",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-09-14",
+        "end": "2026-10-01",
+        "dateBasis": "transaction"
+      },
+      "completeness": "complete",
+      "pageCount": 2,
+      "termination": "end-marker"
+    },
+    {
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "status": "pending",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-10-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "completeness": "partial",
+      "pageCount": 2,
+      "termination": "end-marker"
+    },
+    {
+      "cardScopeId": "scp_hbpmmaajfldbofbfgoekmihpppcjkhnh",
+      "status": "posted",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-10-04",
+        "end": "2026-10-04",
+        "dateBasis": "posted"
+      },
+      "completeness": "complete",
+      "pageCount": 2,
+      "termination": "end-marker"
+    },
+    {
+      "cardScopeId": "scp_hbpmmaajfldbofbfgoekmihpppcjkhnh",
+      "status": "pending",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-10-15",
+        "end": "2026-10-15",
+        "dateBasis": "transaction"
+      },
+      "completeness": "partial",
+      "pageCount": 2,
+      "termination": "end-marker"
+    }
+  ],
+  "rejectedCount": 0,
+  "statement": null,
+  "totals": {
+    "posted": {
+      "count": 6,
+      "chargesMinor": 5572,
+      "creditsMinor": -154500,
+      "netMinor": -148928,
+      "byKind": {
+        "purchase": {
+          "count": 2,
+          "amountMinor": 5134
+        },
+        "refund": {
+          "count": 1,
+          "amountMinor": -4500
+        },
+        "payment": {
+          "count": 1,
+          "amountMinor": -150000
+        },
+        "fee": {
+          "count": 1,
+          "amountMinor": 117
+        },
+        "interest": {
+          "count": 1,
+          "amountMinor": 321
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    },
+    "pending": {
+      "count": 2,
+      "chargesMinor": 3185,
+      "creditsMinor": 0,
+      "netMinor": 3185,
+      "byKind": {
+        "purchase": {
+          "count": 2,
+          "amountMinor": 3185
+        },
+        "refund": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "payment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "transactionDate": "2026-09-14",
+      "postedDate": "2026-09-15",
+      "status": "posted",
+      "amountMinor": 1234,
+      "kind": "purchase",
+      "description": "SYNTHETIC COFFEE ROASTERS #42 OAKLAND CA",
+      "merchant": "Synthetic Coffee Roasters",
+      "issuerCategory": "Food & Drink",
+      "externalIdHash": "xid1:iilgmolbajgiibcinkhcabpiljflmcelkfkipkghopdhnjihilgbfmliolmkpmib",
+      "fingerprint": null,
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:jelchdhgagbabnphgcplkgfcnjbhfnjllnihfhonedjnpfbcdipdjhfcldgnddjc"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-09-20",
+      "postedDate": "2026-09-22",
+      "status": "posted",
+      "amountMinor": -4500,
+      "kind": "refund",
+      "description": "RETURN: EXAMPLE OUTDOOR GEAR",
+      "merchant": "Example Outdoor Gear",
+      "issuerCategory": "Shopping",
+      "externalIdHash": "xid1:boaplbfdgchndebojnebikfbmjkmppdeijpedcmelcehjoiahbpcpgeppelhcead",
+      "fingerprint": null,
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:kggfenjjgfpkcfglbiolfchajpbpkdilacndmiejhnhmkfbgmfmdcpgdilakbjbm"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-09-25",
+      "postedDate": "2026-09-25",
+      "status": "posted",
+      "amountMinor": -150000,
+      "kind": "payment",
+      "description": "AUTOMATIC PAYMENT - THANK YOU",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:fngjcghjhmhfpmenbelhciakpdpnojgfcjdjcbgoncpgodegdkjiadphenafdjla",
+      "fingerprint": null,
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-01",
+      "postedDate": "2026-10-01",
+      "status": "posted",
+      "amountMinor": 321,
+      "kind": "interest",
+      "description": "PURCHASE INTEREST CHARGE",
+      "merchant": null,
+      "issuerCategory": "Fees & Adjustments",
+      "externalIdHash": "xid1:meobbcdkphkblliogdddobdaekgagidlomghhhpbjmnjnpcmmpjipfomplinlfcl",
+      "fingerprint": null,
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-03",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 3900,
+      "kind": "purchase",
+      "description": "CAFE EXEMPLAIRE PARIS FR",
+      "merchant": "Cafe Exemplaire",
+      "issuerCategory": "Food & Drink",
+      "externalIdHash": "xid1:kfblgkchhmgoffonplgoekamhblpmphnfbknlldfkbaoganojgiddjejfoppkdkf",
+      "fingerprint": null,
+      "cardScopeId": "scp_hbpmmaajfldbofbfgoekmihpppcjkhnh",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:lnljmilikngcjllakgnafbmjoeghmblmoagjlbmfjoiemgpkanpablcpbfhljmaf"
+        }
+      ],
+      "originalAmountMinor": 3550,
+      "originalCurrency": "EUR"
+    },
+    {
+      "transactionDate": "2026-10-03",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 117,
+      "kind": "fee",
+      "description": "FOREIGN TRANSACTION FEE",
+      "merchant": null,
+      "issuerCategory": "Fees & Adjustments",
+      "externalIdHash": "xid1:cdmfdlfagidlfjnemjeococblagofnagbohkikoakjmbigdphmpkgpfidkgpoiek",
+      "fingerprint": null,
+      "cardScopeId": "scp_hbpmmaajfldbofbfgoekmihpppcjkhnh",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-14",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 875,
+      "kind": "purchase",
+      "description": "SYNTHETIC CORNER MARKET",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:acnfefbbgddccoimbdkefdeafoldfdgjbdhjemcakcodiojdjdkficeeknbhnnef",
+      "fingerprint": null,
+      "cardScopeId": "scp_abndciepocmdpllhaciefealfopfmphm",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-15",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 2310,
+      "kind": "purchase",
+      "description": "EXAMPLE FUEL STOP 0042",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:kncaepmlaopbmgnfmjbomloobmkigndlgaehpdlofogfmgboliammkbdfeijamcp",
+      "fingerprint": null,
+      "cardScopeId": "scp_hbpmmaajfldbofbfgoekmihpppcjkhnh",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ]
+}

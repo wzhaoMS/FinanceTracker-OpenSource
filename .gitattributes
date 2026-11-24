@@ -1,0 +1,8 @@
+apps/api/src/services/__fixtures__/*.sql text eol=lf
+scripts/**/*.sh text eol=lf
+scripts/**/*.mjs text eol=lf
+packages/shared/src/cardImportTool/fixtures/** -text
+packages/shared/src/checkingImportTool/fixtures/** -text
+packages/shared/src/cardSync/__fixtures__/**/*.json text eol=lf
+apps/web/tests/*-snapshots/*.json text eol=lf
+apps/api/src/providers/__fixtures__/stooq-aapl.csv -text whitespace=cr-at-eol

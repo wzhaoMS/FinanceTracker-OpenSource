@@ -1,0 +1,30 @@
+{
+  "name": "@finance-tracker/extension",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Holdr's own browser extension shell (card-sync E3): popup, in-page panel, per-issuer permission and stop, single bankRead, trusted storage, exact preview. Fake issuers only.",
+  "scripts": {
+    "build": "tsx build/build.ts --target test",
+    "prebuild:production": "npm run build --workspace @finance-tracker/shared",
+    "build:production": "tsx build/build.ts --target production",
+    "build:test": "tsx build/build.ts --target test",
+    "build:acceptance": "tsx build/build.ts --target acceptance",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node ../../scripts/run-tsx-tests.mjs tests/unit .test.ts --import=../../scripts/loopback-only.mjs",
+    "test:e2e": "tsx build/build.ts --target test && playwright test -c tests/e2e/playwright.config.ts",
+    "test:acceptance": "tsx build/build.ts --target acceptance && playwright test -c tests/acceptance/playwright.config.ts",
+    "clean": "node ../../scripts/rm.mjs dist .turbo"
+  },
+  "dependencies": {
+    "@finance-tracker/shared": "*"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.59.1",
+    "@types/node": "^22.10.0",
+    "esbuild": "0.27.7",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

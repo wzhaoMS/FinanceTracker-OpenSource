@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B1220" />
+    <!-- The icons are ordinary Vite assets (publicDir is off; see vite.config.ts and fileAccess.ts): the dev server
+         serves them from src/assets/brand, and a build emits each as a hashed file under /assets/. Those are the only
+         icon links a release accepts: rel "icon" or "apple-touch-icon" to a release .svg or .png, with a matching
+         type and plain sizes (validateReleaseHtml in packages/shared/src/webRelease/manifest.ts). -->
+    <link rel="icon" href="/src/assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/src/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/src/assets/brand/apple-touch-icon-180.png" />
+    <title>Holdr</title>
+    <!-- Geist (sans) + Geist Mono (numbers), self-hosted: src/fonts.css
+         declares them and Vite serves the files from this origin, so the
+         page never contacts a font CDN (or any other host). Geist is the
+         closest free analog to the custom fonts that Robinhood / Stripe /
+         Coinbase ship; Geist Mono pairs natively for tabular numerals —
+         every dollar amount in this app uses tabular-nums, and the mono
+         companion lines decimal points up tighter than Geist sans alone.
+         Inter covers the few Latin characters Geist lacks. Never add a
+         third-party URL here: tests/no-third-party.e2e.ts fails on it. -->
+  </head>
+  <body>
+    <!--
+      Liquid Glass dispersion filter (Round 4, G2).
+      Used by `.glass-surface::after` in styles.css. Two stages:
+        1. feTurbulence — low-frequency noise field (baseFrequency
+           0.012 ≈ ~80px coherence) drives the displacement so the
+           edge fringe varies along the rim instead of looking like a
+           uniform RGB-shift offset.
+        2. feDisplacementMap — channel-selected: scale=4 displaces R
+           via the noise red channel; the rest of the surface is
+           untouched. Combined with mix-blend-mode:screen on the
+           overlay this produces the prismatic edge fringe that is
+           the strongest "this is real glass" cue.
+      Self-contained 0×0 SVG, sits outside React's mount point.
+    -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="0"
+      height="0"
+      class="glass-filter-defs"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter id="glass-dispersion" x="-2%" y="-2%" width="104%" height="104%">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.012 0.018"
+            numOctaves="2"
+            seed="7"
+            result="noise"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="4"
+            xChannelSelector="R"
+            yChannelSelector="G"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

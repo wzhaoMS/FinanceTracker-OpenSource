@@ -1,0 +1,6863 @@
+{
+ "/spending/summary": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 2540
+   },
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 327366,
+    "count": 25,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "spendingMinor": 273629
+   },
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 61850
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "spendingMinor": 1240
+   },
+   {
+    "category": "Electronics",
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": 139900
+   },
+   {
+    "category": "Travel",
+    "chargesMinor": 70780,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 70780
+   },
+   {
+    "category": "Groceries",
+    "chargesMinor": 30650,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30650
+   },
+   {
+    "category": "Services",
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30000
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 26100,
+    "count": 9,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 26100
+   },
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   },
+   {
+    "category": "Entertainment",
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 7995
+   },
+   {
+    "category": "Bulk groceries",
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 6420
+   },
+   {
+    "category": "Merchandise",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 3634,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3634
+   },
+   {
+    "category": "Fees",
+    "chargesMinor": 737,
+    "count": 2,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "spendingMinor": 0
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "merchant": "SAMPLE MUSEE",
+    "merchantKey": "SAMPLE MUSEE",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "merchant": "SAMPLE BOULANGERIE",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": 139900
+   },
+   {
+    "chargesMinor": 41200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "CONTOSO AIRLINES",
+    "merchantKey": "CONTOSO AIRLINES",
+    "spendingMinor": 41200
+   },
+   {
+    "chargesMinor": 37070,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 37070
+   },
+   {
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE TAILOR",
+    "merchantKey": "SAMPLE TAILOR",
+    "spendingMinor": 30000
+   },
+   {
+    "chargesMinor": 24580,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "spendingMinor": 24580
+   },
+   {
+    "chargesMinor": 22850,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 22850
+   },
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   },
+   {
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE STREAMING",
+    "merchantKey": "SAMPLE STREAMING",
+    "spendingMinor": 7995
+   },
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "merchant": "SAMPLE OUTFITTERS",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 5000,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE PARKING",
+    "merchantKey": "SAMPLE PARKING",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 3250
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   },
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "INTEREST CHARGE",
+    "merchantKey": "INTEREST CHARGE",
+    "spendingMinor": 1234
+   },
+   {
+    "chargesMinor": 737,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "FOREIGN TRANSACTION FEE",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "spendingMinor": 737
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "merchant": "FEE REVERSAL",
+    "merchantKey": "FEE REVERSAL",
+    "spendingMinor": -737
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 14899,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 14899
+   },
+   {
+    "chargesMinor": 8669,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 8669
+   },
+   {
+    "chargesMinor": 55029,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 55029
+   },
+   {
+    "chargesMinor": 262236,
+    "count": 11,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 258499
+   },
+   {
+    "chargesMinor": 48383,
+    "count": 10,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": -1617
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "owner": "joint",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "owner": "joint",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 14249,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "alex",
+    "spendingMinor": 14249
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 8019,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "alex",
+    "spendingMinor": 8019
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 13179,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "alex",
+    "spendingMinor": 13179
+   },
+   {
+    "chargesMinor": 41850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "casey",
+    "spendingMinor": 41850
+   },
+   {
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": -4667
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 3050
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 2540
+   },
+   {
+    "chargesMinor": 327366,
+    "count": 25,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 273629
+   },
+   {
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 61850
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [
+   {
+    "chargesMinor": 3100,
+    "count": 2,
+    "creditsMinor": -2500,
+    "currency": "USD",
+    "netMinor": 600
+   }
+  ],
+  "totals": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 2540
+   },
+   {
+    "chargesMinor": 389216,
+    "count": 33,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "otherCount": 1,
+    "otherMinor": 20000,
+    "paymentCount": 2,
+    "paymentsMinor": -190000,
+    "spendingMinor": 335479
+   }
+  ]
+ },
+ "/spending/summary?from=2026-09-01&to=2026-09-30": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "spendingMinor": 1240
+   },
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "spendingMinor": 242849
+   },
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15650
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Dining",
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "spendingMinor": 1240
+   },
+   {
+    "category": "Electronics",
+    "chargesMinor": 189900,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 189900
+   },
+   {
+    "category": "Travel",
+    "chargesMinor": 24580,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 24580
+   },
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 13300,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 13300
+   },
+   {
+    "category": "Groceries",
+    "chargesMinor": 9120,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 9120
+   },
+   {
+    "category": "Merchandise",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   },
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1599,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 1599
+   },
+   {
+    "category": "Fees",
+    "chargesMinor": 737,
+    "count": 2,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "spendingMinor": 0
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "merchant": "SAMPLE BOULANGERIE",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 189900,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": 189900
+   },
+   {
+    "chargesMinor": 24580,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "spendingMinor": 24580
+   },
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   },
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 12650
+   },
+   {
+    "chargesMinor": 9120,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 9120
+   },
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "merchant": "SAMPLE OUTFITTERS",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 1599,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE STREAMING",
+    "merchantKey": "SAMPLE STREAMING",
+    "spendingMinor": 1599
+   },
+   {
+    "chargesMinor": 737,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "FOREIGN TRANSACTION FEE",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "spendingMinor": 737
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "merchant": "FEE REVERSAL",
+    "merchantKey": "FEE REVERSAL",
+    "spendingMinor": -737
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 262236,
+    "count": 11,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 258499
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "owner": "joint",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15650
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 15650
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 262236,
+    "count": 11,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 1,
+    "paymentsMinor": -150000,
+    "spendingMinor": 258499
+   }
+  ]
+ },
+ "/spending/summary?from=2026-10-01&to=2026-10-31": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   },
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3050
+   },
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": -4667
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   },
+   {
+    "category": "Services",
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30000
+   },
+   {
+    "category": "Groceries",
+    "chargesMinor": 5300,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 5300
+   },
+   {
+    "category": "Travel",
+    "chargesMinor": 5000,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 5000
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 3634,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3634
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 2850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 2850
+   },
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1599,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 1599
+   },
+   {
+    "category": "Electronics",
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": -50000
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "merchant": "SAMPLE MUSEE",
+    "merchantKey": "SAMPLE MUSEE",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE TAILOR",
+    "merchantKey": "SAMPLE TAILOR",
+    "spendingMinor": 30000
+   },
+   {
+    "chargesMinor": 5300,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 5300
+   },
+   {
+    "chargesMinor": 5000,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE PARKING",
+    "merchantKey": "SAMPLE PARKING",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   },
+   {
+    "chargesMinor": 2200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 2200
+   },
+   {
+    "chargesMinor": 1599,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE STREAMING",
+    "merchantKey": "SAMPLE STREAMING",
+    "spendingMinor": 1599
+   },
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "INTEREST CHARGE",
+    "merchantKey": "INTEREST CHARGE",
+    "spendingMinor": 1234
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": -50000
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 48383,
+    "count": 10,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": -1617
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "owner": "joint",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": -4667
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 3050
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 3050
+   },
+   {
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": -4667
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [
+   {
+    "chargesMinor": 3100,
+    "count": 2,
+    "creditsMinor": -2500,
+    "currency": "USD",
+    "netMinor": 600
+   }
+  ],
+  "totals": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 48383,
+    "count": 10,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 1,
+    "paymentsMinor": -40000,
+    "spendingMinor": -1617
+   }
+  ]
+ },
+ "/spending/summary?owner=alex": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 327366,
+    "count": 25,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "spendingMinor": 273629
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Electronics",
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": 139900
+   },
+   {
+    "category": "Groceries",
+    "chargesMinor": 30650,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30650
+   },
+   {
+    "category": "Services",
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30000
+   },
+   {
+    "category": "Travel",
+    "chargesMinor": 29580,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 29580
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 22850,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 22850
+   },
+   {
+    "category": "Entertainment",
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 7995
+   },
+   {
+    "category": "Bulk groceries",
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 6420
+   },
+   {
+    "category": "Merchandise",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 1234
+   },
+   {
+    "category": "Fees",
+    "chargesMinor": 737,
+    "count": 2,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "spendingMinor": 0
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": 139900
+   },
+   {
+    "chargesMinor": 37070,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 37070
+   },
+   {
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE TAILOR",
+    "merchantKey": "SAMPLE TAILOR",
+    "spendingMinor": 30000
+   },
+   {
+    "chargesMinor": 24580,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "spendingMinor": 24580
+   },
+   {
+    "chargesMinor": 22850,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 22850
+   },
+   {
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE STREAMING",
+    "merchantKey": "SAMPLE STREAMING",
+    "spendingMinor": 7995
+   },
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "merchant": "SAMPLE OUTFITTERS",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 5000,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE PARKING",
+    "merchantKey": "SAMPLE PARKING",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "INTEREST CHARGE",
+    "merchantKey": "INTEREST CHARGE",
+    "spendingMinor": 1234
+   },
+   {
+    "chargesMinor": 737,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "FOREIGN TRANSACTION FEE",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "spendingMinor": 737
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -737,
+    "currency": "USD",
+    "merchant": "FEE REVERSAL",
+    "merchantKey": "FEE REVERSAL",
+    "spendingMinor": -737
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 14249,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 14249
+   },
+   {
+    "chargesMinor": 8019,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 8019
+   },
+   {
+    "chargesMinor": 13179,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 13179
+   },
+   {
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": -4667
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 14249,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "alex",
+    "spendingMinor": 14249
+   },
+   {
+    "chargesMinor": 8019,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "alex",
+    "spendingMinor": 8019
+   },
+   {
+    "chargesMinor": 13179,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "alex",
+    "spendingMinor": 13179
+   },
+   {
+    "chargesMinor": 246586,
+    "count": 9,
+    "creditsMinor": -3737,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 45333,
+    "count": 8,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": -4667
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 327366,
+    "count": 25,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 273629
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [
+   {
+    "chargesMinor": 3100,
+    "count": 2,
+    "creditsMinor": -2500,
+    "currency": "USD",
+    "netMinor": 600
+   }
+  ],
+  "totals": [
+   {
+    "chargesMinor": 327366,
+    "count": 25,
+    "creditsMinor": -53737,
+    "currency": "USD",
+    "otherCount": 1,
+    "otherMinor": 20000,
+    "paymentCount": 1,
+    "paymentsMinor": -150000,
+    "spendingMinor": 273629
+   }
+  ]
+ },
+ "/spending/summary?owner=casey": {
+  "byCard": [
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 61850
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Travel",
+    "chargesMinor": 41200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 41200
+   },
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3250
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 41200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "CONTOSO AIRLINES",
+    "merchantKey": "CONTOSO AIRLINES",
+    "spendingMinor": 41200
+   },
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   },
+   {
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 3250
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 41850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 41850
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": 3050
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 41850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "casey",
+    "spendingMinor": 41850
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 3050
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 61850
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 1,
+    "paymentsMinor": -40000,
+    "spendingMinor": 61850
+   }
+  ]
+ },
+ "/spending/summary?owner=joint": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 2540
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "spendingMinor": 1240
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "merchant": "SAMPLE MUSEE",
+    "merchantKey": "SAMPLE MUSEE",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "merchant": "SAMPLE BOULANGERIE",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "spendingMinor": 1240
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "spendingMinor": 1300
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "owner": "joint",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "owner": "joint",
+    "spendingMinor": 1300
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 2540
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 2540
+   }
+  ]
+ },
+ "/spending/summary?cardAccountId=account:chase-2002": {
+  "byCard": [
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 61850
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Travel",
+    "chargesMinor": 41200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 41200
+   },
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3250
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 41200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "CONTOSO AIRLINES",
+    "merchantKey": "CONTOSO AIRLINES",
+    "spendingMinor": 41200
+   },
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   },
+   {
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 3250
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 41850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 41850
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": 3050
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 41850,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "casey",
+    "spendingMinor": 41850
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 3050
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 61850
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 61850,
+    "count": 8,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 1,
+    "paymentsMinor": -40000,
+    "spendingMinor": 61850
+   }
+  ]
+ },
+ "/spending/summary?category=Merchandise": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Merchandise",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "merchant": "SAMPLE OUTFITTERS",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "spendingMinor": 5000
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 5000
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 5000
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 5000
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -2500,
+    "currency": "USD",
+    "netMinor": -2500
+   }
+  ],
+  "totals": [
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 5000
+   }
+  ]
+ },
+ "/spending/summary?category=Uncategorized": {
+  "byCard": [
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 2400
+   },
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 1234
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 3634,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 3634
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   },
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "INTEREST CHARGE",
+    "merchantKey": "INTEREST CHARGE",
+    "spendingMinor": 1234
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 3634,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": 3634
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": 1234
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 2400
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 2400
+   },
+   {
+    "chargesMinor": 1234,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 1234
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [
+   {
+    "count": 0,
+    "currency": "USD"
+   }
+  ],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 3634,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 1,
+    "otherMinor": 20000,
+    "paymentCount": 2,
+    "paymentsMinor": -190000,
+    "spendingMinor": 3634
+   }
+  ]
+ },
+ "/spending/summary?category=Household": {
+  "byCard": [
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 15000
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15000
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 15000
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 15000
+   }
+  ]
+ },
+ "/spending/summary?category=Bulk%20groceries": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 6420
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Bulk groceries",
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 6420
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 6420
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 6420
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "alex",
+    "spendingMinor": 6420
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 6420
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 6420
+   }
+  ]
+ },
+ "/spending/summary?category=Electronics": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": 139900
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Electronics",
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": 139900
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": 139900
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 189900,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 189900
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": -50000
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 189900,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 189900
+   },
+   {
+    "chargesMinor": 0,
+    "count": 1,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": -50000
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 139900
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 139900
+   }
+  ]
+ },
+ "/spending/summary?merchant=SAMPLE%20MUSEE": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "merchant": "SAMPLE MUSEE",
+    "merchantKey": "SAMPLE MUSEE",
+    "spendingMinor": 1300
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "spendingMinor": 1300
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "owner": "joint",
+    "spendingMinor": 1300
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 1300
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 1300
+   }
+  ]
+ },
+ "/spending/summary?q=sample": {
+  "byCard": [
+   {
+    "cardAccountId": "account:samplebank-3003",
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 2540
+   },
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 325395,
+    "count": 22,
+    "creditsMinor": -53000,
+    "currency": "USD",
+    "spendingMinor": 272395
+   },
+   {
+    "cardAccountId": "account:chase-2002",
+    "chargesMinor": 20650,
+    "count": 7,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 20650
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Entertainment",
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "spendingMinor": 1300
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "spendingMinor": 1240
+   },
+   {
+    "category": "Electronics",
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "spendingMinor": 139900
+   },
+   {
+    "category": "Groceries",
+    "chargesMinor": 30650,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30650
+   },
+   {
+    "category": "Services",
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 30000
+   },
+   {
+    "category": "Travel",
+    "chargesMinor": 29580,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 29580
+   },
+   {
+    "category": "Dining",
+    "chargesMinor": 26100,
+    "count": 9,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 26100
+   },
+   {
+    "category": "Household",
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 15000
+   },
+   {
+    "category": "Entertainment",
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 7995
+   },
+   {
+    "category": "Bulk groceries",
+    "chargesMinor": 6420,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 6420
+   },
+   {
+    "category": "Merchandise",
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "spendingMinor": 5000
+   },
+   {
+    "category": "Uncategorized",
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "merchant": "SAMPLE MUSEE",
+    "merchantKey": "SAMPLE MUSEE",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "merchant": "SAMPLE BOULANGERIE",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 189900,
+    "count": 2,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "merchant": "SAMPLE TV STORE",
+    "merchantKey": "SAMPLE TV",
+    "spendingMinor": 139900
+   },
+   {
+    "chargesMinor": 37070,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE GROCER",
+    "merchantKey": "SAMPLE GROCER",
+    "spendingMinor": 37070
+   },
+   {
+    "chargesMinor": 30000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE TAILOR",
+    "merchantKey": "SAMPLE TAILOR",
+    "spendingMinor": 30000
+   },
+   {
+    "chargesMinor": 24580,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "spendingMinor": 24580
+   },
+   {
+    "chargesMinor": 22850,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 22850
+   },
+   {
+    "chargesMinor": 15000,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE MART",
+    "merchantKey": "SAMPLE MART",
+    "spendingMinor": 15000
+   },
+   {
+    "chargesMinor": 7995,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE STREAMING",
+    "merchantKey": "SAMPLE STREAMING",
+    "spendingMinor": 7995
+   },
+   {
+    "chargesMinor": 8000,
+    "count": 2,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "merchant": "SAMPLE OUTFITTERS",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 5000,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE PARKING",
+    "merchantKey": "SAMPLE PARKING",
+    "spendingMinor": 5000
+   },
+   {
+    "chargesMinor": 3250,
+    "count": 5,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE CAFE",
+    "merchantKey": "SAMPLE CAFE",
+    "spendingMinor": 3250
+   },
+   {
+    "chargesMinor": 2400,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BOOKS",
+    "merchantKey": "SAMPLE BOOKS",
+    "spendingMinor": 2400
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 14899,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 14899
+   },
+   {
+    "chargesMinor": 8669,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 8669
+   },
+   {
+    "chargesMinor": 13829,
+    "count": 4,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 13829
+   },
+   {
+    "chargesMinor": 261499,
+    "count": 9,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 258499
+   },
+   {
+    "chargesMinor": 47149,
+    "count": 9,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "spendingMinor": -2851
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 1240,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "EUR",
+    "month": "2026-09",
+    "owner": "joint",
+    "spendingMinor": 1240
+   },
+   {
+    "chargesMinor": 1800,
+    "count": 2,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "month": "2026-10",
+    "owner": "joint",
+    "spendingMinor": 1300
+   },
+   {
+    "chargesMinor": 14249,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "alex",
+    "spendingMinor": 14249
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 8019,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "alex",
+    "spendingMinor": 8019
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 13179,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "alex",
+    "spendingMinor": 13179
+   },
+   {
+    "chargesMinor": 650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "casey",
+    "spendingMinor": 650
+   },
+   {
+    "chargesMinor": 245849,
+    "count": 7,
+    "creditsMinor": -3000,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 242849
+   },
+   {
+    "chargesMinor": 15650,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "casey",
+    "spendingMinor": 15650
+   },
+   {
+    "chargesMinor": 44099,
+    "count": 7,
+    "creditsMinor": -50000,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "alex",
+    "spendingMinor": -5901
+   },
+   {
+    "chargesMinor": 3050,
+    "count": 2,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-10",
+    "owner": "casey",
+    "spendingMinor": 3050
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "owner": "joint",
+    "spendingMinor": 2540
+   },
+   {
+    "chargesMinor": 325395,
+    "count": 22,
+    "creditsMinor": -53000,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 272395
+   },
+   {
+    "chargesMinor": 20650,
+    "count": 7,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "casey",
+    "spendingMinor": 20650
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [
+   {
+    "chargesMinor": 3100,
+    "count": 2,
+    "creditsMinor": -2500,
+    "currency": "USD",
+    "netMinor": 600
+   }
+  ],
+  "totals": [
+   {
+    "chargesMinor": 3040,
+    "count": 3,
+    "creditsMinor": -500,
+    "currency": "EUR",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 2540
+   },
+   {
+    "chargesMinor": 346045,
+    "count": 29,
+    "creditsMinor": -53000,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 293045
+   }
+  ]
+ },
+ "/spending/summary?q=126.50": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 12650
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Dining",
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 12650
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 12650
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 12650
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 12650
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 12650
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 12650
+   }
+  ]
+ },
+ "/spending/summary?owner=alex&category=Dining&from=2026-06-01&to=2026-09-30": {
+  "byCard": [
+   {
+    "cardAccountId": "account:amex-0003",
+    "chargesMinor": 20650,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 20650
+   }
+  ],
+  "byCategory": [
+   {
+    "category": "Dining",
+    "chargesMinor": 20650,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "spendingMinor": 20650
+   }
+  ],
+  "byMerchant": [
+   {
+    "chargesMinor": 20650,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "merchant": "SAMPLE BISTRO",
+    "merchantKey": "SAMPLE BISTRO",
+    "spendingMinor": 20650
+   }
+  ],
+  "byMonth": [
+   {
+    "chargesMinor": 4200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "spendingMinor": 4200
+   },
+   {
+    "chargesMinor": 0,
+    "count": 0,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-07",
+    "spendingMinor": 0
+   },
+   {
+    "chargesMinor": 3800,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "spendingMinor": 3800
+   },
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "spendingMinor": 12650
+   }
+  ],
+  "byMonthOwner": [
+   {
+    "chargesMinor": 4200,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-06",
+    "owner": "alex",
+    "spendingMinor": 4200
+   },
+   {
+    "chargesMinor": 3800,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-08",
+    "owner": "alex",
+    "spendingMinor": 3800
+   },
+   {
+    "chargesMinor": 12650,
+    "count": 1,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "month": "2026-09",
+    "owner": "alex",
+    "spendingMinor": 12650
+   }
+  ],
+  "byOwner": [
+   {
+    "chargesMinor": 20650,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "owner": "alex",
+    "spendingMinor": 20650
+   }
+  ],
+  "categories": [
+   "Bulk groceries",
+   "Dining",
+   "Electronics",
+   "Entertainment",
+   "Fees",
+   "Groceries",
+   "Household",
+   "Merchandise",
+   "Services",
+   "Travel"
+  ],
+  "otherMerchants": [],
+  "paymentsPossiblyPaidFrom": [],
+  "pending": [],
+  "totals": [
+   {
+    "chargesMinor": 20650,
+    "count": 3,
+    "creditsMinor": 0,
+    "currency": "USD",
+    "otherCount": 0,
+    "otherMinor": 0,
+    "paymentCount": 0,
+    "paymentsMinor": 0,
+    "spendingMinor": 20650
+   }
+  ]
+ },
+ "/card-transactions": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 41,
+  "transactions": [
+   {
+    "amountMinor": 3100,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:40",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:39",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-14",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2400,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BOOKS",
+    "id": "transaction:38",
+    "importBatchId": "batch:0",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOOKS",
+    "merchantName": "SAMPLE BOOKS",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-11",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 30000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Services",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TAILOR",
+    "id": "transaction:37",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Services",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TAILOR",
+    "merchantName": "SAMPLE TAILOR",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-10",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:36",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-09",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -500,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:35",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "refund",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE PARKING",
+    "id": "transaction:34",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE PARKING",
+    "merchantName": "SAMPLE PARKING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-07",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE PARKING",
+    "id": "transaction:33",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE PARKING",
+    "merchantName": "SAMPLE PARKING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-06",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 5300,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:32",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1800,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:30",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:29",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:28",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -40000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "PAYMENT RECEIVED",
+    "id": "transaction:27",
+    "importBatchId": "batch:0",
+    "kind": "payment",
+    "merchantKey": "PAYMENT RECEIVED",
+    "merchantName": "PAYMENT RECEIVED",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1234,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "INTEREST CHARGE",
+    "id": "transaction:26",
+    "importBatchId": "batch:1",
+    "kind": "interest",
+    "merchantKey": "INTEREST CHARGE",
+    "merchantName": "INTEREST CHARGE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 8000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS",
+    "id": "transaction:25",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "merchantName": "SAMPLE OUTFITTERS",
+    "postedDate": "2026-10-02",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-30",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -737,
+    "cardAccountId": "account:amex-0003",
+    "category": "Fees",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "FEE REVERSAL",
+    "id": "transaction:24",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Fees",
+    "kind": "adjustment",
+    "merchantKey": "FEE REVERSAL",
+    "merchantName": "FEE REVERSAL",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-30",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -150000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "AUTOPAY PAYMENT THANK YOU",
+    "id": "transaction:23",
+    "importBatchId": "batch:1",
+    "kind": "payment",
+    "merchantKey": "AUTOPAY PAYMENT THANK YOU",
+    "merchantName": "AUTOPAY PAYMENT THANK YOU",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 189900,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:22",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 12650,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:21",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-21",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -3000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:20",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 15000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Household",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE MART",
+    "id": "transaction:19",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Merchandise",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MART",
+    "merchantName": "SAMPLE MART",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-18",
+    "updatedAt": "<time>",
+    "userCategory": "Household"
+   },
+   {
+    "amountMinor": 737,
+    "cardAccountId": "account:amex-0003",
+    "category": "Fees",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "FOREIGN TRANSACTION FEE",
+    "id": "transaction:18",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Fees",
+    "kind": "fee",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "merchantName": "FOREIGN TRANSACTION FEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 24580,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "HOTEL SAMPLE LISBOA",
+    "id": "transaction:17",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "merchantName": "HOTEL SAMPLE LISBOA",
+    "originalAmountMinor": 22000,
+    "originalCurrency": "EUR",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 9120,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:16",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1240,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE BOULANGERIE",
+    "id": "transaction:15",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "merchantName": "SAMPLE BOULANGERIE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:14",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:13",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 3800,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:12",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 20000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "CASH ADVANCE",
+    "id": "transaction:11",
+    "importBatchId": "batch:1",
+    "kind": "other",
+    "merchantKey": "CASH ADVANCE",
+    "merchantName": "CASH ADVANCE",
+    "role": "excluded",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 41200,
+    "cardAccountId": "account:chase-2002",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "CONTOSO AIRLINES",
+    "id": "transaction:10",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "CONTOSO AIRLINES",
+    "merchantName": "CONTOSO AIRLINES",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-14",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 7780,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:9",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-11",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:8",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:7",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 6420,
+    "cardAccountId": "account:amex-0003",
+    "category": "Bulk groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:6",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-09",
+    "updatedAt": "<time>",
+    "userCategory": "Bulk groceries"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:5",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:4",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 4200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:3",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 8450,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:2",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:1",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:0",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-02",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?status=pending": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 2,
+  "transactions": [
+   {
+    "amountMinor": 3100,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:40",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:39",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-14",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?status=posted&limit=5&offset=5": {
+  "limit": 5,
+  "nextOffset": 10,
+  "offset": 5,
+  "total": 39,
+  "transactions": [
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE PARKING",
+    "id": "transaction:33",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE PARKING",
+    "merchantName": "SAMPLE PARKING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-06",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 5300,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:32",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1800,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:30",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:29",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?status=pending,posted,removed&sort=amount-desc": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 41,
+  "transactions": [
+   {
+    "amountMinor": 189900,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:22",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 41200,
+    "cardAccountId": "account:chase-2002",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "CONTOSO AIRLINES",
+    "id": "transaction:10",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "CONTOSO AIRLINES",
+    "merchantName": "CONTOSO AIRLINES",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-14",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 30000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Services",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TAILOR",
+    "id": "transaction:37",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Services",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TAILOR",
+    "merchantName": "SAMPLE TAILOR",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-10",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 24580,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "HOTEL SAMPLE LISBOA",
+    "id": "transaction:17",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "merchantName": "HOTEL SAMPLE LISBOA",
+    "originalAmountMinor": 22000,
+    "originalCurrency": "EUR",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 20000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "CASH ADVANCE",
+    "id": "transaction:11",
+    "importBatchId": "batch:1",
+    "kind": "other",
+    "merchantKey": "CASH ADVANCE",
+    "merchantName": "CASH ADVANCE",
+    "role": "excluded",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 15000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Household",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE MART",
+    "id": "transaction:19",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Merchandise",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MART",
+    "merchantName": "SAMPLE MART",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-18",
+    "updatedAt": "<time>",
+    "userCategory": "Household"
+   },
+   {
+    "amountMinor": 12650,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:21",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-21",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 9120,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:16",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 8450,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:2",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 8000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS",
+    "id": "transaction:25",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE OUTFITTERS",
+    "merchantName": "SAMPLE OUTFITTERS",
+    "postedDate": "2026-10-02",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-30",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 7780,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:9",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-11",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 6420,
+    "cardAccountId": "account:amex-0003",
+    "category": "Bulk groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:6",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-09",
+    "updatedAt": "<time>",
+    "userCategory": "Bulk groceries"
+   },
+   {
+    "amountMinor": 5300,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:32",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 4200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:3",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 3800,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:12",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 3100,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:40",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE PARKING",
+    "id": "transaction:34",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE PARKING",
+    "merchantName": "SAMPLE PARKING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-07",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE PARKING",
+    "id": "transaction:33",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE PARKING",
+    "merchantName": "SAMPLE PARKING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-06",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2400,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BOOKS",
+    "id": "transaction:38",
+    "importBatchId": "batch:0",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOOKS",
+    "merchantName": "SAMPLE BOOKS",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-11",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:36",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-09",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1800,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:30",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:29",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:14",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:8",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:5",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:1",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1240,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE BOULANGERIE",
+    "id": "transaction:15",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "merchantName": "SAMPLE BOULANGERIE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1234,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "INTEREST CHARGE",
+    "id": "transaction:26",
+    "importBatchId": "batch:1",
+    "kind": "interest",
+    "merchantKey": "INTEREST CHARGE",
+    "merchantName": "INTEREST CHARGE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 737,
+    "cardAccountId": "account:amex-0003",
+    "category": "Fees",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "FOREIGN TRANSACTION FEE",
+    "id": "transaction:18",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Fees",
+    "kind": "fee",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "merchantName": "FOREIGN TRANSACTION FEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:28",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:13",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:7",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:4",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:0",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -500,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:35",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "refund",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -737,
+    "cardAccountId": "account:amex-0003",
+    "category": "Fees",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "FEE REVERSAL",
+    "id": "transaction:24",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Fees",
+    "kind": "adjustment",
+    "merchantKey": "FEE REVERSAL",
+    "merchantName": "FEE REVERSAL",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-30",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:39",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-14",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -3000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:20",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -40000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "PAYMENT RECEIVED",
+    "id": "transaction:27",
+    "importBatchId": "batch:0",
+    "kind": "payment",
+    "merchantKey": "PAYMENT RECEIVED",
+    "merchantName": "PAYMENT RECEIVED",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -150000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "AUTOPAY PAYMENT THANK YOU",
+    "id": "transaction:23",
+    "importBatchId": "batch:1",
+    "kind": "payment",
+    "merchantKey": "AUTOPAY PAYMENT THANK YOU",
+    "merchantName": "AUTOPAY PAYMENT THANK YOU",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?kind=refund,payment": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 6,
+  "transactions": [
+   {
+    "amountMinor": -2500,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:39",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-14",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -500,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:35",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "refund",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -40000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "PAYMENT RECEIVED",
+    "id": "transaction:27",
+    "importBatchId": "batch:0",
+    "kind": "payment",
+    "merchantKey": "PAYMENT RECEIVED",
+    "merchantName": "PAYMENT RECEIVED",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -150000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "AUTOPAY PAYMENT THANK YOU",
+    "id": "transaction:23",
+    "importBatchId": "batch:1",
+    "kind": "payment",
+    "merchantKey": "AUTOPAY PAYMENT THANK YOU",
+    "merchantName": "AUTOPAY PAYMENT THANK YOU",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -3000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:20",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-20",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?sort=date-asc&limit=3": {
+  "limit": 3,
+  "nextOffset": 3,
+  "offset": 0,
+  "total": 41,
+  "transactions": [
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:0",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:1",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 8450,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:2",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-08",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?sort=amount-asc&owner=casey": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 9,
+  "transactions": [
+   {
+    "amountMinor": -40000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "PAYMENT RECEIVED",
+    "id": "transaction:27",
+    "importBatchId": "batch:0",
+    "kind": "payment",
+    "merchantKey": "PAYMENT RECEIVED",
+    "merchantName": "PAYMENT RECEIVED",
+    "role": "transfer",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-01",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:28",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:13",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:7",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:4",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:0",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2400,
+    "cardAccountId": "account:chase-2002",
+    "category": "Uncategorized",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BOOKS",
+    "id": "transaction:38",
+    "importBatchId": "batch:0",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOOKS",
+    "merchantName": "SAMPLE BOOKS",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-11",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 15000,
+    "cardAccountId": "account:chase-2002",
+    "category": "Household",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE MART",
+    "id": "transaction:19",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Merchandise",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MART",
+    "merchantName": "SAMPLE MART",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-18",
+    "updatedAt": "<time>",
+    "userCategory": "Household"
+   },
+   {
+    "amountMinor": 41200,
+    "cardAccountId": "account:chase-2002",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "CONTOSO AIRLINES",
+    "id": "transaction:10",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "CONTOSO AIRLINES",
+    "merchantName": "CONTOSO AIRLINES",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-14",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?category=Dining": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 11,
+  "transactions": [
+   {
+    "amountMinor": 3100,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:40",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "pending",
+    "transactionDate": "2026-10-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 2200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:36",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-09",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:28",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 12650,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:21",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-21",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1240,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE BOULANGERIE",
+    "id": "transaction:15",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BOULANGERIE",
+    "merchantName": "SAMPLE BOULANGERIE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-05",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:13",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 3800,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:12",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:7",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:4",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-07-02",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 4200,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:3",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-15",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 650,
+    "cardAccountId": "account:chase-2002",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE CAFE",
+    "id": "transaction:0",
+    "importBatchId": "batch:0",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE CAFE",
+    "merchantName": "SAMPLE CAFE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-06-02",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?category=Electronics&status=posted": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 2,
+  "transactions": [
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 189900,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:22",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?merchant=SAMPLE%20MUSEE": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 2,
+  "transactions": [
+   {
+    "amountMinor": -500,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:35",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "refund",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-08",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1800,
+    "cardAccountId": "account:samplebank-3003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "EUR",
+    "description": "SAMPLE MUSEE",
+    "id": "transaction:30",
+    "importBatchId": "batch:2",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE MUSEE",
+    "merchantName": "SAMPLE MUSEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-03",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?q=tv": {
+  "limit": 50,
+  "nextOffset": null,
+  "offset": 0,
+  "total": 2,
+  "transactions": [
+   {
+    "amountMinor": -50000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:31",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "refund",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-10-04",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 189900,
+    "cardAccountId": "account:amex-0003",
+    "category": "Electronics",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE TV STORE",
+    "id": "transaction:22",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Electronics",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE TV",
+    "merchantName": "SAMPLE TV STORE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-25",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/card-transactions?cardAccountId=account:amex-0003&limit=7&offset=14": {
+  "limit": 7,
+  "nextOffset": 21,
+  "offset": 14,
+  "total": 29,
+  "transactions": [
+   {
+    "amountMinor": 12650,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:21",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-21",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": -3000,
+    "cardAccountId": "account:amex-0003",
+    "category": "Merchandise",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE OUTFITTERS RETURN",
+    "id": "transaction:20",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Merchandise",
+    "kind": "refund",
+    "merchantKey": "SAMPLE OUTFITTERS RETURN",
+    "merchantName": "SAMPLE OUTFITTERS RETURN",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-20",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 737,
+    "cardAccountId": "account:amex-0003",
+    "category": "Fees",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "FOREIGN TRANSACTION FEE",
+    "id": "transaction:18",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Fees",
+    "kind": "fee",
+    "merchantKey": "FOREIGN TRANSACTION FEE",
+    "merchantName": "FOREIGN TRANSACTION FEE",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 24580,
+    "cardAccountId": "account:amex-0003",
+    "category": "Travel",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "HOTEL SAMPLE LISBOA",
+    "id": "transaction:17",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Travel",
+    "kind": "purchase",
+    "merchantKey": "HOTEL SAMPLE LISBOA",
+    "merchantName": "HOTEL SAMPLE LISBOA",
+    "originalAmountMinor": 22000,
+    "originalCurrency": "EUR",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 9120,
+    "cardAccountId": "account:amex-0003",
+    "category": "Groceries",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE GROCER",
+    "id": "transaction:16",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Groceries",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE GROCER",
+    "merchantName": "SAMPLE GROCER",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-12",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 1599,
+    "cardAccountId": "account:amex-0003",
+    "category": "Entertainment",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE STREAMING",
+    "id": "transaction:14",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Entertainment",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE STREAMING",
+    "merchantName": "SAMPLE STREAMING",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-09-03",
+    "updatedAt": "<time>"
+   },
+   {
+    "amountMinor": 3800,
+    "cardAccountId": "account:amex-0003",
+    "category": "Dining",
+    "createdAt": "<time>",
+    "currency": "USD",
+    "description": "SAMPLE BISTRO",
+    "id": "transaction:12",
+    "importBatchId": "batch:1",
+    "issuerCategory": "Dining",
+    "kind": "purchase",
+    "merchantKey": "SAMPLE BISTRO",
+    "merchantName": "SAMPLE BISTRO",
+    "role": "spending",
+    "source": "test-sync",
+    "status": "posted",
+    "transactionDate": "2026-08-20",
+    "updatedAt": "<time>"
+   }
+  ]
+ },
+ "/spending/insights?month=2026-10&today=2026-10-16": {
+  "baselineMinor": 36686,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 1234,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 1234,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "USD",
+  "duplicates": [
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "dates": [
+     "2026-10-06",
+     "2026-10-07"
+    ],
+    "ids": [
+     "transaction:33",
+     "transaction:34"
+    ],
+    "key": "SAMPLE PARKING",
+    "merchant": "SAMPLE PARKING"
+   }
+  ],
+  "largePurchases": null,
+  "merchantMovers": [
+   {
+    "baselineMinor": 0,
+    "currentMinor": 30000,
+    "deltaMinor": 30000,
+    "key": "SAMPLE TAILOR",
+    "merchant": "SAMPLE TAILOR",
+    "share": null
+   },
+   {
+    "baselineMinor": 24580,
+    "currentMinor": 0,
+    "deltaMinor": -24580,
+    "key": "HOTEL SAMPLE LISBOA",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "share": -1
+   }
+  ],
+  "month": "2026-10",
+  "movers": [
+   {
+    "category": "Travel",
+    "currentMinor": 5000,
+    "deltaMinor": -19580,
+    "drivers": [
+     {
+      "deltaMinor": -24580,
+      "key": "HOTEL SAMPLE LISBOA",
+      "merchant": "HOTEL SAMPLE LISBOA"
+     }
+    ],
+    "share": -0.7965825874694874,
+    "typicalMinor": 24580
+   }
+  ],
+  "newMerchants": [
+   {
+    "amountMinor": 30000,
+    "date": "2026-10-10",
+    "id": "transaction:37",
+    "key": "SAMPLE TAILOR",
+    "merchant": "SAMPLE TAILOR"
+   }
+  ],
+  "pace": {
+   "daysElapsed": 16,
+   "daysInMonth": 31,
+   "historyMonths": 3,
+   "largeCount": 0,
+   "largeMinor": -50000,
+   "pendingMinor": 600,
+   "projectedMinor": 10287,
+   "spentMinor": -1617,
+   "typicalMonthMinor": 44099,
+   "typicalToDateMinor": 32195
+  },
+  "pendingRefunds": {
+   "count": 1,
+   "ids": [
+    "transaction:39"
+   ],
+   "items": [
+    {
+     "amountMinor": 2500,
+     "date": "2026-10-14",
+     "id": "transaction:39",
+     "key": "SAMPLE OUTFITTERS",
+     "merchant": "SAMPLE OUTFITTERS RETURN"
+    }
+   ],
+   "totalMinor": 2500
+  },
+  "period": {
+   "baseline": {
+    "from": "2026-09-01",
+    "to": "2026-09-16"
+   },
+   "from": "2026-10-01",
+   "to": "2026-10-16"
+  },
+  "recurring": [
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-08",
+    "fixed": false,
+    "key": "SAMPLE GROCER",
+    "lastDate": "2026-10-05",
+    "lastMinor": 5300,
+    "merchant": "SAMPLE GROCER",
+    "monthlyMinor": 7780,
+    "nextDate": "2026-11-04",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 7780
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-03",
+    "fixed": true,
+    "key": "SAMPLE STREAMING",
+    "lastDate": "2026-10-03",
+    "lastMinor": 1599,
+    "merchant": "SAMPLE STREAMING",
+    "monthlyMinor": 1599,
+    "nextDate": "2026-11-02",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 1599
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:chase-2002"
+    ],
+    "firstDate": "2026-06-02",
+    "fixed": true,
+    "key": "SAMPLE CAFE",
+    "lastDate": "2026-10-02",
+    "lastMinor": 650,
+    "merchant": "SAMPLE CAFE",
+    "monthlyMinor": 650,
+    "nextDate": "2026-11-01",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 650
+   }
+  ],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": -1617,
+  "today": "2026-10-16"
+ },
+ "/spending/insights?month=2026-09&today=2026-10-16": {
+  "baselineMinor": 55029,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "USD",
+  "duplicates": [],
+  "largePurchases": {
+   "baselineCoreMinor": 55029,
+   "coreMinor": 68599,
+   "count": 1,
+   "items": [
+    {
+     "amountMinor": 139900,
+     "category": "Electronics",
+     "date": "2026-09-25",
+     "firstTime": true,
+     "id": "transaction:22",
+     "key": "SAMPLE TV",
+     "merchant": "SAMPLE TV STORE",
+     "refundedMinor": 50000
+    }
+   ],
+   "share": 0.6709864315895999,
+   "thresholdMinor": 189900,
+   "totalMinor": 139900
+  },
+  "merchantMovers": [
+   {
+    "baselineMinor": 41200,
+    "currentMinor": 0,
+    "deltaMinor": -41200,
+    "key": "CONTOSO AIRLINES",
+    "merchant": "CONTOSO AIRLINES",
+    "share": -1
+   },
+   {
+    "baselineMinor": 0,
+    "currentMinor": 24580,
+    "deltaMinor": 24580,
+    "key": "HOTEL SAMPLE LISBOA",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "share": null
+   },
+   {
+    "baselineMinor": 0,
+    "currentMinor": 15000,
+    "deltaMinor": 15000,
+    "key": "SAMPLE MART",
+    "merchant": "SAMPLE MART",
+    "share": null
+   }
+  ],
+  "month": "2026-09",
+  "movers": [
+   {
+    "category": "Travel",
+    "currentMinor": 24580,
+    "deltaMinor": -16620,
+    "drivers": [
+     {
+      "deltaMinor": -41200,
+      "key": "CONTOSO AIRLINES",
+      "merchant": "CONTOSO AIRLINES"
+     }
+    ],
+    "share": -0.4033980582524272,
+    "typicalMinor": 41200
+   },
+   {
+    "category": "Household",
+    "currentMinor": 15000,
+    "deltaMinor": 15000,
+    "drivers": [
+     {
+      "deltaMinor": 15000,
+      "key": "SAMPLE MART",
+      "merchant": "SAMPLE MART"
+     }
+    ],
+    "share": null,
+    "typicalMinor": 0
+   },
+   {
+    "category": "Dining",
+    "currentMinor": 13300,
+    "deltaMinor": 8850,
+    "drivers": [
+     {
+      "deltaMinor": 8850,
+      "key": "SAMPLE BISTRO",
+      "merchant": "SAMPLE BISTRO"
+     }
+    ],
+    "share": 1.9887640449438202,
+    "typicalMinor": 4450
+   },
+   {
+    "category": "Merchandise",
+    "currentMinor": 5000,
+    "deltaMinor": 5000,
+    "drivers": [
+     {
+      "deltaMinor": 5000,
+      "key": "SAMPLE OUTFITTERS",
+      "merchant": "SAMPLE OUTFITTERS"
+     }
+    ],
+    "share": null,
+    "typicalMinor": 0
+   }
+  ],
+  "newMerchants": [
+   {
+    "amountMinor": 24580,
+    "date": "2026-09-12",
+    "id": "transaction:17",
+    "key": "HOTEL SAMPLE LISBOA",
+    "merchant": "HOTEL SAMPLE LISBOA"
+   }
+  ],
+  "pace": null,
+  "pendingRefunds": null,
+  "period": {
+   "baseline": {
+    "from": "2026-08-01",
+    "to": "2026-08-31"
+   },
+   "from": "2026-09-01",
+   "to": "2026-09-30"
+  },
+  "recurring": [
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-08",
+    "fixed": false,
+    "key": "SAMPLE GROCER",
+    "lastDate": "2026-10-05",
+    "lastMinor": 5300,
+    "merchant": "SAMPLE GROCER",
+    "monthlyMinor": 7780,
+    "nextDate": "2026-11-04",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 7780
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-03",
+    "fixed": true,
+    "key": "SAMPLE STREAMING",
+    "lastDate": "2026-10-03",
+    "lastMinor": 1599,
+    "merchant": "SAMPLE STREAMING",
+    "monthlyMinor": 1599,
+    "nextDate": "2026-11-02",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 1599
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:chase-2002"
+    ],
+    "firstDate": "2026-06-02",
+    "fixed": true,
+    "key": "SAMPLE CAFE",
+    "lastDate": "2026-10-02",
+    "lastMinor": 650,
+    "merchant": "SAMPLE CAFE",
+    "monthlyMinor": 650,
+    "nextDate": "2026-11-01",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 650
+   }
+  ],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": 258499,
+  "today": "2026-10-16"
+ },
+ "/spending/insights?from=2026-07-19&to=2026-10-16&baselineFrom=2026-04-20&baselineTo=2026-07-18&today=2026-10-16": {
+  "baselineMinor": 23568,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 1234,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 1234,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "USD",
+  "duplicates": [
+   {
+    "amountMinor": 2500,
+    "cardAccountId": "account:amex-0003",
+    "dates": [
+     "2026-10-06",
+     "2026-10-07"
+    ],
+    "ids": [
+     "transaction:33",
+     "transaction:34"
+    ],
+    "key": "SAMPLE PARKING",
+    "merchant": "SAMPLE PARKING"
+   }
+  ],
+  "largePurchases": {
+   "baselineCoreMinor": 23568,
+   "coreMinor": 172011,
+   "count": 1,
+   "items": [
+    {
+     "amountMinor": 139900,
+     "category": "Electronics",
+     "date": "2026-09-25",
+     "firstTime": true,
+     "id": "transaction:22",
+     "key": "SAMPLE TV",
+     "merchant": "SAMPLE TV STORE",
+     "refundedMinor": 50000
+    }
+   ],
+   "share": 0.4485253806374254,
+   "thresholdMinor": 189900,
+   "totalMinor": 139900
+  },
+  "merchantMovers": [
+   {
+    "baselineMinor": 0,
+    "currentMinor": 41200,
+    "deltaMinor": 41200,
+    "key": "CONTOSO AIRLINES",
+    "merchant": "CONTOSO AIRLINES",
+    "share": null
+   },
+   {
+    "baselineMinor": 0,
+    "currentMinor": 30000,
+    "deltaMinor": 30000,
+    "key": "SAMPLE TAILOR",
+    "merchant": "SAMPLE TAILOR",
+    "share": null
+   },
+   {
+    "baselineMinor": 0,
+    "currentMinor": 24580,
+    "deltaMinor": 24580,
+    "key": "HOTEL SAMPLE LISBOA",
+    "merchant": "HOTEL SAMPLE LISBOA",
+    "share": null
+   },
+   {
+    "baselineMinor": 0,
+    "currentMinor": 15000,
+    "deltaMinor": 15000,
+    "key": "SAMPLE MART",
+    "merchant": "SAMPLE MART",
+    "share": null
+   },
+   {
+    "baselineMinor": 4200,
+    "currentMinor": 18650,
+    "deltaMinor": 14450,
+    "key": "SAMPLE BISTRO",
+    "merchant": "SAMPLE BISTRO",
+    "share": 3.4404761904761907
+   }
+  ],
+  "month": "2026-10",
+  "movers": [
+   {
+    "category": "Travel",
+    "currentMinor": 70780,
+    "deltaMinor": 70780,
+    "drivers": [
+     {
+      "deltaMinor": 41200,
+      "key": "CONTOSO AIRLINES",
+      "merchant": "CONTOSO AIRLINES"
+     },
+     {
+      "deltaMinor": 24580,
+      "key": "HOTEL SAMPLE LISBOA",
+      "merchant": "HOTEL SAMPLE LISBOA"
+     }
+    ],
+    "share": null,
+    "typicalMinor": 0
+   },
+   {
+    "category": "Dining",
+    "currentMinor": 20600,
+    "deltaMinor": 15100,
+    "drivers": [
+     {
+      "deltaMinor": 14450,
+      "key": "SAMPLE BISTRO",
+      "merchant": "SAMPLE BISTRO"
+     }
+    ],
+    "share": 2.7454545454545456,
+    "typicalMinor": 5500
+   },
+   {
+    "category": "Household",
+    "currentMinor": 15000,
+    "deltaMinor": 15000,
+    "drivers": [
+     {
+      "deltaMinor": 15000,
+      "key": "SAMPLE MART",
+      "merchant": "SAMPLE MART"
+     }
+    ],
+    "share": null,
+    "typicalMinor": 0
+   },
+   {
+    "category": "Groceries",
+    "currentMinor": 22200,
+    "deltaMinor": 13750,
+    "drivers": [
+     {
+      "deltaMinor": 13750,
+      "key": "SAMPLE GROCER",
+      "merchant": "SAMPLE GROCER"
+     }
+    ],
+    "share": 1.6272189349112427,
+    "typicalMinor": 8450
+   },
+   {
+    "category": "Bulk groceries",
+    "currentMinor": 0,
+    "deltaMinor": -6420,
+    "drivers": [
+     {
+      "deltaMinor": -6420,
+      "key": "SAMPLE GROCER",
+      "merchant": "SAMPLE GROCER"
+     }
+    ],
+    "share": -1,
+    "typicalMinor": 6420
+   }
+  ],
+  "newMerchants": [
+   {
+    "amountMinor": 30000,
+    "date": "2026-10-10",
+    "id": "transaction:37",
+    "key": "SAMPLE TAILOR",
+    "merchant": "SAMPLE TAILOR"
+   },
+   {
+    "amountMinor": 24580,
+    "date": "2026-09-12",
+    "id": "transaction:17",
+    "key": "HOTEL SAMPLE LISBOA",
+    "merchant": "HOTEL SAMPLE LISBOA"
+   }
+  ],
+  "pace": null,
+  "pendingRefunds": {
+   "count": 1,
+   "ids": [
+    "transaction:39"
+   ],
+   "items": [
+    {
+     "amountMinor": 2500,
+     "date": "2026-10-14",
+     "id": "transaction:39",
+     "key": "SAMPLE OUTFITTERS",
+     "merchant": "SAMPLE OUTFITTERS RETURN"
+    }
+   ],
+   "totalMinor": 2500
+  },
+  "period": {
+   "baseline": {
+    "from": "2026-04-20",
+    "to": "2026-07-18"
+   },
+   "from": "2026-07-19",
+   "to": "2026-10-16"
+  },
+  "recurring": [
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-08",
+    "fixed": false,
+    "key": "SAMPLE GROCER",
+    "lastDate": "2026-10-05",
+    "lastMinor": 5300,
+    "merchant": "SAMPLE GROCER",
+    "monthlyMinor": 7780,
+    "nextDate": "2026-11-04",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 7780
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-03",
+    "fixed": true,
+    "key": "SAMPLE STREAMING",
+    "lastDate": "2026-10-03",
+    "lastMinor": 1599,
+    "merchant": "SAMPLE STREAMING",
+    "monthlyMinor": 1599,
+    "nextDate": "2026-11-02",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 1599
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:chase-2002"
+    ],
+    "firstDate": "2026-06-02",
+    "fixed": true,
+    "key": "SAMPLE CAFE",
+    "lastDate": "2026-10-02",
+    "lastMinor": 650,
+    "merchant": "SAMPLE CAFE",
+    "monthlyMinor": 650,
+    "nextDate": "2026-11-01",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 650
+   }
+  ],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": 311911,
+  "today": "2026-10-16"
+ },
+ "/spending/insights?owner=casey&today=2026-10-16": {
+  "baselineMinor": 650,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "USD",
+  "duplicates": [],
+  "largePurchases": null,
+  "merchantMovers": [],
+  "month": "2026-10",
+  "movers": [],
+  "newMerchants": [],
+  "pace": {
+   "daysElapsed": 16,
+   "daysInMonth": 31,
+   "historyMonths": 3,
+   "largeCount": 0,
+   "largeMinor": 0,
+   "pendingMinor": 0,
+   "projectedMinor": 8050,
+   "spentMinor": 3050,
+   "typicalMonthMinor": 19383,
+   "typicalToDateMinor": 14383
+  },
+  "pendingRefunds": null,
+  "period": {
+   "baseline": {
+    "from": "2026-09-01",
+    "to": "2026-09-16"
+   },
+   "from": "2026-10-01",
+   "to": "2026-10-16"
+  },
+  "recurring": [
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:chase-2002"
+    ],
+    "firstDate": "2026-06-02",
+    "fixed": true,
+    "key": "SAMPLE CAFE",
+    "lastDate": "2026-10-02",
+    "lastMinor": 650,
+    "merchant": "SAMPLE CAFE",
+    "monthlyMinor": 650,
+    "nextDate": "2026-11-01",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 650
+   }
+  ],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": 3050,
+  "today": "2026-10-16"
+ },
+ "/spending/insights?currency=EUR&today=2026-10-16": {
+  "baselineMinor": 1240,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "EUR",
+  "duplicates": [],
+  "largePurchases": null,
+  "merchantMovers": [],
+  "month": "2026-10",
+  "movers": [],
+  "newMerchants": [],
+  "pace": null,
+  "pendingRefunds": null,
+  "period": {
+   "baseline": {
+    "from": "2026-09-01",
+    "to": "2026-09-16"
+   },
+   "from": "2026-10-01",
+   "to": "2026-10-16"
+  },
+  "recurring": [],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": 1300,
+  "today": "2026-10-16"
+ },
+ "/spending/insights?cardAccountId=account:amex-0003&month=2026-08&today=2026-10-16": {
+  "baselineMinor": 8019,
+  "costs": {
+   "period": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0
+   },
+   "year": {
+    "feesMinor": 0,
+    "foreignFeesMinor": 0,
+    "interestMinor": 0,
+    "reversalsMinor": 0,
+    "year": "2026"
+   }
+  },
+  "currency": "USD",
+  "duplicates": [],
+  "largePurchases": null,
+  "merchantMovers": [],
+  "month": "2026-08",
+  "movers": [
+   {
+    "category": "Groceries",
+    "currentMinor": 7780,
+    "deltaMinor": 7780,
+    "drivers": [
+     {
+      "deltaMinor": 7780,
+      "key": "SAMPLE GROCER",
+      "merchant": "SAMPLE GROCER"
+     }
+    ],
+    "share": null,
+    "typicalMinor": 0
+   },
+   {
+    "category": "Bulk groceries",
+    "currentMinor": 0,
+    "deltaMinor": -6420,
+    "drivers": [
+     {
+      "deltaMinor": -6420,
+      "key": "SAMPLE GROCER",
+      "merchant": "SAMPLE GROCER"
+     }
+    ],
+    "share": -1,
+    "typicalMinor": 6420
+   }
+  ],
+  "newMerchants": [],
+  "pace": null,
+  "pendingRefunds": null,
+  "period": {
+   "baseline": {
+    "from": "2026-07-01",
+    "to": "2026-07-31"
+   },
+   "from": "2026-08-01",
+   "to": "2026-08-31"
+  },
+  "recurring": [
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-08",
+    "fixed": false,
+    "key": "SAMPLE GROCER",
+    "lastDate": "2026-10-05",
+    "lastMinor": 5300,
+    "merchant": "SAMPLE GROCER",
+    "monthlyMinor": 7780,
+    "nextDate": "2026-11-04",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 7780
+   },
+   {
+    "active": true,
+    "cadence": "monthly",
+    "cardAccountIds": [
+     "account:amex-0003"
+    ],
+    "firstDate": "2026-06-03",
+    "fixed": true,
+    "key": "SAMPLE STREAMING",
+    "lastDate": "2026-10-03",
+    "lastMinor": 1599,
+    "merchant": "SAMPLE STREAMING",
+    "monthlyMinor": 1599,
+    "nextDate": "2026-11-02",
+    "occurrences": 5,
+    "priceChange": null,
+    "typicalMinor": 1599
+   }
+  ],
+  "recurringChanges": {
+   "priceUps": [],
+   "started": [],
+   "stopped": []
+  },
+  "spendingMinor": 13179,
+  "today": "2026-10-16"
+ }
+}

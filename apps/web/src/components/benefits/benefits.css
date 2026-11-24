@@ -1,0 +1,436 @@
+/* =====================================================================
+ * Everyday: the Benefits area (components/benefits/BenefitsArea.tsx).
+ * Only Everyday's palette tokens (modes.css); no colour of its own. Tracks
+ * sit on --surface-2 with fills in --accent-graphic, or --gain when a
+ * period is used up; tints are color-mix() of tokens, so a darker palette
+ * carries over. A state picks its fill through --benefits-fill, never the
+ * fill's own background, so forced colours (the end of this file) reach
+ * every fill whatever its state.
+ * ==================================================================== */
+
+/* Running text wraps at 1.5 (D1): the area sets it once; headings, controls, chips and the one-line figure set their own
+ * (1.25 to 1.5). A paragraph is never wider than 65ch of its own font. */
+.benefits { display: grid; gap: 18px; min-width: 0; line-height: var(--leading, 1.5); }
+.benefits :where(p) { max-width: var(--measure, 65ch); }
+
+/* Shared controls and notes inside the area (period switches, links, folds, the error line, muted and empty-state text),
+ * at the 14px floor for actionable and status text, and running text at 1.5, until the shared type scale sets them. */
+.benefits .spending-link,
+.benefits .spending-period,
+.benefits .spending-error,
+.benefits .fold-toggle { font-size: var(--text-help, 14px); }
+.benefits .spending-muted,
+.benefits .spending-error,
+.benefits .spending-empty p { line-height: var(--leading, 1.5); }
+
+/* ---- The year's figures: credits used first, use unknown said apart, then the fees and the difference, quieter ---- */
+.benefits-figure { display: grid; gap: 2px; min-width: 0; }
+.benefits-figure-label { font-size: var(--text-help, 14px); font-weight: 600; color: var(--text-muted); }
+.benefits-figure-value { font-size: 26px; line-height: 1.25; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.benefits-figure-note { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.benefits-summary-unknown { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.benefits-summary-fees {
+  display: grid;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--text-muted);
+  font-size: var(--text-read, 16px);
+  line-height: var(--leading, 1.5);
+  font-variant-numeric: tabular-nums;
+}
+.benefits-summary-fees p { margin: 0; max-width: var(--measure, 65ch); }
+/* The year's meter stays under its figure, not across a wide screen. */
+.benefits-summary > .benefits-meter { max-width: 40rem; }
+
+.benefits-meter { display: block; height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.benefits-meter > span { display: block; height: 100%; border-radius: inherit; background: var(--benefits-fill, var(--accent-graphic)); }
+.benefits-meter[data-tone='over'] { --benefits-fill: var(--gain); }
+/* Some of what it measures has no figure yet: the track is hatched, as a period with no figure is. */
+.benefits-meter[data-unknown='true'] { background: repeating-linear-gradient(135deg, var(--surface-2) 0 4px, var(--line) 4px 6px); }
+
+/* Each person: the name, then one line of figures that wraps under itself, never under the name. */
+.benefits-owner-totals { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: var(--text-help, 14px); }
+.benefits-owner-totals li { display: grid; grid-template-columns: 5rem minmax(0, 1fr); align-items: baseline; gap: 2px 10px; min-width: 0; }
+.benefits-owner-name { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.benefits-owner-figures { min-width: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.benefits-owner-fees,
+[data-owner-unknown] { color: var(--text-muted); }
+.benefits-owner-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-muted); }
+[data-owner='alex'] > .benefits-owner-dot { background: var(--owner-alex); }
+[data-owner='casey'] > .benefits-owner-dot { background: var(--owner-casey); }
+[data-owner='joint'] > .benefits-owner-dot { background: var(--owner-joint); }
+
+/* ---- Use before it resets: the benefit, what is left (or that its use is unknown), by when, and the card, a line
+ * each; side by side as aligned fields once the list is wide enough (the list's own width, not the screen's). ---- */
+.benefits-reminder-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; container: benefits-reminders / inline-size; }
+.benefits-reminder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: var(--text-read, 16px);
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.benefits-reminder:hover {
+  background: color-mix(in srgb, var(--accent-graphic) 12%, var(--surface-2));
+  border-color: color-mix(in srgb, var(--accent-graphic) 40%, var(--line));
+}
+.benefits-reminder:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.benefits-reminder-name { font-weight: 650; overflow-wrap: anywhere; }
+.benefits-reminder-left { font-variant-numeric: tabular-nums; }
+.benefits-reminder-why { color: var(--text-muted); }
+.benefits-reminder-deadline { font-weight: 650; color: var(--warning); font-variant-numeric: tabular-nums; }
+.benefits-reminder-deadline[data-urgent='true'] { color: var(--loss); }
+.benefits-reminder-card { color: var(--text-muted); font-size: var(--text-help, 14px); overflow-wrap: anywhere; }
+@container benefits-reminders (width >= 56rem) {
+  /* Each field as wide as its longest usual words and no wider, so a row reads as one line; the card takes the rest. */
+  .benefits-reminder {
+    grid-template-columns: minmax(12rem, 22rem) minmax(9rem, 19rem) minmax(12rem, 18rem) minmax(12rem, 1fr);
+    align-items: baseline;
+    column-gap: 16px;
+  }
+}
+
+/* ---- Issuers, people, cards ---- */
+.benefits-issuer { display: grid; gap: 12px; min-width: 0; }
+.benefits-issuer-title { margin: 8px 0 0; font-size: var(--text-section, 20px); line-height: 1.4; font-weight: 700; letter-spacing: -0.01em; }
+.benefits-owner { display: grid; gap: 10px; min-width: 0; }
+.benefits-owner-title { margin: 0; font-size: 14px; font-weight: 650; color: var(--text-muted); }
+.benefits-card-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 14px; align-items: start; }
+.benefits-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--everyday-radius);
+  background: var(--surface);
+  box-shadow: var(--everyday-shadow);
+  /* Its year grids are laid out by the card's own width (the twelve months, below). */
+  container: benefits-card / inline-size;
+}
+.benefits-card-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; }
+.benefits-card-name h5 { margin: 0; font-size: 17px; line-height: 24px; font-weight: 650; overflow-wrap: anywhere; }
+.benefits-card-name p { margin: 2px 0 0; }
+.benefits-ending { font-weight: 500; color: var(--text-muted); }
+.benefits-card-totals { display: grid; justify-items: end; gap: 2px; font-size: 14px; text-align: right; }
+.benefits-settings-toggle { grid-column: 1 / -1; justify-self: start; padding: 2px 0; font-size: var(--text-help, 14px); }
+.benefits-settings-toggle:disabled { display: none; }
+
+.benefits-settings { display: grid; gap: 8px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.benefits-settings-fields { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+/* A narrow screen: the choices shrink with it (a long product name is cut short) rather than push the page sideways. */
+.benefits-settings,
+.benefits-settings > * { min-width: 0; }
+.benefits-settings-fields > .spending-select { min-width: 0; max-width: 100%; }
+.benefits-settings-fields select { min-width: 0; }
+.benefits-hint {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--warning-soft);
+  color: var(--warning);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+
+/* ---- One benefit ---- */
+.benefits-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.benefits-row { display: grid; gap: 8px; padding: 12px 0; border-top: 1px solid var(--line); min-width: 0; scroll-margin-top: 96px; }
+.benefits-row:first-child { border-top: 0; padding-top: 2px; }
+.benefits-row-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.benefits-row-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; min-width: 0; }
+.benefits-row-name { font-size: var(--text-read, 16px); font-weight: 650; }
+.benefits-row-year { font-size: var(--text-help, 14px); color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.benefits-tags { display: inline-flex; flex-wrap: wrap; gap: 4px 6px; }
+.benefits-tag {
+  padding: 1px 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-size: var(--text-help, 14px);
+  line-height: 20px;
+  white-space: nowrap;
+}
+.benefits-tag[data-tone='warning'] { background: var(--warning-soft); color: var(--warning); }
+.benefits-tag[data-tone='manual'] { background: var(--brand-soft); color: var(--brand); }
+.benefits-tag[data-tone='muted'] { border-color: var(--line-strong); border-style: dashed; background: transparent; }
+
+.benefits-current { display: grid; gap: 4px; }
+.benefits-current-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.benefits-current-line > [data-resets-soon='true'] { color: var(--warning); }
+.benefits-source { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.benefits-source[data-source='issuer'] { color: var(--brand); font-weight: 600; }
+.benefits-source[data-source='manual'] { color: var(--text); }
+.benefits-current-open { margin-left: auto; padding: 2px 0; font-size: var(--text-help, 14px); }
+.benefits-window { margin: 0; font-size: 14px; }
+
+/* The year, period by period: 12 months, 4 quarters, 2 halves or 1 year. */
+.benefits-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; }
+.benefits-grid[data-count='4'] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.benefits-grid[data-count='2'] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* A card narrower than its twelve months' names need (28.5rem: twelve cells of the widest, "May", 27px at 14px, with
+ * 6px of padding and border, and their gaps, with room to spare): the months in two rows of six. */
+@container benefits-card (width < 28.5rem) {
+  .benefits-grid[data-count='12'] { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+/* One period that is not today's (a past year, a cardmember year still to come): a compact control, its name beside
+ * its fill, rather than a box across the row. (Today's only period has no box: today's line opens it.) */
+.benefits-grid[data-count='1'] { grid-template-columns: minmax(0, max-content); }
+.benefits-grid[data-count='1'] .benefits-cell {
+  grid-auto-flow: column; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 999px;
+}
+.benefits-grid[data-count='1'] .benefits-cell-meter { width: 30px; height: 16px; }
+.benefits-cell {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 5px 2px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-help, 14px);
+  line-height: 1.25;
+  cursor: pointer;
+}
+.benefits-cell:hover { border-color: var(--line-strong); }
+.benefits-cell:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.benefits-cell[data-state='current'] { border-color: var(--accent-graphic); }
+.benefits-cell[aria-pressed='true'] { border-color: var(--brand); box-shadow: var(--everyday-selected-ring); }
+.benefits-cell[data-state='future'] { color: var(--text-muted); }
+.benefits-cell[data-fill='inactive'] { opacity: 0.45; }
+.benefits-cell-label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.benefits-cell-meter {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  max-width: 30px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+.benefits-cell-meter > span { display: block; width: 100%; background: var(--benefits-fill, var(--accent-graphic)); }
+.benefits-cell[data-fill='full'] .benefits-cell-meter { --benefits-fill: var(--gain); }
+/* No figure yet (a benefit marked by hand): hatched. Past and unused: an outline in the loss colour. */
+.benefits-cell[data-fill='unknown'] .benefits-cell-meter {
+  background: repeating-linear-gradient(135deg, var(--surface-2) 0 4px, var(--line) 4px 6px);
+}
+.benefits-cell[data-fill='none'][data-state='past'] .benefits-cell-meter {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--loss) 55%, transparent);
+}
+
+/* ---- A period's details and marks ---- */
+.benefits-detail { display: grid; gap: 8px; padding: 12px 14px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
+/* Focused only when a saved mark left nothing else in it to take the focus (PeriodDetail). */
+.benefits-detail:focus { outline: none; }
+.benefits-detail:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.benefits-detail p { margin: 0; }
+.benefits-detail-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.benefits-matches { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: var(--text-help, 14px); }
+.benefits-matches li { display: flex; justify-content: space-between; gap: 12px; }
+.benefits-matches .spending-link { text-align: left; overflow-wrap: anywhere; }
+.benefits-detail-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.benefits-partial { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: 14px; }
+.benefits-partial input {
+  width: 88px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- By benefit: a group per benefit, each card that has it, then the cards that don't ---- */
+.benefits-section { display: grid; gap: 12px; min-width: 0; }
+.benefits-section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.benefits-section-figure { margin-left: auto; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.benefits-group-list { display: grid; gap: 14px; min-width: 0; }
+/* Wide screens: two benefits to a row. Each group lays out its cards by its own width (the container below), so a
+ * half-width group still keeps its months whole. */
+@media (min-width: 1680px) {
+  .benefits-group-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+/* A query container: its cards' rows are laid out by the group's own width (below), not the screen's. */
+.benefits-group {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--everyday-radius);
+  background: var(--surface);
+  box-shadow: var(--everyday-shadow);
+  container: benefits-group / inline-size;
+}
+.benefits-group-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; align-items: baseline; }
+.benefits-group-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+.benefits-group-name h4 { margin: 0; font-size: 17px; line-height: 24px; font-weight: 650; overflow-wrap: anywhere; }
+.benefits-group-totals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 2px 12px;
+  font-size: 14px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.benefits-group-note,
+.benefits-member-note { margin: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.benefits-untracked { max-width: var(--measure, 65ch); }
+.benefits-rank-note { max-width: var(--measure, 65ch); margin: 0; }
+
+/* Most used, no recorded use: a line each, what its cards have left now beside the name and the toggle for its cards
+ * at the end; its cards under it once opened. The fold's own box steps aside (display: contents), so its toggle sits
+ * in the line; on a phone it goes under the name. */
+.benefits-group[data-foldable] { grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 14px; padding-block: 10px; }
+/* Name and tags may take two lines beside a narrow line: what is left and the toggle stay centred beside them. */
+.benefits-group[data-foldable] > .benefits-group-head { align-items: center; }
+.benefits-group[data-foldable] > .benefits-group-fold { display: contents; }
+.benefits-group[data-foldable] > .benefits-group-fold > .fold-content { grid-column: 1 / -1; display: grid; gap: 10px; min-width: 0; }
+.benefits-group[data-foldable] .benefits-group-name h4 { font-size: var(--text-read, 16px); line-height: 22px; }
+
+/* A reminder's link brings its row here and moves the focus to it: drawn when the keyboard brought it. */
+.benefits-row:focus { outline: none; }
+.benefits-row:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 8px; }
+
+/*
+ * A card in a group: the card, whose it is, its year and its own tags; then today's period and the year's periods.
+ * Laid out by the group's width, so a year of months always has room for its names: 28.5rem holds twelve cells of the
+ * widest ("May", 27px at 14px, and 6px of padding and border) with room to spare. While the group is narrower, the
+ * months come in two rows of six; the card's name goes beside its periods from 44rem (14rem, the gap and 28.5rem), and
+ * today's period beside the year from 61rem (16rem or more for today's period, the gap and 28.5rem for the year).
+ */
+.benefits-member { grid-template-columns: minmax(0, 1fr); column-gap: 20px; align-items: start; padding: 10px 0; }
+.benefits-member > .benefits-row-head { display: grid; justify-items: start; align-content: start; gap: 2px; }
+.benefits-member > .benefits-detail { grid-column: 1 / -1; }
+.benefits-member-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.benefits-member-owner { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-help, 14px); color: var(--text-muted); }
+.benefits-member-alias { font-size: var(--text-help, 14px); color: var(--text-muted); overflow-wrap: anywhere; }
+.benefits-member > .benefits-row-head > .benefits-tags { margin-top: 2px; }
+.benefits-member-body { display: grid; gap: 8px; min-width: 0; }
+.benefits-member-now { display: grid; gap: 6px; min-width: 0; }
+/* Twelve in a row whatever the screen (the phone rule below is for the screen, not the group). */
+.benefits-member .benefits-grid[data-count='12'] { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+@container benefits-group (width < 28.5rem) {
+  .benefits-member .benefits-grid[data-count='12'] { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@container benefits-group (width >= 44rem) {
+  .benefits-member { grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); }
+}
+@container benefits-group (width >= 61rem) {
+  .benefits-member-body { grid-template-columns: minmax(0, 1fr) minmax(28.5rem, 1.2fr); align-items: center; column-gap: 18px; }
+  .benefits-member-body > :only-child { grid-column: 1 / -1; }
+}
+/* No periods beside today's line (its one period is today's): Details stays with its line, not across the row. */
+.benefits-member-body[data-periods='none'] .benefits-current-open { margin-left: 0; }
+
+/* The compared cards without the benefit: folded behind "Without it in 2026: N of M compared cards" once the list is
+ * long (Disclosure), then empty slots, by person. */
+.benefits-missing-fold { padding-top: 10px; border-top: 1px solid var(--line); font-size: var(--text-help, 14px); }
+.benefits-missing-fold > .fold-content { padding-top: 8px; }
+.benefits-missing-label { font-weight: 650; color: var(--text-muted); }
+.benefits-missing-count { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.benefits-missing-label + .benefits-missing-count::before { content: ': '; }
+.benefits-missing { display: block; font-size: var(--text-help, 14px); }
+.benefits-missing-list,
+.benefits-missing-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+.benefits-missing-list { flex: 1 1 0; min-width: 0; column-gap: 18px; }
+.benefits-missing-owner { display: flex; align-items: baseline; gap: 6px 8px; min-width: 0; max-width: 100%; }
+.benefits-missing-owner > ul { flex: 1 1 auto; min-width: 0; }
+.benefits-missing-person { display: inline-flex; flex: none; align-items: center; gap: 6px; color: var(--text-muted); }
+.benefits-missing-card {
+  padding: 1px 8px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 999px;
+  color: var(--text-muted);
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+
+/* Cards to set up before they can be compared: folded behind one line once there are more than a few (Disclosure),
+ * why said once, then a row per card: who it is and what it needs, beside its choices; the choices go under it on a
+ * narrow screen. */
+.benefits-setup-why { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); margin: 4px 0 10px; max-width: var(--measure, 65ch); }
+.benefits-setup-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.benefits-setup-card {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px 20px; align-items: center; min-width: 0;
+  padding: 10px 0; border-top: 1px solid var(--line);
+}
+.benefits-setup-card:first-child { border-top: 0; }
+.benefits-setup-card .benefits-card-name h5 { font-size: var(--text-read, 16px); line-height: 22px; }
+.benefits-setup-card .benefits-card-name p { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); overflow-wrap: anywhere; }
+.benefits-setup-reason { margin: 2px 0 0; font-size: var(--text-help, 14px); font-weight: 600; color: var(--warning); }
+.benefits-settings.compact { padding: 0; background: none; }
+@media (min-width: 900px) {
+  .benefits-setup-card { grid-template-columns: minmax(16rem, 1fr) auto; }
+  .benefits-setup-card .benefits-settings-fields { flex-wrap: nowrap; justify-content: flex-end; }
+  /* One width per choice, whatever its options, so every row's choices line up. */
+  .benefits-setup-card .benefits-settings-fields > label:first-child select { width: 18rem; }
+  .benefits-setup-card .benefits-settings-fields > label:nth-child(2) select { width: 9.5rem; }
+}
+/* Narrower: the product on its own line, then the month beside Save; each choice's name above it. */
+@media (max-width: 899px) {
+  .benefits-setup-card .benefits-settings-fields { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px 10px; }
+  .benefits-setup-card .benefits-settings-fields > label { display: grid; gap: 3px; }
+  .benefits-setup-card .benefits-settings-fields > label:first-child { grid-column: 1 / -1; }
+  .benefits-setup-card .benefits-settings-fields select { width: 100%; max-width: none; }
+}
+
+/* ---- Issuer trackers no catalog benefit maps; closed cards; footnote ---- */
+.benefits-issuer-trackers h6 { margin: 0 0 6px; font-size: var(--text-help, 14px); font-weight: 650; color: var(--text-muted); }
+.benefits-issuer-trackers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: var(--text-help, 14px); }
+.benefits-issuer-trackers li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; }
+.benefits-closed { display: grid; gap: 12px; justify-items: start; }
+.benefits-closed > .benefits-card-list { justify-self: stretch; }
+.benefits-footnote { max-width: var(--measure, 65ch); }
+
+@media (max-width: 720px) {
+  .benefits-card { padding: 16px; }
+  .benefits-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .benefits-card-head { grid-template-columns: minmax(0, 1fr); }
+  .benefits-card-totals { justify-items: start; text-align: left; }
+  .benefits-toolbar .benefits-views { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefits-group { padding: 16px; }
+  .benefits-group-head { grid-template-columns: minmax(0, 1fr); }
+  .benefits-group-totals { justify-content: flex-start; text-align: left; }
+  .benefits-group[data-foldable] { grid-template-columns: minmax(0, 1fr); }
+}
+@media (pointer: coarse) {
+  .benefits-partial input { min-height: 44px; }
+}
+
+/* ---- Forced colours: what the colours told stays drawn ----
+ * Forced colours drop backgrounds and shadows. Every fill, whatever its state, takes the system's Highlight on a
+ * track edged in the text colour; a period or a meter with no figure yet keeps a dashed edge for its hatching;
+ * today's period keeps its edge in Highlight, and the chosen one a double edge for its ring (the padding gives back the
+ * extra pixel); a person's dot keeps their colour, modes.css's mid-tones in this mode, as in the 12-month chart.
+ * Last in the file, so it follows every rule above. */
+@media (forced-colors: active) {
+  .benefits-meter > span,
+  .benefits-cell-meter > span { forced-color-adjust: none; background: Highlight; }
+  .benefits-cell-meter, .benefits-meter { border: 1px solid CanvasText; }
+  .benefits-cell[data-fill='unknown'] .benefits-cell-meter,
+  .benefits-meter[data-unknown='true'] { border-style: dashed; }
+  .benefits-cell[data-state='current'] { border-color: Highlight; }
+  .benefits-cell[aria-pressed='true'] { padding: 4px 1px; border: 2px solid Highlight; box-shadow: none; }
+  .benefits-grid[data-count='1'] .benefits-cell[aria-pressed='true'] { padding: 3px 11px; }
+  .benefits-owner-dot { forced-color-adjust: none; background: CanvasText; }
+}

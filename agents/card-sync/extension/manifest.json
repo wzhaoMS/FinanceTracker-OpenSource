@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Holdr Card Sync (experimental)",
+  "version": "0.1.0",
+  "description": "Saves your American Express statement exports to the Holdr receiver on this computer, for review and import in Holdr.",
+  "minimum_chrome_version": "111",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy69j2/hF48UMkln3vRtwFWRfLA+/KsHpg/95lt21P6Fyjo4g8aJ+k/iOJy2kq1pTAg2t2r4d65ASjLMe+WN9HYZe8CaAs6IX2E2lpr7takYGC/PLi7JBrILVKfduNKwj6FroTz+YGA99y3WuUwnPY5Kd0wV0ySiNSkJd+1vCM3EpuDN3h6syMNMELAjHBTkumF3mIQPyp3wSvk5sYZjXXG4NOhDTIUZ8ZlB9nIpkxUIlqoscSzyr4re5dHvFYU1SgTEWsrY4bWqD0pQlaBBa+fB0pW78xxK3kFa7oPqCkbeC2Qg1jp8TV0Aug4VJJ5FvRGVraTH6M49HbQLRvQfHAwIDAQAB",
+  "permissions": ["storage"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": { "service_worker": "worker.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "Holdr Card Sync" },
+  "content_scripts": [
+    {
+      "matches": ["https://global.americanexpress.com/*"],
+      "js": ["amex-page.js"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://global.americanexpress.com/*"],
+      "js": ["amex-sync.js", "amex-panel.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

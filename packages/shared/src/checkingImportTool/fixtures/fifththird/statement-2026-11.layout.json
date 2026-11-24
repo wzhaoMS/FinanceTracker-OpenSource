@@ -1,0 +1,34 @@
+{
+  "note": "Synthetic Fifth Third checking statement of a month without deposits, laid out as Fifth Third prints one: the Account Summary prints a bare Deposits / Credits label (no count, no amount) beside the bare Checks label, and the statement has no Deposits / Credits section. The November after statement-2026-10; every value is synthetic.",
+  "pages": [
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 760, "Statement Period Date: 11/1/2026 - 11/30/2026"],
+      [36, 746, "Account Type: 53 MOMENTUM CHECKING"],
+      [36, 732, "Account Number: 9990004321"],
+      [400, 718, "Questions? Visit 53.com"],
+      [36, 690, "Account Summary - 9990004321"],
+      [36, 676, "11/01"], [70, 676, "Beginning Balance"], [250, 676, "$4,421.57"], [350, 676, "Number of Days in Period"], [500, 676, "30"],
+      [84, 662, "Checks"],
+      [70, 648, "2"], [84, 648, "Withdrawals / Debits"], [250, 648, "$(261.00)"],
+      [84, 634, "Deposits / Credits"],
+      [36, 620, "11/30"], [70, 620, "Ending Balance"], [250, 620, "$4,160.57"],
+      [280, 596, "Fee Summary"], [410, 596, "This Period"], [480, 596, "2026 Year To Date"],
+      [280, 582, "Total Overdraft Fees"], [410, 582, "($0.00)"], [480, 582, "($0.00)"],
+      [280, 568, "Total Returned Item Fees"], [410, 568, "($0.00)"], [480, 568, "($0.00)"],
+      [36, 540, "Withdrawals / Debits"], [300, 540, "2 items totaling $261.00"],
+      [36, 526, "Date"], [141, 526, "Amount"], [202, 526, "Description"],
+      [36, 512, "11/03"], [141, 512, "250.00"], [204, 512, "AMEX EPAYMENT ACH PMT"],
+      [36, 498, "11/30"], [145.5, 498, "11.00"], [204, 498, "MONTHLY SERVICE FEE"],
+      [36, 470, "Daily Balance Summary"],
+      [36, 456, "Date"], [80, 456, "Amount"], [200, 456, "Date"], [244, 456, "Amount"],
+      [36, 442, "11/03"], [72, 442, "4,171.57"], [200, 442, "11/30"], [236, 442, "4,160.57"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 1 of 2"]
+    ],
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 700, "This page intentionally left blank"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 2 of 2"]
+    ]
+  ]
+}

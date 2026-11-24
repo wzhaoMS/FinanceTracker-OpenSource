@@ -1,0 +1,39 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalPassThroughEnv": [
+    "HOLDR_*", "PORT", "WEB_ORIGIN", "NODE_ENV", "SNAPSHOTS_ENABLED", "SNAPSHOT_INTERVAL_MS", "VITE_API_BASE"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {},
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "@finance-tracker/api#test": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/scripts/loopback-only.mjs"]
+    },
+    "@finance-tracker/shared#test": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/scripts/run-tsx-tests.mjs", "$TURBO_ROOT$/scripts/loopback-only.mjs"]
+    },
+    "@finance-tracker/web#test": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/scripts/loopback-only.mjs"]
+    },
+    "@finance-tracker/extension#test": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/scripts/run-tsx-tests.mjs", "$TURBO_ROOT$/scripts/loopback-only.mjs"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

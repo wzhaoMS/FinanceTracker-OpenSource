@@ -1,0 +1,96 @@
+/* =====================================================================
+ * Owed now (components/spending/owed/OwedNowPanel.tsx): each card's balance as its issuer last showed it. The reading
+ * floors (plan D1): 16px for what is read (the headline, each issuer and person's name and amount, each card's name and
+ * amount), 14px for help and status (the lines under the headline, notes, how much of a group is read, a card's
+ * details). Only the palette's tokens, and the type tokens with their values as fallbacks.
+ *
+ * Component CSS loads before styles.css and modes.css (main.tsx imports App first), so every rule here is scoped under
+ * the panel, with more classes than the global rule it overrides.
+ * ==================================================================== */
+
+.spending-panel.spending-owed { gap: 12px; }
+.spending-panel.spending-owed > .owed-head { display: grid; justify-content: stretch; gap: 2px; }
+/* The title is a section head: T1's token, 18px, and 20px from 1280px (beside its spinner while the panel reads again). */
+.spending-panel.spending-owed > .owed-head h3 { font-size: var(--text-section, 18px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-owed .owed-scope {
+  margin: 0; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+
+/* What is owed in all, then each other line in its own unit. */
+.spending-panel.spending-owed .owed-summary { display: grid; gap: 4px; min-width: 0; }
+.spending-panel.spending-owed .owed-headline {
+  margin: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650;
+}
+.spending-panel.spending-owed .owed-lines {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 2px;
+  color: var(--text); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.spending-panel.spending-owed .owed-lines > .owed-left-out { color: var(--text-muted); }
+.spending-panel.spending-owed .owed-note {
+  margin: 0; max-width: var(--measure, 65ch); color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.spending-panel.spending-owed .spending-error { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-owed .spending-button,
+.spending-panel.spending-owed .spending-link { font-size: var(--text-help, 14px); line-height: 20px; }
+.spending-panel.spending-owed > .owed-read-again { justify-self: start; }
+
+/* The folds (components/Disclosure.tsx): the list of issuers and people, and each of them over its cards. */
+.spending-panel.spending-owed .owed-fold > .fold-toggle { min-height: 36px; color: var(--text); }
+.spending-panel.spending-owed .owed-groups-fold > .fold-toggle {
+  font-size: var(--text-help, 14px); line-height: 20px; font-weight: 600;
+}
+.spending-panel.spending-owed .owed-groups-fold > .fold-content { padding-top: 4px; min-width: 0; }
+/* Rows stay within reach of their amounts on a wide screen: the list stops at 48rem. A query container: each row is laid
+ * out by the list's own width, not the screen's. */
+.spending-panel.spending-owed .owed-groups {
+  list-style: none; margin: 0; padding: 0; display: grid; min-width: 0; max-width: 48rem; container: owed-groups / inline-size;
+}
+.spending-panel.spending-owed .owed-group + .owed-group { border-top: 1px solid var(--line); }
+.spending-panel.spending-owed .owed-group-fold > .fold-toggle { display: flex; width: 100%; padding: 6px 6px 6px 2px; }
+.spending-panel.spending-owed .owed-group-fold > .fold-toggle > .fold-summary { flex: 1 1 auto; }
+/* Two lines per issuer and person (name and amount, then how much of it is read); one line once the list is wide enough. */
+.spending-panel.spending-owed .owed-group-summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'name amount' 'meta meta';
+  align-items: baseline; gap: 0 12px;
+}
+@container owed-groups (width >= 36rem) {
+  .spending-panel.spending-owed .owed-group-summary {
+    grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) auto; grid-template-areas: 'name meta amount';
+  }
+}
+.spending-panel.spending-owed .owed-group-name {
+  grid-area: name; min-width: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600;
+}
+.spending-panel.spending-owed .owed-group-amount {
+  grid-area: amount; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600; text-align: right;
+}
+.spending-panel.spending-owed .owed-group[data-read='false'] .owed-group-amount {
+  color: var(--text-muted); font-size: var(--text-help, 14px); font-weight: 400;
+}
+.spending-panel.spending-owed .owed-group-meta {
+  grid-area: meta; min-width: 0; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+
+/* A group's cards, under its line: each card's name and balance, then what else was read of it. */
+.spending-panel.spending-owed .owed-group-fold > .fold-content { padding: 0 0 8px 22px; min-width: 0; }
+.spending-panel.spending-owed .owed-cards { list-style: none; margin: 0; padding: 0; display: grid; min-width: 0; }
+.spending-panel.spending-owed .owed-card {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 2px 12px; padding: 8px 6px 8px 0;
+}
+.spending-panel.spending-owed .owed-card + .owed-card { border-top: 1px solid var(--line); }
+.spending-panel.spending-owed .owed-card-name {
+  min-width: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); overflow-wrap: anywhere;
+}
+.spending-panel.spending-owed .owed-card-amount {
+  color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); text-align: right;
+}
+.spending-panel.spending-owed .owed-card-amount.credit { color: var(--gain); }
+.spending-panel.spending-owed .owed-card[data-read='false'] .owed-card-amount { color: var(--text-muted); font-size: var(--text-help, 14px); }
+.spending-panel.spending-owed .owed-card-details {
+  grid-column: 1 / -1; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); overflow-wrap: anywhere;
+}
+
+@media (pointer: coarse) {
+  .spending-panel.spending-owed .owed-fold > .fold-toggle,
+  .spending-panel.spending-owed > .owed-read-again { min-height: 44px; }
+}

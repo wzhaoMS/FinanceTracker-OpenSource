@@ -1,0 +1,25 @@
+{
+  "type": "projected-bank-batch/v1",
+  "contractVersion": 1,
+  "issuer": "wellsfargo",
+  "contract": "wf.rendered-accounts",
+  "streamHandle": "stm_iilmfgkojmghbdnaeioghlmkailjbbef",
+  "sequence": 0,
+  "observedAt": "2026-10-16T18:20:40.000Z",
+  "currency": "USD",
+  "accounts": [
+    {
+      "ref": "cnd_kdanblkjibfhjjgjnmpkkimbeoppbcoh",
+      "last4": "8086",
+      "productHint": "Example Signature Card"
+    },
+    {
+      "ref": "cnd_klapijiajanknfdiihodnjdjaflelpcc",
+      "last4": null,
+      "productHint": null
+    }
+  ],
+  "transactions": [],
+  "coverage": [],
+  "rejectedCount": 0
+}

@@ -1,0 +1,365 @@
+/* =====================================================================
+ * Everyday: the Amazon area (components/amazon/AmazonArea.tsx).
+ * Only Everyday's palette tokens (modes.css); no colour of its own. A
+ * state is always spelled out in words ("Linked to a card transaction",
+ * "Card match needs review", "not card spending"); colour only repeats
+ * it, so forced colours (the end of this file) lose nothing.
+ * Type (readability round, D1): reading text (names, amounts, lists,
+ * prose) 16px; help, labels, status, actions and badges 14px; section
+ * heads 18px, 20px from 1280px. The shared scale's tokens (styles.css),
+ * with those values as fallbacks.
+ * ==================================================================== */
+
+.amazon, .amazon-orders, .amazon-page { display: grid; gap: 14px; min-width: 0; }
+/* Running text reads at 1.5 everywhere in the area; headings, controls and figures set their own, 1.25 or more. */
+.amazon { line-height: var(--leading, 1.5); }
+.amazon > [role='tabpanel'] { display: grid; gap: 14px; min-width: 0; }
+.amazon > [role='tabpanel'][hidden] { display: none; }
+
+/* ---- Shared Everyday classes inside the area, at the reading floors (T2 drops what the shared scale covers) ---- */
+.amazon .spending-link, .amazon .spending-period, .amazon .spending-error,
+.amazon .spending-rank-note, .amazon .spending-rank-share { font-size: var(--text-help, 14px); }
+.amazon .spending-error { line-height: var(--leading, 1.5); }
+/* Everyday sets help text at 20px over 14px and ranked names at 1.3: both wrap, so both read at 1.5 here. */
+.amazon .spending-muted, .amazon .spending-rank-name { line-height: var(--leading, 1.5); }
+/* Rows are reading text: as specific as the phone layout's rule in modes.css, so they stay 16px there too. */
+.amazon .spending-rank-row,
+.amazon .spending-rank:not(.merchants) .spending-rank-row { font-size: var(--text-read, 16px); }
+/* An empty state's sentence is prose: as specific as Everyday's rule for it (modes.css). */
+.amazon .spending-empty p { font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+/* Folds (components/Disclosure.tsx): the toggle is an action; what it opens sits under its words. */
+.amazon .fold-toggle { font-size: var(--text-help, 14px); line-height: 20px; }
+.amazon-fold > .fold-content { display: grid; gap: 8px; min-width: 0; padding: 4px 0 0 22px; }
+/* Prose keeps to a readable measure however wide the page is: every paragraph here, flex rows of words included (at
+ * :where's zero specificity, so a narrower shared cap, such as an empty state's 460px, still applies). */
+:where(.amazon) p { max-width: var(--measure, 65ch); }
+.amazon p.spending-muted, .amazon-fold > .fold-content > p { max-width: var(--measure, 65ch); }
+
+/* ---- The area's two big tabs: every order, and Amazon Fresh ---- */
+.amazon-views {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--color-bg-deep, var(--bg));
+}
+.amazon-view-tab {
+  min-height: 44px; padding: 8px 16px; border: 0; border-radius: 10px; background: transparent;
+  color: var(--text-muted); font: inherit; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+.amazon-view-tab:hover:not(.active) { color: var(--text); background: var(--surface); }
+.amazon-view-tab.active {
+  background: color-mix(in srgb, var(--brand-fill) 36%, var(--surface-2));
+  color: var(--text);
+  box-shadow: var(--everyday-selected-ring), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 6px rgba(0, 0, 0, 0.25);
+  font-weight: 650;
+}
+.amazon-view-tab:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* ---- Summary: its own measure, never card spending; three figures, how they were counted folded ---- */
+/* The scope label: a rounded box rather than a pill, so it still reads as one label when it wraps on a phone. */
+.amazon-measure {
+  display: inline-block; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--line);
+  font-size: var(--text-help, 14px); font-weight: 500; color: var(--text-muted);
+}
+.amazon-figures { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 18px; }
+/* Each figure's label and value keep to its top, so values in one row line up whatever their notes' length. */
+.amazon-figure { display: grid; align-content: start; gap: 2px; min-width: 0; }
+.amazon-figure dt { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.amazon-figure dd { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 8px; }
+.amazon-figure-value { font-size: 22px; line-height: 28px; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+/* An amount that wasn't captured: said in words, quieter than a figure, never $0.00. */
+.amazon-figure-value.amazon-figure-unknown { font-size: 18px; line-height: 28px; letter-spacing: 0; color: var(--text-muted); }
+.amazon-figure-note { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.amazon-note { max-width: var(--measure, 65ch); line-height: var(--leading, 1.5); }
+/* The figures' limit, in view beside them whether or not how they were counted is open. */
+.amazon-limit { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); font-weight: 600; color: var(--warning); }
+.amazon-limit[data-complete='true'] { font-weight: 500; color: var(--text-muted); }
+.amazon-counted-lines {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 2px;
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); font-variant-numeric: tabular-nums;
+}
+.amazon-coverage { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: var(--text-help, 14px); }
+.amazon-coverage-label { color: var(--text-muted); }
+.amazon-coverage-entry { padding: 2px 8px; border-radius: 6px; background: var(--surface-2); color: var(--text); }
+.amazon-coverage-entry[data-status='held'],
+.amazon-coverage-entry[data-status='unreported'] { background: color-mix(in srgb, var(--warning) 15%, transparent); color: var(--warning); }
+.amazon-version { margin: 0; font-size: var(--text-help, 14px); color: var(--text-muted); overflow-wrap: anywhere; }
+.amazon-error { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; }
+
+/* ---- Spending by item and category: Amazon's own measure, by order date ---- */
+.amazon-spending-head { align-items: center; }
+.amazon-spending-measure { margin: 0; max-width: var(--measure, 65ch); display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: var(--text-help, 14px); }
+.amazon-spending-coverage {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); overflow-wrap: anywhere;
+}
+.amazon-spending-part { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.amazon-spending-part h4 { margin: 0; font-size: var(--text-read, 16px); font-weight: 600; overflow-wrap: anywhere; }
+.amazon-spending-part-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; }
+.amazon-spending-part > .spending-link { justify-self: start; }
+/* The item list, and below it the refunded items. */
+.amazon-spending-column { display: grid; align-content: start; gap: 18px; min-width: 0; }
+/* Amounts keep one width, so every category's bar starts in the same place. */
+.amazon-spending-categories .spending-rank-amount { min-width: 9ch; }
+.amazon-spend-items { list-style: none; margin: 0; padding: 0; display: grid; }
+.amazon-spend-item {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'thumb title amount' 'thumb meta category';
+  gap: 2px 14px; padding: 8px 0; border-top: 1px solid var(--line);
+}
+.amazon-spend-item > .amazon-thumb { grid-area: thumb; align-self: start; }
+.amazon-spend-item:first-child { border-top: 0; padding-top: 0; }
+/* Full product names: clamped to three lines on screen, whole in the page and its title. */
+.amazon-spend-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.amazon-spend-amount { grid-area: amount; justify-self: end; font-size: var(--text-read, 16px); font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* A refunded item: what it cost struck through beside its net, and a mark saying how much came back. */
+.amazon-spend-gross { font-weight: 400; color: var(--text-muted); }
+.amazon-refund-badge {
+  padding: 0 6px; border-radius: 999px; font-weight: 600;
+  background: color-mix(in srgb, var(--gain) 14%, transparent); color: var(--gain);
+}
+.amazon-spend-item[data-refunded='whole'] .amazon-spend-title { color: var(--text-muted); }
+/* Refunds Amazon's records don't tie to an item: off the total, never a category's. */
+.amazon-unattributed-refunds {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 8px 0 0;
+  border-top: 1px dashed var(--line); font-size: var(--text-read, 16px);
+}
+.amazon-unattributed-refunds .spending-rank-note { grid-column: 1 / -1; color: var(--text-muted); font-size: var(--text-help, 14px); }
+.amazon-figure[data-figure='net'] .amazon-figure-value { color: var(--accent); }
+.amazon-spend-item .amazon-item-meta a { color: inherit; border-radius: 4px; }
+.amazon-spend-item .amazon-item-meta a:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* ---- What the items were: the item taxonomy, top level → subcategory → item and its purchases ---- */
+.amazon-taxonomy-path { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 4px; font-size: var(--text-help, 14px); color: var(--text-muted); }
+.amazon-taxonomy-path [aria-current] { color: var(--text); font-weight: 600; }
+.amazon-taxonomy-drill > .spending-rank { margin-bottom: 6px; }
+.amazon-taxonomy-item { grid-template-areas: 'thumb title amount' 'thumb meta category' 'thumb purchases purchases'; }
+/* A short secondary badge ("Suggested", "Amazon Fresh"): at the help size like every other text here. */
+.amazon-taxonomy-badge {
+  padding: 1px 6px; border-radius: 999px; border: 1px dashed var(--line);
+  font-size: var(--text-help, 14px); font-weight: 500; color: var(--text-muted);
+}
+.amazon-purchases {
+  grid-area: purchases; display: grid; justify-items: start; gap: 2px; min-width: 0;
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted);
+}
+.amazon-purchases ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.amazon-purchases li { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; font-variant-numeric: tabular-nums; }
+.amazon-purchases a { color: inherit; border-radius: 4px; }
+.amazon-purchases a:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.amazon-purchases .amazon-fact { padding: 0 6px; }
+
+/* ---- Amazon Fresh: the net item cost first, then groceries by category, each item's purchases, each order's list ---- */
+.amazon-fresh-empty { max-width: 80ch; width: 100%; justify-self: center; }
+.amazon-fresh-summary { display: grid; gap: 10px; min-width: 0; }
+.amazon-fresh-lead .amazon-figure-value { font-size: 28px; line-height: 36px; }
+.amazon-fresh-net-detail { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.amazon-fresh-gaps { display: grid; justify-items: start; gap: 2px; min-width: 0; }
+.amazon-fresh-gap { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); font-weight: 600; color: var(--warning); }
+.amazon-fresh-split .amazon-figure-value { font-size: 18px; line-height: 24px; }
+/* The orders' own totals: apart from the item cost, below a rule, never a peer of it. */
+.amazon-fresh-totals {
+  margin: 0; padding-top: 10px; border-top: 1px dashed var(--line);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: var(--text-help, 14px); color: var(--text-muted);
+}
+.amazon-fresh-totals-label { font-weight: 600; }
+.amazon-fresh-totals-value { font-size: var(--text-read, 16px); font-weight: 650; color: var(--text); font-variant-numeric: tabular-nums; }
+.amazon-fresh-item {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'title amount' 'meta category' 'purchases purchases';
+}
+.amazon-fresh-measure { color: var(--text); }
+.amazon-fresh-orders { gap: 10px; }
+.amazon-fresh-order-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.amazon-fresh-order > article {
+  display: grid; gap: 8px; min-width: 0; padding: 12px 14px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+}
+.amazon-fresh-order .amazon-fact[data-tone='unread'] { border-style: dashed; }
+.amazon-fresh-toggle { justify-self: start; }
+.amazon-fresh-lines { list-style: none; margin: 0; padding: 0; display: grid; }
+.amazon-fresh-line {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'title price' 'meta meta' 'facts facts';
+  gap: 2px 14px; padding: 6px 0; border-top: 1px solid var(--line);
+}
+.amazon-fresh-line:first-child { border-top: 0; }
+.amazon-fresh-line > .amazon-item-title { grid-area: title; }
+.amazon-fresh-line-price { grid-area: price; justify-self: end; font-size: var(--text-read, 16px); font-weight: 600; }
+.amazon-fresh-line > .amazon-item-meta { grid-area: meta; }
+.amazon-fresh-line > .amazon-order-facts { grid-area: facts; }
+.amazon-fresh-line[data-status='missing'] .amazon-item-title,
+.amazon-fresh-line[data-status='missing'] .amazon-fresh-line-price { color: var(--text-muted); }
+
+/* ---- Orders: right after the summary, under a heading of their own, the analysis below them ---- */
+.amazon-order-section { display: grid; gap: 14px; min-width: 0; }
+.amazon-orders-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; }
+.amazon-orders-title { margin: 0; font-size: var(--text-section, 18px); line-height: 1.4; font-weight: 650; }
+@media (min-width: 1280px) {
+  .amazon-orders-title { font-size: var(--text-section, 20px); }
+}
+/* "Go to spending by item" lands focus on the panel's title. */
+.amazon-spending-head h3:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 4px; }
+.amazon-order-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+/* Wide screens: two orders side by side, newest first along each row; each card keeps its own height. */
+@media (min-width: 1440px) {
+  .amazon-order-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px; }
+}
+.amazon-order > article {
+  display: grid; gap: 10px; min-width: 0; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+}
+.amazon-order-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 2px 12px; }
+.amazon-order-date { margin: 0; font-size: var(--text-read, 16px); line-height: 24px; font-weight: 650; }
+.amazon-order-date a { color: var(--text); text-decoration: none; border-radius: 4px; }
+.amazon-order-date a:hover { text-decoration: underline; }
+.amazon-order-total { font-size: 17px; font-weight: 650; font-variant-numeric: tabular-nums; }
+/* Who the order was for: explicitly assigned, else Unknown; under the date, a line of its own. */
+.amazon-order-for { flex-basis: 100%; margin: 0; font-size: var(--text-help, 14px); color: var(--text-muted); }
+/* Where it was bought, when that wasn't Amazon itself ("Whole Foods (in store)"): said before who it was for. */
+.amazon-order-source { flex-basis: 100%; margin: 0; font-size: var(--text-help, 14px); font-weight: 600; color: var(--text); }
+/* A Fresh order's facts (its list, items, missing, refunds), and a Fresh line's: short words, each in its own outline. */
+.amazon-order-facts { display: grid; justify-items: start; gap: 6px; font-size: var(--text-help, 14px); min-width: 0; }
+.amazon-fact { padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-muted); }
+.amazon-fact[data-tone='refund'] { color: var(--gain); border-color: color-mix(in srgb, var(--gain) 45%, var(--line)); }
+.amazon-legend { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); max-width: var(--measure, 65ch); }
+.amazon-more { justify-self: start; }
+.amazon-items-pending { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+/* The list's filter and its count share a row (Everyday stacks Card transactions' toolbar, not this one). */
+.spending-toolbar.amazon-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; }
+
+/* ---- Card match: one plain line on the card and the order's page; why, on the page under "Why?" ---- */
+.amazon-order-status {
+  margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; min-width: 0;
+  padding-top: 10px; border-top: 1px solid var(--line); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.amazon-order-status-text { font-weight: 650; }
+/* The words say the state; the dot only repeats it. */
+.amazon-order-status-text::before {
+  content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 999px;
+  background: currentColor; vertical-align: 1px;
+}
+.amazon-order-status[data-status='linked'] .amazon-order-status-text { color: var(--gain); }
+.amazon-order-status[data-status='review'] .amazon-order-status-text { color: var(--warning); }
+.amazon-order-status[data-status='none'] .amazon-order-status-text,
+.amazon-order-status[data-status='unreported'] .amazon-order-status-text { color: var(--text-muted); font-weight: 500; }
+.amazon-order-also { color: var(--text-muted); }
+.amazon-order-charge { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; min-width: 0; }
+.amazon-order-card { overflow-wrap: anywhere; }
+.amazon-section .amazon-order-status { padding-top: 0; border-top: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.amazon-why-list {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.amazon-why-match { overflow-wrap: anywhere; }
+.amazon-why-state { font-weight: 650; }
+.amazon-why-match[data-tone='linked'] .amazon-why-state { color: var(--gain); }
+.amazon-why-match[data-tone='held'] .amazon-why-state { color: var(--warning); }
+.amazon-match-card { overflow-wrap: anywhere; }
+.amazon-match-evidence, .amazon-match-count { color: var(--text-muted); }
+/* How many of the order's holds say the same: a short badge at the entry's end ("×5"). */
+.amazon-match-times {
+  padding: 0 6px; border-radius: 999px; font-size: var(--text-help, 14px); font-weight: 650; font-variant-numeric: tabular-nums;
+  white-space: nowrap; background: color-mix(in srgb, var(--warning) 18%, transparent); color: var(--warning);
+}
+
+/* ---- Items: the full observed name, model included, and its category ---- */
+.amazon-items { list-style: none; margin: 0; padding: 0; display: grid; }
+.amazon-item {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'thumb title category' 'thumb meta category';
+  gap: 2px 14px; padding: 8px 0; border-top: 1px solid var(--line);
+}
+.amazon-item > .amazon-thumb { grid-area: thumb; align-self: start; }
+.amazon-item:first-child { border-top: 0; padding-top: 0; }
+.amazon-item:last-child { padding-bottom: 0; }
+.amazon-item-title { grid-area: title; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); overflow-wrap: anywhere; }
+.amazon-hidden-title { color: var(--text-muted); }
+.amazon-item-meta {
+  grid-area: meta; display: flex; flex-wrap: wrap; gap: 2px 12px;
+  font-size: var(--text-help, 14px); color: var(--text-muted); font-variant-numeric: tabular-nums;
+}
+.amazon-item-meta:empty { display: none; }
+.amazon-category { grid-area: category; align-self: start; display: grid; justify-items: end; gap: 2px; max-width: 24ch; text-align: right; }
+.amazon-category-name {
+  padding: 2px 8px; border-radius: 999px; border: 1px solid transparent;
+  background: color-mix(in srgb, var(--accent-graphic) 16%, var(--surface-2));
+  font-size: var(--text-help, 14px); font-weight: 600; color: var(--text); overflow-wrap: anywhere;
+}
+.amazon-category[data-tone='user'] .amazon-category-name { background: var(--brand-soft); }
+/* Classified from its title, in a list: the source is the tag's dashed edge (its words are in its title). */
+.amazon-category[data-source='edge'] .amazon-category-name {
+  border-style: dashed; border-color: color-mix(in srgb, var(--accent-graphic) 60%, var(--line-strong, var(--line)));
+  background: color-mix(in srgb, var(--accent-graphic) 9%, var(--surface));
+}
+.amazon-category[data-tone='uncategorized'] .amazon-category-name,
+.amazon-category[data-tone='unreported'] .amazon-category-name { background: transparent; border-color: var(--line); border-style: dashed; color: var(--text-muted); font-weight: 500; }
+.amazon-category-source { font-size: var(--text-help, 14px); color: var(--text-muted); }
+
+/* ---- Product thumbnails beside items (AmazonItemThumb): Holdr's own cached copy, or a neutral placeholder ---- */
+.amazon-thumb {
+  box-sizing: border-box; flex: none; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); color: var(--text-soft);
+}
+img.amazon-thumb { display: block; object-fit: contain; }
+.amazon-thumb.placeholder { display: grid; place-items: center; background: var(--surface-2); }
+.amazon-thumb.small { width: 40px; height: 40px; border-radius: 6px; }
+.amazon-thumb.medium { width: 56px; height: 56px; }
+.amazon-thumb.large { width: 72px; height: 72px; border-radius: 10px; }
+
+/* ---- An order's own page ---- */
+.amazon-back { justify-self: start; text-decoration: none; border-radius: 4px; }
+.amazon-back:focus-visible, .amazon-order-date a:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.amazon-page-head { gap: 8px; }
+.amazon-page-title-row { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; }
+.amazon-page-title-row h3 { margin: 0; font-size: var(--text-section, 18px); line-height: 1.4; font-weight: 650; }
+@media (min-width: 1280px) {
+  .amazon-page-title-row h3 { font-size: var(--text-section, 20px); }
+}
+.amazon-page-facts { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: var(--text-read, 16px); }
+.amazon-page-facts div { display: flex; align-items: baseline; gap: 6px; }
+.amazon-page-facts dt { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.amazon-page-facts dd { margin: 0; }
+.amazon-section .spending-panel-head h4 { margin: 0; font-size: var(--text-read, 16px); font-weight: 600; }
+.amazon-payment { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 24px; }
+.amazon-payment-group { display: grid; align-content: start; gap: 6px; min-width: 0; }
+.amazon-payment-group h5 {
+  margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px;
+  font-size: var(--text-help, 14px); font-weight: 650; color: var(--text-muted);
+}
+.amazon-payment-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: var(--text-read, 16px); }
+.amazon-non-card { padding: 10px 12px; border-radius: 10px; background: var(--surface-2); }
+.amazon-non-card li { display: flex; justify-content: space-between; gap: 12px; }
+.amazon-lines { margin: 0; display: grid; gap: 4px; font-size: var(--text-read, 16px); }
+.amazon-lines div { display: flex; justify-content: space-between; gap: 12px; }
+.amazon-lines dd { margin: 0; }
+.amazon-lines [data-kind='grand-total'] { padding-top: 4px; border-top: 1px solid var(--line); font-weight: 650; }
+.amazon-amount { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.amazon-refunds { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: var(--text-read, 16px); }
+.amazon-refunds li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; }
+
+@media (max-width: 720px) {
+  .amazon-order > article { padding: 12px; }
+  .amazon-item { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: 'thumb title' 'thumb meta' 'thumb category'; }
+  .amazon-thumb.large { width: 56px; height: 56px; border-radius: 8px; }
+  .amazon-category { justify-items: start; max-width: none; text-align: left; }
+  .amazon-spend-item { grid-template-areas: 'thumb title amount' 'thumb meta meta' 'thumb category category'; }
+  .amazon-taxonomy-item { grid-template-areas: 'thumb title amount' 'thumb meta meta' 'thumb category category' 'thumb purchases purchases'; }
+  .amazon-fresh-item { grid-template-areas: 'title amount' 'meta meta' 'category category' 'purchases purchases'; }
+  .amazon-fresh-order > article { padding: 10px 12px; }
+  .amazon-view-tab { font-size: 15px; padding: 8px 10px; }
+  /* Phones name the ranked lists' cells (modes.css); this row of them has its own name, amount and note. */
+  .amazon-unattributed-refunds { grid-template-areas: 'name amount' 'note note'; }
+  .amazon-unattributed-refunds .spending-rank-note { grid-area: note; }
+  .amazon-spending-head .spending-periods { width: 100%; }
+}
+@media (pointer: coarse) {
+  .amazon-back, .amazon-order-date a { display: inline-flex; align-items: center; min-height: 44px; }
+  .amazon-order-status .spending-link.inline { padding-block: 8px; }
+  .amazon-spend-item .amazon-item-meta a { display: inline-flex; align-items: center; min-height: 44px; }
+  .amazon-purchases a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* ---- Forced colours: chips and categories keep an edge where their tint was ---- */
+@media (forced-colors: active) {
+  .amazon-category-name, .amazon-coverage-entry, .amazon-non-card, .amazon-thumb, .amazon-taxonomy-badge { border: 1px solid CanvasText; }
+  .amazon-view-tab.active { forced-color-adjust: none; background: Highlight; color: HighlightText; }
+}

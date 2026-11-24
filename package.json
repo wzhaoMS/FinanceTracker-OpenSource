@@ -1,0 +1,58 @@
+{
+  "name": "finance-tracker",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "npm run build --workspace @finance-tracker/shared",
+    "build": "node scripts/turbo.mjs run build",
+    "predev": "npm run build --workspace @finance-tracker/shared",
+    "dev": "node scripts/turbo.mjs run dev --filter=@finance-tracker/api --filter=@finance-tracker/web",
+    "start:local": "node scripts/start-local.mjs",
+    "demo": "node scripts/start-local.mjs --demo",
+    "agent": "node --import tsx agents/card-sync/receiver.mjs",
+    "test:agent": "node --import tsx --test agents/card-sync/tests/*.test.mjs",
+    "mcp": "node agents/mcp/server.mjs",
+    "test:mcp": "node --test agents/mcp/tests/*.test.mjs",
+    "lint": "node scripts/turbo.mjs run lint",
+    "privacy:scan": "node scripts/privacy-scan.mjs",
+    "privacy:release": "node scripts/privacy-scan.mjs --require-blocklist",
+    "test": "node scripts/turbo.mjs run test",
+    "typecheck": "node scripts/turbo.mjs run typecheck",
+    "holdr-user": "node scripts/holdr-cli.mjs apps/api/src/cli/holdrUserMain.ts",
+    "holdr-card-import": "node packages/shared/dist/cardImportTool/main.js",
+    "holdr-ingress": "tsx apps/api/src/cli/ingressMain.ts",
+    "holdr-recovery": "tsx apps/api/src/cli/holdrRecoveryMain.ts",
+    "holdr-lifecycle": "tsx apps/api/src/cli/holdrLifecycleMain.ts",
+    "holdr-backup": "node scripts/holdr-cli.mjs apps/api/src/cli/holdrBackupMain.ts",
+    "holdr-spending-rules": "node scripts/holdr-cli.mjs apps/api/src/cli/spendingRulesMain.ts",
+    "holdr-card-openings": "node scripts/holdr-cli.mjs apps/api/src/cli/cardOpeningsMain.ts",
+    "holdr-checking": "node scripts/holdr-cli.mjs apps/api/src/cli/checkingMain.ts",
+    "holdr-checking-convert": "tsx apps/api/src/cli/checkingConvertMain.ts",
+    "holdr-card-statement-convert": "tsx apps/api/src/cli/cardStatementConvertMain.ts",
+    "holdr-retail-convert": "tsx apps/api/src/cli/retailConvertMain.ts",
+    "holdr-retail-convert-owner-only": "tsx apps/api/src/cli/retailConvertOwnerOnlyMain.ts",
+    "holdr-metals-convert": "tsx apps/api/src/cli/metalsConvertMain.ts",
+    "holdr-payment-reconciliation": "node scripts/holdr-cli.mjs apps/api/src/cli/paymentReconciliationMain.ts",
+    "holdr-balance-chain": "node scripts/holdr-cli.mjs apps/api/src/cli/balanceChainMain.ts",
+    "holdr-cash": "node scripts/holdr-cli.mjs apps/api/src/cli/cashPlanMain.ts",
+    "holdr-card-import-proof": "node scripts/holdr-cli.mjs apps/api/src/cli/cardImportProofMain.ts",
+    "holdr-card-kinds": "node scripts/holdr-cli.mjs apps/api/src/cli/cardKindCorrectionsMain.ts",
+    "holdr-metals": "node scripts/holdr-cli.mjs apps/api/src/cli/metalsMain.ts",
+    "holdr-retail": "node scripts/holdr-cli.mjs apps/api/src/cli/retailMain.ts",
+    "test:e2e": "node scripts/e2e-disposable.mjs",
+    "test:e2b-review": "node --import tsx scripts/testing/e2b-review/run.mts",
+    "clean": "node scripts/turbo.mjs run clean && node scripts/rm.mjs node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=22.3.0 <23"
+  }
+}

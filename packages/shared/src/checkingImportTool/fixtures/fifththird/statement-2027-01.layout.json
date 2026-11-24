@@ -1,0 +1,40 @@
+{
+  "note": "Synthetic Fifth Third checking statement with a notice before its Account Summary, laid out as Fifth Third prints one: a paragraph of prose that states whole-dollar terms ($50B TO $250B, no cents) and a year. The January after statement-2026-12; every value is synthetic.",
+  "pages": [
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 760, "Statement Period Date: 1/1/2027 - 1/31/2027"],
+      [36, 746, "Account Type: 53 MOMENTUM CHECKING"],
+      [36, 732, "Account Number: 9990004321"],
+      [400, 718, "Questions? Visit 53.com"],
+      [43, 680, "THANK YOU FOR CHOOSING FIFTH THIRD. ASK ABOUT A CASH BONUS WHEN YOU BRING NEW MONEY"],
+      [43, 670, "TO AN ACCOUNT OPENED IN 2027. FIFTH THIRD IS ONE OF THE LARGEST BANKS"],
+      [43, 660, "WITH $50B TO $250B IN DEPOSITS. VISIT A BRANCH FOR MORE DETAILS."],
+      [36, 630, "Account Summary - 9990004321"],
+      [36, 616, "01/01"], [70, 616, "Beginning Balance"], [250, 616, "$6,849.57"], [350, 616, "Number of Days in Period"], [500, 616, "31"],
+      [84, 602, "Checks"],
+      [70, 588, "2"], [84, 588, "Withdrawals / Debits"], [250, 588, "$(511.00)"],
+      [70, 574, "1"], [84, 574, "Deposits / Credits"], [250, 574, "$3,200.00"],
+      [36, 560, "01/31"], [70, 560, "Ending Balance"], [250, 560, "$9,538.57"],
+      [280, 536, "Fee Summary"], [410, 536, "This Period"], [480, 536, "2027 Year To Date"],
+      [280, 522, "Total Overdraft Fees"], [410, 522, "($0.00)"], [480, 522, "($0.00)"],
+      [280, 508, "Total Returned Item Fees"], [410, 508, "($0.00)"], [480, 508, "($0.00)"],
+      [36, 480, "Withdrawals / Debits"], [300, 480, "2 items totaling $511.00"],
+      [36, 466, "Date"], [141, 466, "Amount"], [202, 466, "Description"],
+      [36, 452, "01/05"], [141, 452, "500.00"], [204, 452, "AMEX EPAYMENT ACH PMT"],
+      [36, 438, "01/31"], [145.5, 438, "11.00"], [204, 438, "MONTHLY SERVICE FEE"],
+      [36, 410, "Deposits / Credits"], [300, 410, "1 items totaling $3,200.00"],
+      [36, 396, "Date"], [141, 396, "Amount"], [202, 396, "Description"],
+      [36, 382, "01/02"], [132, 382, "3,200.00"], [204, 382, "DIRECT DEPOSIT CONTOSO PAYROLL"],
+      [36, 354, "Daily Balance Summary"],
+      [36, 340, "Date"], [80, 340, "Amount"], [200, 340, "Date"], [244, 340, "Amount"], [364, 340, "Date"], [408, 340, "Amount"],
+      [36, 326, "01/02"], [67.5, 326, "10,049.57"], [200, 326, "01/05"], [236, 326, "9,549.57"], [364, 326, "01/31"], [400, 326, "9,538.57"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 1 of 2"]
+    ],
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 700, "This page intentionally left blank"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 2 of 2"]
+    ]
+  ]
+}

@@ -1,0 +1,194 @@
+/* =====================================================================
+ * Everyday: the Costco receipts page (components/costco/CostcoReceipts.tsx).
+ * Read-only receipt detail: each purchase is already in Spending as its
+ * card charge, and nothing here adds to any total. Only Everyday's palette
+ * tokens (modes.css), as the Amazon area (amazon.css); no colour of its
+ * own. A state is always spelled out in words ("Refund", "Under review —
+ * …", "Precious metal - not everyday spending", "Needs review",
+ * "Suggested"); colour only repeats it, so forced colours (the end of this
+ * file) lose nothing.
+ * Type as the Amazon area: reading text 16px; help, labels, status and
+ * tags 14px; headings 18px, 20px from 1280px.
+ * ==================================================================== */
+
+.costco, .costco-receipts, .costco-receipt { display: grid; gap: 14px; min-width: 0; }
+.costco { line-height: var(--leading, 1.5); }
+
+/* ---- Shared Everyday classes inside the page, at the reading floors ---- */
+.costco .spending-link, .costco .spending-error { font-size: var(--text-help, 14px); }
+.costco .spending-muted, .costco .spending-error { line-height: var(--leading, 1.5); }
+.costco .spending-empty p { font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+:where(.costco) p { max-width: var(--measure, 65ch); }
+
+/* ---- The banner: above every state of the page ---- */
+.costco-banner {
+  margin: 0; padding: 10px 14px; border: 1px solid var(--line); border-left: 4px solid var(--accent, var(--brand));
+  border-radius: 10px; background: var(--surface); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600;
+}
+:where(.costco) p.costco-banner { max-width: none; }
+
+/* A scope label ("Counts only", "As stated"): a rounded box, so it still reads as one label when it wraps on a phone. */
+.costco-measure {
+  display: inline-block; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--line);
+  font-size: var(--text-help, 14px); font-weight: 500; color: var(--text-muted);
+}
+.costco-error { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; }
+.costco-title { margin: 0; font-size: var(--text-section, 18px); line-height: 1.4; font-weight: 650; }
+@media (min-width: 1280px) {
+  .costco-title { font-size: var(--text-section, 20px); }
+}
+.costco-title:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 4px; }
+.costco-amount { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---- Summary: counts only ---- */
+.costco-figures { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px 18px; }
+.costco-figure { display: grid; align-content: start; gap: 2px; min-width: 0; }
+.costco-figure dt { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.costco-figure dd { margin: 0; font-size: var(--text-read, 16px); font-weight: 650; font-variant-numeric: tabular-nums; }
+.costco-memberships { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.costco-membership {
+  display: grid; align-content: start; gap: 4px; min-width: 0; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2);
+}
+.costco-membership-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: var(--text-read, 16px); overflow-wrap: anywhere; }
+.costco-membership-owner { font-size: var(--text-help, 14px); color: var(--text-muted); }
+.costco-membership-counts, .costco-ranges, .costco-review-counts ul {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 2px;
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); font-variant-numeric: tabular-nums;
+}
+.costco-ranges { color: var(--text-muted); }
+.costco-capture { margin: 0; font-size: var(--text-help, 14px); font-weight: 600; }
+.costco-review-counts { display: grid; gap: 4px; }
+.costco-review-counts h4 { margin: 0; font-size: var(--text-help, 14px); font-weight: 650; color: var(--warning); }
+.costco-review-none, .costco-held { margin: 0; font-size: var(--text-help, 14px); }
+
+/* ---- The list: filters and count share a row; when they wrap, the filters stay together at its start ---- */
+.spending-toolbar.costco-toolbar { display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px 16px; }
+.costco-count { margin-left: auto; font-size: var(--text-help, 14px); }
+.costco-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+@media (min-width: 1440px) {
+  .costco-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 12px; }
+}
+.costco-row > article {
+  display: grid; gap: 8px; min-width: 0; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+}
+.costco-row[data-state='quarantined'] > article { border-style: dashed; border-color: color-mix(in srgb, var(--warning) 55%, var(--line)); }
+.costco-row-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 2px 12px; }
+.costco-row-date { margin: 0; font-size: var(--text-read, 16px); line-height: 24px; font-weight: 650; }
+/* The date opens the receipt: a button that reads as the row's link. */
+.costco-open {
+  padding: 0; border: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; border-radius: 4px;
+}
+.costco-open:hover { text-decoration: underline; }
+.costco-open:focus-visible, .costco-back:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.costco-row-total { font-size: 17px; font-weight: 650; }
+.costco-row[data-sign='refund'] .costco-row-total { color: var(--gain); }
+.costco-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: var(--text-help, 14px); }
+.costco-tag { padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-muted); }
+.costco-tag[data-tone='refund'] { color: var(--gain); border-color: color-mix(in srgb, var(--gain) 45%, var(--line)); font-weight: 600; }
+.costco-review {
+  padding: 1px 8px; border-radius: 10px; font-weight: 600; overflow-wrap: anywhere;
+  background: color-mix(in srgb, var(--warning) 15%, transparent); color: var(--warning);
+}
+.costco-row-facts, .costco-facts { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: var(--text-read, 16px); }
+.costco-row-facts div, .costco-facts div { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.costco-row-facts dt, .costco-facts dt { font-size: var(--text-help, 14px); color: var(--text-muted); white-space: nowrap; }
+.costco-row-facts dd, .costco-facts dd { margin: 0; overflow-wrap: anywhere; }
+.costco-pager { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 12px; }
+
+/* ---- A receipt, in place of the list ---- */
+.costco-back { justify-self: start; text-decoration: none; border-radius: 4px; }
+.costco-receipt-head { gap: 10px; }
+.costco-section .spending-panel-head h4 { margin: 0; font-size: var(--text-read, 16px); font-weight: 600; }
+.costco-lines { list-style: none; margin: 0; padding: 0; display: grid; }
+.costco-line-group { padding: 8px 0; border-top: 1px solid var(--line); }
+.costco-line-group:first-child { border-top: 0; padding-top: 0; }
+.costco-line-group:last-child { padding-bottom: 0; }
+.costco-line { display: grid; gap: 2px; min-width: 0; }
+.costco-line-main { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 14px; }
+.costco-line-title { min-width: 0; font-size: var(--text-read, 16px); overflow-wrap: anywhere; }
+.costco-line-kind {
+  display: inline-block; margin-right: 2px; padding: 0 6px; border-radius: 6px; background: var(--surface-2);
+  font-size: var(--text-help, 14px); font-weight: 600; color: var(--text-muted);
+}
+.costco-line-amount { font-size: var(--text-read, 16px); font-weight: 600; }
+.costco-line[data-kind='coupon'] .costco-line-amount { color: var(--gain); }
+.costco-line-title2 { font-size: var(--text-help, 14px); color: var(--text-muted); overflow-wrap: anywhere; }
+.costco-line-meta {
+  display: flex; flex-wrap: wrap; gap: 2px 12px;
+  font-size: var(--text-help, 14px); color: var(--text-muted); font-variant-numeric: tabular-nums;
+}
+/* Coupons and fees sit under their line, indented, behind a rule. */
+.costco-sublines {
+  list-style: none; margin: 6px 0 0; padding: 0 0 0 14px; display: grid; gap: 6px;
+  border-left: 2px solid var(--line);
+}
+.costco-metal { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: var(--text-help, 14px); }
+.costco-metal-tag {
+  padding: 1px 8px; border-radius: 10px; font-weight: 650;
+  background: color-mix(in srgb, var(--warning) 15%, transparent); color: var(--warning);
+}
+.costco-metal-detail { color: var(--text-muted); }
+.costco-metal-note { margin: 0; font-size: var(--text-help, 14px); color: var(--text-muted); font-style: italic; }
+/* A line's category: a chip with the item tree's label, as the Amazon area's. Needs review is muted on a dashed edge; an
+ * agent's unconfirmed category has a dashed edge and says "Suggested" beside it. Coupons and precious metals have none. */
+.costco-line-category { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; min-width: 0; font-size: var(--text-help, 14px); }
+.costco-category {
+  max-width: 100%; padding: 1px 8px; border-radius: 999px; border: 1px solid transparent;
+  background: color-mix(in srgb, var(--accent-graphic) 16%, var(--surface-2));
+  font-weight: 600; color: var(--text); overflow-wrap: anywhere;
+}
+.costco-category[data-suggested='true'] {
+  border-style: dashed; border-color: color-mix(in srgb, var(--accent-graphic) 60%, var(--line-strong, var(--line)));
+  background: color-mix(in srgb, var(--accent-graphic) 9%, var(--surface));
+}
+.costco-category[data-tone='review'] { background: transparent; border-color: var(--line); border-style: dashed; color: var(--text-muted); font-weight: 500; }
+.costco-category-mark { padding: 1px 6px; border-radius: 999px; border: 1px dashed var(--line); font-weight: 500; color: var(--text-muted); }
+.costco-line-events {
+  list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 2px;
+  font-size: var(--text-help, 14px); color: var(--text-muted);
+}
+.costco-totals { margin: 0; display: grid; gap: 4px; font-size: var(--text-read, 16px); max-width: 32rem; }
+.costco-totals div { display: flex; justify-content: space-between; gap: 12px; }
+.costco-totals dd { margin: 0; }
+.costco-totals [data-total='totalMinor'] { padding-top: 4px; border-top: 1px solid var(--line); font-weight: 650; }
+.costco-legends { display: grid; gap: 4px; max-width: 32rem; }
+.costco-legends h5 { margin: 0; font-size: var(--text-help, 14px); font-weight: 650; color: var(--text-muted); }
+.costco-legends ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; font-size: var(--text-read, 16px); }
+.costco-legends li { display: flex; justify-content: space-between; gap: 12px; }
+.costco-tenders { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.costco-tender {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'name amount' 'note note';
+  gap: 0 12px; font-size: var(--text-read, 16px);
+}
+.costco-tender-name { grid-area: name; overflow-wrap: anywhere; }
+.costco-tender .costco-amount { grid-area: amount; }
+.costco-tender-note { grid-area: note; font-size: var(--text-help, 14px); color: var(--text-muted); }
+.costco-tender[data-card-spending='true'] .costco-tender-note { color: var(--text); }
+
+@media (max-width: 720px) {
+  .costco-row > article { padding: 12px; }
+  .costco-count { margin-left: 0; }
+  .costco-row-facts, .costco-facts { flex-direction: column; }
+  .costco-sublines { padding-left: 10px; }
+}
+@media (pointer: coarse) {
+  .costco-back, .costco-open { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* ---- Forced colours: tags and boxes keep an edge where their tint was ---- */
+@media (forced-colors: active) {
+  .costco-banner, .costco-tag, .costco-review, .costco-metal-tag, .costco-line-kind, .costco-membership,
+  .costco-category, .costco-category-mark { border: 1px solid CanvasText; }
+  /* Needs review and a suggested category keep their dashed edge (their words say it too). */
+  .costco-category[data-tone='review'], .costco-category[data-suggested='true'], .costco-category-mark { border-style: dashed; }
+}
+
+/* ---- The search, on its own row on a phone, and its matches under a row ---- */
+@media (max-width: 720px) {
+  .costco-toolbar .costco-search { flex: 1 1 100%; }
+  .costco-toolbar .costco-search input { width: 100%; }
+}
+.costco-matches { list-style: none; margin: 8px 0 0; padding: 8px 0 0; border-top: 1px dashed var(--line); display: grid; gap: 4px; }
+.costco-match { display: flex; justify-content: space-between; gap: 12px; font-size: var(--text-help, 14px); }

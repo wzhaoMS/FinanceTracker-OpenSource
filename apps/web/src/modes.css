@@ -1,0 +1,881 @@
+/* =====================================================================
+ * Two modes: Investing | Everyday (ui/two-modes)
+ * ---------------------------------------------------------------------
+ * `<html data-mode>` and `.app[data-mode]` carry the mode (see
+ * modes/useModeRoute.ts). Investing is the app's own look: styles.css's
+ * tokens, unchanged. Everyday is a dark, warm graphite palette with a teal
+ * accent, scoped to `:root[data-mode='everyday']`, so the page background
+ * and every dialog follow it, plus restyles of the Spending components
+ * through their existing class names (and `data-category-tone`,
+ * modes/category.ts). Its colours live in that token block only; the rules
+ * below use the tokens. Every text colour pair meets WCAG AA (4.5:1; 3:1
+ * for large text, graphics and control boundaries) on the surfaces it is
+ * used on.
+ * ==================================================================== */
+
+/* ---- Shell: wordmark and mode switch (both modes) ---- */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+@media (max-width: 360px) {
+  .header-brand { gap: 8px; }
+  .header-logo { gap: 6px; }
+  .header-logo .brand-mark { width: 20px; height: 20px; }
+}
+
+.mode-switch {
+  --mode-thumb: var(--brand-fill);
+  --mode-thumb-text: var(--on-fill);
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  isolation: isolate;
+}
+.mode-switch-thumb {
+  position: absolute;
+  z-index: 0;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  /* Half the padding box less the padding: exactly one column. */
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--mode-thumb);
+  box-shadow: inset 0 0 0 1px var(--brand), 0 1px 2px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: transform 260ms var(--ease-spring), background-color 260ms ease;
+}
+.mode-switch[data-active='everyday'] .mode-switch-thumb { transform: translateX(100%); }
+.mode-switch-option {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--text-help);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+.mode-switch-option svg { flex: 0 0 auto; }
+.mode-switch-option:hover { color: var(--text); }
+.mode-switch-option.active { color: var(--mode-thumb-text); }
+.mode-switch-option:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+@media (pointer: coarse) {
+  .mode-switch-option { min-height: 44px; }
+}
+
+/* ---- Investing's "Spending" entry: it switches to Everyday ---- */
+.tab.tab-elsewhere {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.tab-elsewhere-icon {
+  opacity: 0.65;
+  transition: transform 160ms var(--ease-spring), opacity 160ms ease;
+}
+.tab.tab-elsewhere:hover .tab-elsewhere-icon {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
+/* ---- Everyday's view, kept while Investing shows (useModeRoute): out of sight, layout and the
+ * accessibility tree, so back returns to it as it was ---- */
+.app[data-mode='investing'] > .spending { display: none; }
+
+/* ---- Phones: each mode's sections are one row that scrolls sideways ----
+ * (never two wrapped rows), with 44px targets and a fade at the edge that
+ * says there is more. */
+@media (max-width: 600px) {
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs .tab { flex: 0 0 auto; min-height: 44px; }
+  /* Inside a scrolling row the indicator sits on the row's own edge. */
+  .tabs .tab-indicator { bottom: 0; }
+  /* Less chrome above the content: wordmark and switch, then the header's controls, then the sections. */
+  .header-row { gap: 6px 12px; }
+  .app > header .header-actions { gap: 8px; }
+  .app > .tabs,
+  .app > .spending { margin-top: -6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mode-switch-thumb,
+  .mode-switch-option,
+  .tab-elsewhere-icon { transition: none; }
+}
+
+/* ---- Switching modes: the page's colours ease from one palette to the other ----
+ * useModeRoute marks <html> with .mode-switching for the length of the change;
+ * the sections themselves fade in as they already do. */
+@media (prefers-reduced-motion: no-preference) {
+  :root.mode-switching,
+  :root.mode-switching body,
+  :root.mode-switching #root,
+  :root.mode-switching .app > header,
+  :root.mode-switching .app > header *,
+  :root.mode-switching .spending-areas,
+  :root.mode-switching .tabs {
+    transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  }
+}
+
+/* =====================================================================
+ * Everyday: palette
+ * ---------------------------------------------------------------------
+ * Dark, like Investing, so the app reads as one product and switching
+ * modes changes the hue, not the brightness. Investing is a cool navy with
+ * a violet accent; Everyday is a warm graphite (Investing's depth, lifted a
+ * step) with a teal accent. Two teals: --brand for text, links, focus and
+ * selection, --brand-fill (with --on-fill) for filled controls. Each
+ * contrast noted is the lowest against any surface or tint the colour is
+ * used on (the surfaces below, the brand and state -soft tints).
+ * ==================================================================== */
+:root[data-mode='everyday'] {
+  color-scheme: dark;
+
+  /* Cool neutral Ink surfaces (unified with Investing, zero brown/olive). */
+  --bg: #0b1220;                 /* page (Holdr Ink) */
+  --surface-header: #0e1626;     /* table and list headers */
+  --surface: #111a2c;            /* cards, panels, dialogs */
+  --surface-2: #172238;          /* tracks, insets, row hover */
+  --surface-raised: #1e2c46;     /* tooltips and popovers */
+  --surface-expanded: #12292d;   /* an expanded or selected row (= --brand-soft) */
+  --line: #212e46;               /* dividers and card borders */
+  --line-strong: #5a6b88;        /* control boundaries: 3.35:1 or more */
+
+  --text: #f8fafc;               /* 13.7:1 or more (15.8:1 on cards) */
+  --text-muted: #cbd5e1;         /* 9.7:1 or more (11.1:1 on cards) */
+  --text-soft: #cbd5e1;          /* placeholders read as text here, so muted, not fainter */
+
+  --brand: #34d399;              /* Holdr Evergreen Dark: 7.6:1 or more (8.7:1 on cards) */
+  --brand-strong: #6ee7b7;       /* hovered links: 11.4:1 or more */
+  --brand-soft: #12292d;         /* selected rows and chips */
+  --brand-fill: #0f766e;         /* Holdr Evergreen fill: --on-fill on it 5.47:1 */
+  --brand-fill-hover: #128279;   /* --on-fill on it 4.76:1 */
+  --on-fill: #ffffff;
+  --accent: var(--brand);
+  --accent-graphic: #26b8a5;     /* indicators and marks only: 6.6:1 or more, silky teal */
+
+  --gain: #34d399;               /* credits and good news: 7.6:1 or more */
+  --gain-soft: #112a27;
+  --gain-strong: #6ee7b7;
+  --loss: #f87171;               /* costs and errors: 5.3:1 or more */
+  --loss-soft: #2b1b24;
+  --loss-strong: #fca5a5;
+  --loss-fill: #b91c1c;          /* destructive filled controls: --on-fill on it 6.47:1 */
+  --warning: #eab354;            /* pending and checks: 8.1:1 or more, calm warm amber */
+  --warning-soft: #262119;
+
+  --ticker-bg: #070c16;
+  --focus-ring: 2px solid var(--brand);
+  --focus-ring-offset: 2px;
+
+  --glass-tint: rgba(17, 26, 44, 0.62);
+  --glass-tint-strong: rgba(17, 26, 44, 0.80);
+  --glass-rim-cool: rgba(255, 255, 255, 0.14);
+  --glass-rim-warm: rgba(52, 211, 153, 0.08);
+  --glass-rim-shadow: rgba(0, 0, 0, 0.45);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --glass-glare: rgba(255, 255, 255, 0.12);
+
+  --everyday-radius: 20px;
+  /* Depth on a dark page: a hairline of light along the top, a soft shadow below. */
+  --everyday-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(0, 0, 0, 0.32), 0 8px 24px rgba(0, 0, 0, 0.24);
+  --everyday-shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.48);
+  --everyday-shadow-drawer: -16px 0 48px rgba(0, 0, 0, 0.48);
+  --everyday-scrim: rgba(5, 9, 18, 0.66);
+  /* The chosen option of a switch (a --brand-fill thumb or pill): its edge in --brand marks it. */
+  --everyday-selected-ring: inset 0 0 0 1px var(--brand);
+
+  /* People in the 12-month chart & Benefits: sky blue, coral and bullion gold. */
+  --owner-alex: #38bdf8;
+  --owner-casey: #fb923c;
+  --owner-joint: #facc15;
+
+  /* One colour per category family (modes/category.ts), 3.6:1 or more on surface-2 (graphics);
+   * the category's name is always beside it. */
+  --cat-groceries: #34d399;
+  --cat-dining: #fb923c;
+  --cat-travel: #38bdf8;
+  --cat-shopping: #a78bfa;
+  --cat-gas: #fbbf24;
+  --cat-entertainment: #f472b6;
+  --cat-bills: #2dd4bf;
+  --cat-health: #4ade80;
+  --cat-home: #eab308;
+  --cat-fees: #94a3b8;
+  --cat-none: #7c8ba1;
+  --cat-c0: #818cf8;
+  --cat-c1: #facc15;
+  --cat-c2: #fb7185;
+  --cat-c3: #a3e635;
+  --cat-c4: #60a5fa;
+  --cat-c5: #c084fc;
+}
+
+/* Forced colours: the chart's parts keep their own colours (see the end of this file) on the user's black or
+ * white canvas, so they take mid-tones with 4:1 or more on both, still apart for every kind of colour vision
+ * (13 OKLab ΔE or more). */
+@media (forced-colors: active) {
+  :root[data-mode='everyday'] {
+    --owner-alex: #567cd3;
+    --owner-casey: #bb4717;
+    --owner-joint: #915f80;
+  }
+}
+
+/* Print: paper is white and browsers leave backgrounds out unless asked, so Everyday prints in light colours
+ * under the same token names (dark text on paper, each pair AA on white), and its charts print their colours:
+ * the people's mid-tones above, the categories' darker family colours (4.9:1 or more on white). */
+@media print {
+  :root[data-mode='everyday'] {
+    color-scheme: light;
+
+    --bg: #ffffff;
+    --surface-header: #f4f0e8;
+    --surface: #ffffff;
+    --surface-2: #f1ede5;
+    --surface-raised: #ffffff;
+    --surface-expanded: #e3efec;
+    --line: #e6e0d4;
+    --line-strong: #8a857c;
+
+    --text: #292823;
+    --text-muted: #686359;
+    --text-soft: #686359;
+
+    --brand: #135a4f;
+    --brand-strong: #0f4c43;
+    --brand-soft: #e3efec;
+    --brand-fill: #135a4f;
+    --brand-fill-hover: #0f4c43;
+    --accent-graphic: #238574;
+
+    --gain: #25734f;
+    --gain-soft: #e6f1ea;
+    --gain-strong: #1f6b47;
+    --loss: #b04435;
+    --loss-soft: #f8e9e5;
+    --loss-strong: #a33b2d;
+    --loss-fill: #b04435;
+    --warning: #8a5a12;
+    --warning-soft: #f8eedd;
+
+    --everyday-shadow: none;
+    --everyday-shadow-popover: none;
+    --everyday-shadow-drawer: none;
+    --everyday-scrim: transparent;
+
+    --owner-alex: #567cd3;
+    --owner-casey: #bb4717;
+    --owner-joint: #915f80;
+
+    --cat-groceries: #166534;
+    --cat-dining: #9a3412;
+    --cat-travel: #1d4ed8;
+    --cat-shopping: #7e22ce;
+    --cat-gas: #854d0e;
+    --cat-entertainment: #be185d;
+    --cat-bills: #0e7490;
+    --cat-health: #0f766e;
+    --cat-home: #6d5a3a;
+    --cat-fees: #57534e;
+    --cat-none: #8a857c;
+    --cat-c0: #4338ca;
+    --cat-c1: #a16207;
+    --cat-c2: #be123c;
+    --cat-c3: #3f6212;
+    --cat-c4: #0369a1;
+    --cat-c5: #86198f;
+  }
+  [data-mode='everyday'] .spending-rank-bar span,
+  [data-mode='everyday'] [data-category-tone] > .spending-rank-row .spending-rank-name::before,
+  [data-mode='everyday'] .spending-category[data-category-tone]::before,
+  [data-mode='everyday'] .spending-row.pending::before {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+[data-mode='everyday'] .mode-switch {
+  --mode-thumb: var(--brand-fill);
+  --mode-thumb-text: var(--on-fill);
+  background: var(--surface-2);
+  border-color: transparent;
+}
+[data-mode='everyday'] .mode-switch-thumb { box-shadow: var(--everyday-selected-ring); }
+
+/* Forced colours drop backgrounds: the checked mode keeps a visible system-colour ring instead of the thumb,
+ * and Investing's tab indicator stays drawn. (Spending's charts: at the end of this file.) */
+@media (forced-colors: active) {
+  .mode-switch-thumb { display: none; }
+  .mode-switch-option.active { outline: 3px solid Highlight; outline-offset: -3px; }
+  .tab-indicator { forced-color-adjust: none; background: Highlight; }
+}
+
+/* ---- Everyday: the header's shared notices, in this palette's tokens ----
+ * (their own colours are tuned for Investing's navy) */
+[data-mode='everyday'] .banner.cache-banner {
+  color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning) 40%, transparent);
+  background: var(--warning-soft);
+}
+[data-mode='everyday'] .banner-action:hover { background: color-mix(in srgb, var(--warning) 12%, transparent); }
+[data-mode='everyday'] .action-status.saving {
+  color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+  background: var(--brand-soft);
+}
+[data-mode='everyday'] .action-status.error-toast {
+  color: var(--loss);
+  border-color: color-mix(in srgb, var(--loss) 35%, transparent);
+  background: var(--loss-soft);
+}
+
+/* ---- Everyday: sections (the Spending areas) as the mode's own tab row ---- */
+[data-mode='everyday'] .spending { gap: 18px; }
+[data-mode='everyday'] .spending-areas { gap: 6px; border-bottom-color: var(--line); }
+[data-mode='everyday'] .spending-area-tab {
+  min-height: 44px;
+  padding: 10px 14px;
+  margin-bottom: -1px;
+  border-bottom-width: 3px;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 550;
+}
+[data-mode='everyday'] .spending-area-tab:hover { color: var(--text); }
+[data-mode='everyday'] .spending-area-tab.active {
+  color: var(--text);
+  border-bottom-color: var(--accent-graphic);
+  font-weight: 650;
+}
+[data-mode='everyday'] .spending-area-badge { background: var(--brand-fill); color: var(--on-fill); font-weight: 650; }
+@media (max-width: 720px) {
+  [data-mode='everyday'] .spending-areas {
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  }
+}
+
+/* ---- Everyday: type. Amounts in the sans face with tabular figures. ---- */
+[data-mode='everyday'] .spending .num,
+[data-mode='everyday'] .spending-detail .num { font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+[data-mode='everyday'] .spending-muted { font-size: 14px; line-height: var(--leading); }
+
+/* ---- Everyday: controls (40px, 44px on touch screens) ---- */
+[data-mode='everyday'] .spending-month { gap: 10px; }
+[data-mode='everyday'] .spending-month-label { min-width: 150px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+[data-mode='everyday'] .spending-icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border-color: var(--line-strong);
+  background: var(--surface);
+}
+[data-mode='everyday'] .spending-select { font-size: 14px; color: var(--text-muted); }
+[data-mode='everyday'] .spending-select select,
+[data-mode='everyday'] .spending-search input,
+[data-mode='everyday'] .spending-detail-form input,
+[data-mode='everyday'] .spending-detail-form textarea {
+  min-height: 40px;
+  padding: 8px 14px;
+  border-color: var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 14px;
+}
+[data-mode='everyday'] .spending-select select { border-radius: 999px; }
+[data-mode='everyday'] .spending-search input { border-radius: 999px; padding-left: 34px; }
+[data-mode='everyday'] .spending-search svg { left: 13px; }
+[data-mode='everyday'] .spending-toggle { min-height: 40px; font-size: 14px; color: var(--text); }
+[data-mode='everyday'] .spending-button {
+  min-height: 40px;
+  padding: 8px 16px;
+  border-color: var(--line-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+[data-mode='everyday'] .spending-button.primary { background: var(--brand-fill); color: var(--on-fill); border-color: transparent; }
+[data-mode='everyday'] .spending-button.primary:hover:not(:disabled) { background: var(--brand-fill-hover); }
+[data-mode='everyday'] .spending-button.primary.danger { background: var(--loss-fill); color: var(--on-fill); }
+[data-mode='everyday'] .spending-button.primary.danger:hover:not(:disabled) { background: var(--loss-fill); border-color: var(--loss); }
+[data-mode='everyday'] .spending-button:hover:not(:disabled),
+[data-mode='everyday'] .spending-icon-button:hover:not(:disabled) { border-color: var(--brand); }
+[data-mode='everyday'] .spending-link { color: var(--brand); font-weight: 600; }
+[data-mode='everyday'] .spending-link:hover { color: var(--brand-strong); text-decoration: underline; }
+/* The period switch's chosen period is a filled control, like the mode switch's. */
+[data-mode='everyday'] .spending-period.active { background: var(--brand-fill); color: var(--on-fill); box-shadow: var(--everyday-selected-ring); }
+[data-mode='everyday'] .spending-chip { min-height: 32px; padding: 4px 6px 4px 12px; font-size: var(--text-help); }
+[data-mode='everyday'] .spending-chip.active { border-color: var(--brand); background: var(--brand-soft); }
+@media (pointer: coarse) {
+  [data-mode='everyday'] .spending-icon-button { width: 44px; height: 44px; }
+  [data-mode='everyday'] .spending-button,
+  [data-mode='everyday'] .spending-select select,
+  [data-mode='everyday'] .spending-search input,
+  [data-mode='everyday'] .spending-toggle { min-height: 44px; }
+}
+
+/* ---- Everyday: cards and panels ---- */
+[data-mode='everyday'] .spending-panel {
+  gap: 14px;
+  padding: 20px 24px;
+  border-color: var(--line);
+  border-radius: var(--everyday-radius);
+  background: var(--surface);
+  box-shadow: var(--everyday-shadow);
+}
+[data-mode='everyday'] .spending-panel-head { gap: 6px 14px; }
+[data-mode='everyday'] .spending-panel-head h3 { font-size: var(--text-section); line-height: 26px; font-weight: 650; letter-spacing: -0.01em; }
+
+/* The month leads: one big "spent" figure; the others are quieter. */
+[data-mode='everyday'] .spending-card-value { font-family: var(--font-sans); font-size: 24px; font-weight: 650; letter-spacing: -0.02em; }
+@media (max-width: 720px) {
+  [data-mode='everyday'] .spending-panel { padding: 16px; border-radius: 16px; }
+  [data-mode='everyday'] .spending-month-label { font-size: 20px; }
+}
+
+/* ---- Everyday: insights. Warning is kept for what needs checking. ---- */
+[data-mode='everyday'] .spending-panel.spending-insights {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+[data-mode='everyday'] .spending-insight-list { gap: 12px; }
+[data-mode='everyday'] .spending-insight {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-graphic);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--everyday-shadow);
+}
+[data-mode='everyday'] .spending-insight.tone-good { border-left-color: var(--gain); }
+[data-mode='everyday'] .spending-insight.tone-warn { border-left-color: var(--accent-graphic); }
+[data-mode='everyday'] .spending-insight[data-insight='duplicates'] {
+  border-left-color: var(--warning);
+  background: var(--warning-soft);
+}
+[data-mode='everyday'] .spending-insight[data-insight='costs'] { border-left-color: var(--loss); }
+[data-mode='everyday'] .spending-insight-text { gap: 4px; }
+[data-mode='everyday'] .spending-insight-text strong { font-size: 15px; line-height: var(--leading); }
+[data-mode='everyday'] .spending-insight-text span { font-size: var(--text-help); line-height: var(--leading); }
+[data-mode='everyday'] .spending-insight-item-name, [data-mode='everyday'] .spending-insight-item-amount { font-size: var(--text-read); }
+
+/* ---- Everyday: people keep their own colours. ---- */
+[data-mode='everyday'] .owner-alex { background: var(--owner-alex); }
+[data-mode='everyday'] .owner-casey { background: var(--owner-casey); }
+[data-mode='everyday'] .owner-joint { background: var(--owner-joint); }
+
+/* ---- Everyday: categories and merchants ---- */
+[data-mode='everyday'] [data-category-tone] { --category-color: var(--cat-none); }
+[data-mode='everyday'] [data-category-tone='groceries'] { --category-color: var(--cat-groceries); }
+[data-mode='everyday'] [data-category-tone='dining'] { --category-color: var(--cat-dining); }
+[data-mode='everyday'] [data-category-tone='travel'] { --category-color: var(--cat-travel); }
+[data-mode='everyday'] [data-category-tone='shopping'] { --category-color: var(--cat-shopping); }
+[data-mode='everyday'] [data-category-tone='gas'] { --category-color: var(--cat-gas); }
+[data-mode='everyday'] [data-category-tone='entertainment'] { --category-color: var(--cat-entertainment); }
+[data-mode='everyday'] [data-category-tone='bills'] { --category-color: var(--cat-bills); }
+[data-mode='everyday'] [data-category-tone='health'] { --category-color: var(--cat-health); }
+[data-mode='everyday'] [data-category-tone='home'] { --category-color: var(--cat-home); }
+[data-mode='everyday'] [data-category-tone='fees'] { --category-color: var(--cat-fees); }
+[data-mode='everyday'] [data-category-tone='c0'] { --category-color: var(--cat-c0); }
+[data-mode='everyday'] [data-category-tone='c1'] { --category-color: var(--cat-c1); }
+[data-mode='everyday'] [data-category-tone='c2'] { --category-color: var(--cat-c2); }
+[data-mode='everyday'] [data-category-tone='c3'] { --category-color: var(--cat-c3); }
+[data-mode='everyday'] [data-category-tone='c4'] { --category-color: var(--cat-c4); }
+[data-mode='everyday'] [data-category-tone='c5'] { --category-color: var(--cat-c5); }
+
+[data-mode='everyday'] .spending-rank { gap: 4px; }
+[data-mode='everyday'] .spending-rank-row {
+  min-height: 40px;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+[data-mode='everyday'] .spending-rank-row:hover { background: var(--surface-2); }
+[data-mode='everyday'] .spending-rank-row.selected { background: var(--brand-soft); box-shadow: inset 0 0 0 1px var(--brand); }
+[data-mode='everyday'] .spending-rank-name { font-weight: 550; }
+[data-mode='everyday'] [data-category-tone] > .spending-rank-row .spending-rank-name::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 9px;
+  border-radius: 999px;
+  background: var(--category-color);
+  vertical-align: 0;
+}
+[data-mode='everyday'] .spending-rank-bar { height: 10px; border-radius: 999px; background: var(--surface-2); }
+[data-mode='everyday'] .spending-rank-bar span { border-radius: 999px; background: var(--accent-graphic); }
+[data-mode='everyday'] [data-category-tone] > .spending-rank-row .spending-rank-bar span { background: var(--category-color); }
+[data-mode='everyday'] .spending-rank-amount { font-weight: 650; }
+[data-mode='everyday'] .spending-rank-share { font-size: var(--text-help); }
+
+/* ---- Everyday: transactions ---- */
+[data-mode='everyday'] .spending-group h4 {
+  margin: 14px 0 4px;
+  font-size: var(--text-help);
+  font-weight: 650;
+  letter-spacing: var(--label-tracking);
+  text-transform: var(--label-case);
+  color: var(--text-muted);
+}
+[data-mode='everyday'] .spending-group.pending h4 { color: var(--warning); }
+[data-mode='everyday'] .spending-row { border-bottom-color: var(--line); }
+[data-mode='everyday'] .spending-row-main { min-height: 56px; padding: 10px 8px; border-radius: 12px; font-size: var(--text-read); }
+[data-mode='everyday'] .spending-row-main:hover { background: var(--surface-2); }
+[data-mode='everyday'] .spending-row-merchant { font-weight: 600; }
+[data-mode='everyday'] .spending-row-description,
+[data-mode='everyday'] .spending-row-card,
+[data-mode='everyday'] .spending-row-date { font-size: var(--text-help); }
+[data-mode='everyday'] .spending-row-amount { font-weight: 650; }
+/* Pending rows stay readable (full contrast); their group heading and a rail along the whole row mark them. */
+[data-mode='everyday'] .spending-row.pending { position: relative; opacity: 1; }
+[data-mode='everyday'] .spending-row.pending::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--warning) 82%, transparent);
+  pointer-events: none;
+}
+[data-mode='everyday'] .spending-badge { padding: 1px 8px; font-size: var(--text-help); border-color: var(--line-strong); }
+[data-mode='everyday'] .spending-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 3px 10px;
+  border-color: var(--line);
+  color: var(--text);
+  font-size: var(--text-help);
+}
+[data-mode='everyday'] .spending-category[data-category-tone] {
+  border-color: transparent;
+  background: color-mix(in srgb, var(--category-color) 14%, var(--surface));
+}
+[data-mode='everyday'] .spending-category[data-category-tone]::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--category-color);
+}
+[data-mode='everyday'] .spending-category.custom { box-shadow: inset 0 0 0 1px var(--category-color, var(--brand)); }
+/* Inferred: the category's tint, lighter, inside a dashed edge in its colour. */
+[data-mode='everyday'] .spending-category[data-category-tone].inferred {
+  border: 1px dashed color-mix(in srgb, var(--category-color) 70%, var(--line-strong));
+  background: color-mix(in srgb, var(--category-color) 8%, var(--surface));
+}
+@media (max-width: 720px) {
+  [data-mode='everyday'] .spending-row-main { min-height: 64px; padding: 10px 6px 6px; }
+  [data-mode='everyday'] .spending-row { padding-bottom: 12px; }
+  [data-mode='everyday'] .spending-toggle { border-color: var(--line-strong); }
+}
+
+/* ---- Everyday: the list's columns (Alex, round 3) ----
+ * Every column keeps a readable width (minmax) instead of the description
+ * taking all the slack. The card cell is the card's name, its ending and the
+ * person: only the name may shorten, never the ending or the person. Below
+ * 1001px the card moves under the description instead of disappearing. */
+[data-mode='everyday'] .spending-row-card {
+  display: flex;
+  align-items: baseline;
+  min-width: 0;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+[data-mode='everyday'] .spending-row-card-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Kept whole, with their leading space (a flex item would drop it). */
+[data-mode='everyday'] .spending-row-card-ending,
+[data-mode='everyday'] .spending-row-card-owner,
+[data-mode='everyday'] .spending-row-card::before { flex: none; white-space: pre; }
+[data-mode='everyday'] .spending-row-card-owner { color: var(--text); }
+@media (min-width: 1001px) {
+  [data-mode='everyday'] .spending-row { grid-template-columns: minmax(0, 1fr) minmax(128px, 176px); }
+}
+/* Merchant and description get the row's width; the card and person sit under them (as Copilot Money
+ * does), so neither the description nor the card is cut at 1280 or 1440. The areas are the list row's own
+ * (`.spending-row-main >`): other lists reuse the date and merchant classes in grids of their own, where an
+ * area that grid doesn't name would push the cell into an extra column (What counts did, before). */
+@media (min-width: 721px) {
+  [data-mode='everyday'] .spending-row-main {
+    grid-template-columns: 52px minmax(0, 1fr) 112px;
+    grid-template-areas: 'date text amount' 'date card amount';
+    row-gap: 3px;
+  }
+  [data-mode='everyday'] .spending-row-main > .spending-row-date { grid-area: date; }
+  [data-mode='everyday'] .spending-row-main > .spending-row-text { grid-area: text; }
+  [data-mode='everyday'] .spending-row-main > .spending-row-card { grid-area: card; }
+  [data-mode='everyday'] .spending-row-main > .spending-row-amount { grid-area: amount; }
+}
+@media (min-width: 721px) and (max-width: 1000px) {
+  [data-mode='everyday'] .spending-row { grid-template-columns: minmax(0, 1fr) minmax(120px, 160px); }
+}
+@media (max-width: 720px) {
+  /* Stacked: description and amount, then date, card and person (only the card's name shortens), then the category. */
+  [data-mode='everyday'] .spending-row-card { font-size: var(--text-help); }
+  /* On a phone the merchant and description wrap rather than end in "…". */
+  [data-mode='everyday'] .spending-row-merchant,
+  [data-mode='everyday'] .spending-row-description { white-space: normal; overflow-wrap: anywhere; }
+  /* The amount shares the merchant's line (top-aligned), as in Copilot Money and Apple Card. */
+  [data-mode='everyday'] .spending-row-main { align-items: start; row-gap: 4px; padding: 10px 6px 6px; line-height: var(--leading); }
+  [data-mode='everyday'] .spending-row-text { gap: 2px; }
+  [data-mode='everyday'] .spending-row-amount { align-self: start; line-height: var(--leading); }
+  [data-mode='everyday'] .spending-category { min-height: 24px; padding: 2px 10px; font-size: var(--text-help); }
+  /* Details: short fields as label and value side by side; the description and the last field span the row. */
+  [data-mode='everyday'] .spending-detail-fields { grid-template-columns: 104px minmax(0, 1fr); gap: 10px 12px; }
+  [data-mode='everyday'] .spending-detail-fields dt { margin-top: 0; }
+  [data-mode='everyday'] .spending-detail-fields dt:first-of-type,
+  [data-mode='everyday'] .spending-detail-fields dd:first-of-type,
+  [data-mode='everyday'] .spending-detail-fields dt:last-of-type,
+  [data-mode='everyday'] .spending-detail-fields dd:last-of-type { grid-column: 1 / -1; }
+  [data-mode='everyday'] .spending-detail-fields dd:first-of-type,
+  [data-mode='everyday'] .spending-detail-fields dd:last-of-type { margin-top: -6px; }
+}
+/* Wider screens keep one line per field; the full text is in the row's title, its accessible name and the
+ * details, and keyboard focus unfolds it in place. */
+[data-mode='everyday'] .spending-row-main:focus-visible .spending-row-merchant,
+[data-mode='everyday'] .spending-row-main:focus-visible .spending-row-description { white-space: normal; overflow-wrap: anywhere; }
+
+/* A long issuer category shows its top level; keyboard focus shows the full name (hover has the title). */
+[data-mode='everyday'] .spending-category[data-full-category] { position: relative; }
+[data-mode='everyday'] .spending-category[data-full-category]:focus-visible { overflow: visible; }
+[data-mode='everyday'] .spending-category[data-full-category]:focus-visible::after {
+  content: attr(data-full-category);
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  right: 0;
+  max-width: min(320px, 80vw);
+  padding: 6px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--everyday-shadow-popover);
+  font-size: var(--text-help);
+  font-weight: 500;
+  line-height: 16px;
+  white-space: normal;
+  text-align: left;
+  pointer-events: none;
+}
+
+/* Credits keep their minus sign and the gain colour (6.8:1 or more), so colour is never the only cue. */
+[data-mode='everyday'] .spending-row-amount.credit,
+[data-mode='everyday'] .spending-detail-amount strong.credit { color: var(--gain); }
+/* A card payment is a transfer, not money back: muted, as in the list, wherever it shows. */
+[data-mode='everyday'] .spending-detail-amount[data-role='transfer'] strong { color: var(--text-muted); }
+/* The brokerage side of a payment is one click away, in Investing. */
+[data-mode='everyday'] .spending-detail-suggestions.paid-from > .spending-link { justify-self: start; }
+
+/* ---- Everyday: ranked lists never cut a category or merchant; long names wrap ---- */
+[data-mode='everyday'] .spending-rank-name { white-space: normal; overflow-wrap: anywhere; line-height: 1.3; }
+@media (max-width: 720px) {
+  /* Phones: a category's name, amount and share on one line, its bar under them. */
+  [data-mode='everyday'] .spending-rank:not(.merchants) .spending-rank-row {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: 'name amount share' 'bar bar bar';
+    row-gap: 7px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+  [data-mode='everyday'] .spending-rank:not(.merchants) .spending-rank-name { grid-area: name; }
+  [data-mode='everyday'] .spending-rank:not(.merchants) .spending-rank-amount { grid-area: amount; }
+  [data-mode='everyday'] .spending-rank:not(.merchants) .spending-rank-share { grid-area: share; min-width: 36px; }
+  [data-mode='everyday'] .spending-rank:not(.merchants) .spending-rank-bar { grid-area: bar; height: 8px; }
+}
+
+/* ---- Shell: header buttons are finger-sized targets on touch screens ----
+ * The hit area grows (an invisible ring), not the button, so the header's chips stay one size. The ring is placed
+ * from the button's padding box (inside its 1px border): the refresh icon's is 44px square. */
+@media (pointer: coarse) {
+  .app > header .refresh.icon,
+  .app > header .signout-button { position: relative; }
+  .app > header .refresh.icon::after,
+  .app > header .signout-button::after {
+    content: '';
+    position: absolute;
+    inset: -11px;
+  }
+  .app > header .signout-button::after { inset: -8px -6px; }
+}
+
+/* ---- Everyday: the month on its own row, then the filters, where search takes the room left ---- */
+@media (min-width: 721px) {
+  [data-mode='everyday'] .spending-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 14px; }
+  [data-mode='everyday'] .spending-month { justify-self: start; }
+  [data-mode='everyday'] .spending-filters { justify-content: flex-start; row-gap: 10px; }
+  [data-mode='everyday'] .spending-search { flex: 1 1 260px; }
+  [data-mode='everyday'] .spending-search input { width: 100%; }
+  [data-mode='everyday'] .spending-select select { max-width: 280px; }
+}
+
+/* ---- Everyday: recurring charges and coverage ---- */
+[data-mode='everyday'] .spending-recurring-main { min-height: 52px; padding: 10px 8px; border-radius: 12px; }
+[data-mode='everyday'] .spending-recurring-main:hover { background: var(--surface-2); }
+[data-mode='everyday'] .spending-recurring-name { font-size: var(--text-read); font-weight: 600; }
+[data-mode='everyday'] .spending-recurring-meta { font-size: var(--text-help); }
+[data-mode='everyday'] .spending-recurring-amount { font-weight: 650; }
+[data-mode='everyday'] .spending-coverage ul { gap: 0; }
+[data-mode='everyday'] .spending-coverage-row { gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+[data-mode='everyday'] .spending-coverage-row:last-child { border-bottom: 0; }
+[data-mode='everyday'] .spending-coverage-ranges { gap: 8px; }
+[data-mode='everyday'] .spending-coverage-range {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--gain-soft);
+  color: var(--gain);
+  font-size: var(--text-help);
+}
+[data-mode='everyday'] .spending-coverage-gap {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--warning-soft);
+  color: var(--warning);
+  box-shadow: inset 0 0 0 1px var(--warning);
+  font-size: var(--text-help);
+  font-weight: 600;
+}
+
+/* ---- Everyday: details drawer and dialogs ---- */
+[data-mode='everyday'] .spending-detail-backdrop { background: var(--everyday-scrim); }
+[data-mode='everyday'] .spending-detail {
+  border-left-color: var(--line);
+  border-radius: 24px 0 0 24px;
+  box-shadow: var(--everyday-shadow-drawer);
+}
+[data-mode='everyday'] .spending-detail-head h3 { font-size: 20px; }
+[data-mode='everyday'] .spending-detail-amount strong { font-family: var(--font-sans); font-size: 34px; font-weight: 700; }
+[data-mode='everyday'] .spending-detail-suggestions { border-radius: 14px; border-color: var(--line); }
+@media (max-width: 720px) {
+  [data-mode='everyday'] .spending-detail { border-radius: 0; }
+}
+
+/* ---- Everyday: empty states ---- */
+[data-mode='everyday'] .spending-empty {
+  gap: 10px;
+  padding: 48px 24px;
+  border: 1px dashed color-mix(in srgb, var(--line-strong) 62%, var(--line));
+  border-radius: var(--everyday-radius);
+  background: var(--surface);
+}
+[data-mode='everyday'] .spending-empty strong { font-size: 18px; }
+[data-mode='everyday'] .spending-empty p { color: var(--text-muted); font-size: var(--text-read); line-height: var(--leading); }
+/* Sync with no owner API: the notice is the whole area, so it reads as a calm, complete state. */
+[data-mode='everyday'] .sync-area > .sync-banners:only-child { justify-items: center; padding: 40px 0 24px; }
+[data-mode='everyday'] .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child {
+  max-width: 560px;
+  justify-items: center;
+  gap: 8px;
+  padding: 28px 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--everyday-radius);
+  background: var(--surface);
+  box-shadow: var(--everyday-shadow);
+  text-align: center;
+  font-size: 15px;
+  line-height: var(--leading);
+}
+[data-mode='everyday'] .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child::before {
+  content: '';
+  width: 48px;
+  height: 48px;
+  margin-bottom: 6px;
+  border-radius: 14px;
+  /* One teal, two strengths: the card icon at full, its tile at 18% over the card (the SVG is only a mask). */
+  background: var(--brand);
+  -webkit-mask: url("./assets/mode-card.svg") center / 24px no-repeat, linear-gradient(rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.18));
+  mask: url("./assets/mode-card.svg") center / 24px no-repeat, linear-gradient(rgb(0 0 0 / 0.18), rgb(0 0 0 / 0.18));
+}
+[data-mode='everyday'] .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child strong { font-size: 17px; line-height: var(--leading); text-wrap: balance; }
+/* Its explanation is several sentences: read from a left edge under the centred icon and heading. */
+[data-mode='everyday'] .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child > span { justify-self: stretch; text-align: left; }
+
+/* ---- Everyday: sync and devices (E8-M) through the same surfaces ---- */
+[data-mode='everyday'] .sync-banner { border-radius: 14px; }
+[data-mode='everyday'] .sync-binding,
+[data-mode='everyday'] .sync-row,
+[data-mode='everyday'] .sync-item,
+[data-mode='everyday'] .sync-plan,
+[data-mode='everyday'] .sync-approval,
+[data-mode='everyday'] .sync-result,
+[data-mode='everyday'] .sync-consent { border-radius: 14px; }
+
+/* ---- Everyday: records that no longer count, without fading their text below AA ----
+ * The base dims whole rows with opacity, which takes names, amounts and details under 4.5:1.
+ * Here they stay opaque and read in the muted text colour (at least 7.0:1), beside what already says
+ * why: the Removed label, the "not charged lately" group, an inactive device or source (also dashed). */
+[data-mode='everyday'] .spending-row.removed,
+[data-mode='everyday'] .spending-recurring-row.inactive,
+[data-mode='everyday'] .sync-row.inactive,
+[data-mode='everyday'] .sync-steps li.elsewhere,
+[data-mode='everyday'] .sync-card-row input[readonly] { opacity: 1; }
+[data-mode='everyday'] .spending-row.removed .spending-row-main,
+[data-mode='everyday'] .spending-row.removed .spending-row-card-owner,
+[data-mode='everyday'] .spending-recurring-row.inactive .spending-recurring-main,
+[data-mode='everyday'] .spending-recurring-row.inactive .spending-recurring-amount,
+[data-mode='everyday'] .sync-row.inactive .sync-row-text > strong,
+[data-mode='everyday'] .sync-steps li.elsewhere { color: var(--text-muted); }
+[data-mode='everyday'] .sync-row.inactive { border-style: dashed; }
+[data-mode='everyday'] .sync-card-row input[readonly] { background: var(--surface-2); color: var(--text-muted); }
+
+/* ---- Forced colours: Spending's charts stay drawn ----
+ * Bars are backgrounds, which forced colours drop. A ranked bar sits beside its name, so it takes the text colour.
+ * Everyday's filled period and its sync notice's card icon take system colours. Last in the file, so it follows every
+ * Everyday override above. */
+@media (forced-colors: active) {
+  .spending-rank-bar { border: 1px solid CanvasText; }
+  .spending-rank-bar span,
+  [data-mode] [data-category-tone] > .spending-rank-row .spending-rank-bar span { forced-color-adjust: none; background: CanvasText; }
+  /* The section tabs: a transparent border is forced visible, so every tab looked selected. Only the selected
+   * one is underlined, above an unbroken baseline. The waiting count and the needs-attention dot stay drawn. */
+  [data-mode] .spending-area-tab { margin-bottom: 0; border-bottom-color: Canvas; }
+  [data-mode] .spending-area-tab.active { border-bottom-color: Highlight; }
+  .spending-area-badge { border: 1px solid CanvasText; }
+  .spending-area-dot { forced-color-adjust: none; background: CanvasText; }
+  [data-mode] .spending-period.active { background: Highlight; color: HighlightText; box-shadow: none; }
+  [data-mode='everyday'] .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child::before {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+}

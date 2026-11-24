@@ -1,0 +1,69 @@
+/* =====================================================================
+ * Spending: the owner's card opening months (components/spending/openings/CardOpenings.tsx), a block of the overview.
+ * Only Everyday's palette tokens (modes.css). Every state is said in words. Type at the reading floors (plan D1): 16px
+ * for card names and the month, 14px for help, status, warnings and actions, through the type tokens where they exist.
+ * ==================================================================== */
+
+.spending-openings:focus { outline: none; }
+.spending-openings:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+/* The block's title is a section head, as the overview's other block titles: 18px, 20px from 1280px wide. */
+.spending-openings > .overview-block-head h3 { margin: 0; font-size: var(--text-section, 18px); font-weight: 600; line-height: 1.3; }
+@media (min-width: 1280px) {
+  .spending-openings > .overview-block-head h3 { font-size: var(--text-section, 20px); }
+}
+/* Above Everyday's own sizes for these shared classes (modes.css), whatever the order the sheets load in. */
+.overview-block.spending-openings .spending-link,
+.overview-block.spending-openings .spending-button,
+.overview-block.spending-openings .spending-muted,
+.overview-block.spending-openings .spending-error { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.openings-intro { margin: 0; max-width: var(--measure, 65ch); }
+.openings-note { margin: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--warning); }
+.openings-notice { margin: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+
+.openings-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.openings-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 4px 12px;
+  padding: 10px 6px; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.openings-row + .openings-row { border-top: 1px solid var(--line); }
+.openings-name { font-size: var(--text-read, 16px); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.openings-month {
+  font: inherit; font-size: var(--text-read, 16px); color: var(--text); background: var(--surface); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 4px 8px; min-width: 9.5em; min-height: 40px;
+}
+.openings-month[aria-invalid='true'] { border-color: var(--loss); }
+.openings-month:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.openings-buttons { display: inline-flex; align-items: center; gap: 8px; }
+.openings-status { grid-column: 1 / -1; color: var(--text-muted); overflow-wrap: anywhere; }
+.openings-problem { grid-column: 1 / -1; color: var(--loss); overflow-wrap: anywhere; }
+.openings-flag { grid-column: 1 / -1; color: var(--warning); overflow-wrap: anywhere; }
+.openings-assert { grid-column: 1 / -1; color: var(--text); overflow-wrap: anywhere; }
+
+/* What Holdr has of the card, and where its prefilled month comes from: folded, one card at a time. */
+.openings-evidence { grid-column: 1 / -1; min-width: 0; }
+.openings-evidence > summary { width: fit-content; cursor: pointer; color: var(--text-muted); border-radius: 4px; }
+.openings-evidence > summary:hover { color: var(--text); }
+.openings-evidence > summary:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.openings-evidence-body { display: grid; gap: 2px; padding: 2px 0 0 16px; color: var(--text); overflow-wrap: anywhere; }
+
+.openings-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.openings-flag-note { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--warning); overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .openings-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .openings-name { grid-column: 1 / -1; white-space: normal; overflow-wrap: anywhere; }
+}
+
+@media (pointer: coarse) {
+  .openings-month { min-height: 44px; }
+}
+
+/* The overview's words for a window complete only because a card opened in it ("includes a card opened this month"). */
+.overview-opened-note { margin: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.overview-opened {
+  margin: 0; padding-left: 18px; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); overflow-wrap: anywhere;
+}
+
+@media (forced-colors: active) {
+  .openings-month[aria-invalid='true'] { border-color: Highlight; }
+}

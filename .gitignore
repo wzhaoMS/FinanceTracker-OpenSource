@@ -1,0 +1,73 @@
+node_modules/
+dist/
+apps/web/releases/
+.turbo/
+.expo/
+.next/
+.env
+.env.*
+!.env.example
+holdr.conf
+holdr.conf.*
+.privacy-scan.local
+# Holdr's own secrets, should a data folder or a copy of one end up in the checkout: the API's service and agent tokens
+# (and the temporary files it writes them through) and the card sync agent's pairing key.
+service-token
+service-token.*
+agent-token
+agent-token.*
+local-key.json
+.local-key.json.*
+# Your MCP client settings for this checkout (docs/agents.md): they describe your own setup, so they stay local.
+.mcp.json
+.vscode/mcp.json
+.cursor/mcp.json
+*.log
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.key
+*.p12
+*.pfx
+*.pdf
+*.pem
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+.DS_Store
+
+# User data — never commit. Includes pre-auth state.json and the SQLite DB.
+apps/api/data/
+apps/api/.test-tmp/
+apps/api/native/build/
+.i-*/
+
+# Local backups (npm run holdr-backup writes backups/db/<UTC stamp>/)
+backups/
+
+# A private imports folder (bank exports, converted payloads, the card sync agent's raw/ and outbox/) belongs outside the
+# checkout (docs/getting-started.md, "Get your data in"); if one ends up here, it is still never committed.
+/imports/
+
+# Playwright (E.4)
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/blob-report/
+apps/web/.last-run.json
+# Signed-in e2e session saved by tests/global-sign-in.ts (outside the runner)
+apps/web/playwright/.auth/
+
+# Scratch directories of the card-import tool tests (removed after each run)
+packages/shared/.card-import-test-*/
+packages/shared/.web-release-test-*/
+
+# Scratch copies of apps/api/src started by index.test.ts (removed after each run)
+apps/api/.real-app-test-*/
+
+# Disposable e2e stacks (scripts/e2e-disposable.mjs)
+.e2e-tmp/
+.e2e-logs/

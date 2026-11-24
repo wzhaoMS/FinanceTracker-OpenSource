@@ -1,0 +1,94 @@
+/* =====================================================================
+ * Spending: Manage cards (components/spending/CardManager.tsx), a dialog opened beside the Card picker, and its
+ * confirmations. Type at the reading floors (plan D1): 16px for reading text and card names, 14px for help, labels,
+ * status and actions, through the type tokens where they exist. Only the palette tokens (modes.css).
+ * ==================================================================== */
+
+.card-manager { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; min-width: 0; }
+.card-manager p { margin: 0; }
+
+/* The dialogs' titles: section heads. */
+.sync-dialog:has(> .card-manager, > .card-manager-confirm) > .spending-detail-head h3 {
+  font-size: var(--text-section, 18px); line-height: 1.35;
+}
+@media (min-width: 1280px) {
+  .sync-dialog:has(> .card-manager, > .card-manager-confirm) > .spending-detail-head h3 { font-size: var(--text-section, 20px); }
+}
+
+.card-manager-lead {
+  font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600; color: var(--text); max-width: var(--measure, 65ch);
+}
+.card-manager-help {
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); max-width: var(--measure, 65ch);
+}
+.card-manager-count { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.card-manager-count:focus { outline: none; }
+.card-manager-count:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* A status change, said where it happened. Empty, it stays in the accessibility tree (so the next one is announced)
+ * but takes no room. */
+.card-manager-notice {
+  padding: 8px 12px; border-radius: 10px; border-left: 3px solid var(--gain); background: var(--gain-soft, transparent);
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text); overflow-wrap: anywhere;
+}
+.card-manager-notice:empty {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+.card-manager-filters {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 10px 16px; min-width: 0; max-width: 34rem;
+}
+.card-manager-field {
+  display: grid; gap: 4px; min-width: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted);
+}
+.card-manager-field select {
+  width: 100%; min-width: 0; min-height: 40px; padding: 6px 10px; border: 1px solid var(--line-strong, var(--line)); border-radius: 10px;
+  background: var(--bg); color: var(--text); font: inherit; font-size: var(--text-help, 14px); text-overflow: ellipsis;
+}
+.card-manager-field select:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+.card-manager .card-manager-error,
+.card-manager-confirm .card-manager-error {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px;
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); overflow-wrap: anywhere;
+}
+.card-manager-error > span { flex: 1 1 16rem; min-width: 0; }
+
+.card-manager-none { display: grid; gap: 8px; justify-items: start; }
+
+.card-manager-list { list-style: none; margin: 0; padding: 0; display: grid; border-block: 1px solid var(--line); }
+.card-manager-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 12px 2px; min-width: 0;
+}
+.card-manager-row + .card-manager-row { border-top: 1px solid var(--line); }
+.card-manager-text { display: grid; gap: 2px; min-width: 0; }
+.card-manager-name {
+  font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600; color: var(--text); overflow-wrap: anywhere;
+}
+.card-manager-meta { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); overflow-wrap: anywhere; }
+.card-manager-latest { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text); overflow-wrap: anywhere; }
+
+.card-manager .spending-button,
+.card-manager-confirm .spending-button { font-size: var(--text-help, 14px); min-height: 40px; }
+
+/* A status change waiting for the owner's word, naming the card. */
+.card-manager-confirm { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0; }
+.card-manager-confirm p { margin: 0; }
+.card-manager-confirm-name {
+  font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 600; color: var(--text); overflow-wrap: anywhere;
+}
+.card-manager-confirm-text {
+  font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); color: var(--text); max-width: var(--measure, 65ch); overflow-wrap: anywhere;
+}
+
+@media (pointer: coarse) {
+  .card-manager .spending-button,
+  .card-manager-confirm .spending-button,
+  .card-manager-field select { min-height: 44px; }
+}
+
+/* Manage cards in the toolbar. On a phone it leads the sideways row of filters, in full, with a 44px target. */
+.card-picker-manage { white-space: nowrap; }
+@media (max-width: 720px) {
+  .spending-filters .spending-button.card-picker-manage { min-height: 44px; padding-inline: 12px; }
+}

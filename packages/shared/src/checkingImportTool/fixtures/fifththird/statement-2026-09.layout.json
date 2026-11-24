@@ -1,0 +1,46 @@
+{
+  "note": "Synthetic Fifth Third checking statement layout: [x, y, text] cells per page, in PDF points (y grows upwards). The same September as activity.csv.",
+  "pages": [
+    [
+      [50, 760, "Fifth Third Bank"], [400, 760, "Statement Period Date: 9/1/2026 - 9/30/2026"],
+      [400, 746, "Account Type: Fifth Third Momentum Checking"],
+      [400, 732, "Account Number: XXXXXX4321"],
+      [50, 700, "Account Summary - XXXXXX4321"],
+      [50, 686, "09/01"], [90, 686, "Beginning Balance"], [250, 686, "$2,500.00"], [350, 686, "Number of Days in Period"], [500, 686, "30"],
+      [90, 672, "1"], [100, 672, "Checks"], [250, 672, "-250.00"],
+      [90, 658, "7"], [100, 658, "Withdrawals / Debits"], [250, 658, "-2,917.55"],
+      [90, 644, "2"], [100, 644, "Deposits / Credits"], [250, 644, "3,200.12"],
+      [50, 630, "09/30"], [90, 630, "Ending Balance"], [250, 630, "$2,532.57"],
+      [50, 600, "Checks"], [400, 600, "1 checks totaling $250.00"],
+      [50, 586, "* Indicates gap in check sequence"], [250, 586, "i = Electronic Image"], [380, 586, "s = Substitute Check"],
+      [50, 572, "Number"], [100, 572, "Date Paid"], [170, 572, "Amount"], [300, 572, "Number"], [350, 572, "Date Paid"], [420, 572, "Amount"],
+      [50, 558, "1042"], [80, 558, "i"], [100, 558, "09/03"], [170, 558, "250.00"],
+      [50, 530, "Withdrawals / Debits"], [400, 530, "7 items totaling $2,917.55"],
+      [50, 516, "Date"], [100, 516, "Amount"], [180, 516, "Description"],
+      [50, 502, "09/01"], [100, 502, "100.00"], [180, 502, "ATM WITHDRAWAL 0901 SAMPLE ST"],
+      [50, 488, "09/02"], [100, 488, "1,234.56"], [180, 488, "WEB INITIATED PAYMENT AT CHASE CREDIT CRD EPAY"],
+      [180, 474, "PPD ID: 0000000000"],
+      [50, 460, "09/02"], [100, 460, "987.65"], [180, 460, "AMEX EPAYMENT ACH PMT"],
+      [50, 446, "09/03"], [100, 446, "42.17"], [180, 446, "DEBIT CARD PURCHASE SAMPLE GROCERY"],
+      [50, 432, "09/03"], [100, 432, "42.17"], [180, 432, "DEBIT CARD PURCHASE SAMPLE GROCERY"],
+      [280, 60, "Page 1 of 2"]
+    ],
+    [
+      [50, 760, "Fifth Third Bank"], [400, 760, "Statement Period Date: 9/1/2026 - 9/30/2026"],
+      [400, 746, "Account Number: XXXXXX4321"],
+      [50, 720, "Withdrawals / Debits - continued"],
+      [50, 706, "Date"], [100, 706, "Amount"], [180, 706, "Description"],
+      [50, 692, "09/08"], [100, 692, "500.00"], [180, 692, "ONLINE TRANSFER TO SAVINGS XXXXXX9876"],
+      [50, 678, "09/30"], [100, 678, "11.00"], [180, 678, "MONTHLY SERVICE FEE"],
+      [50, 650, "Deposits / Credits"], [400, 650, "2 items totaling $3,200.12"],
+      [50, 636, "Date"], [100, 636, "Amount"], [180, 636, "Description"],
+      [50, 622, "09/01"], [100, 622, "3,200.00"], [180, 622, "DIRECT DEPOSIT CONTOSO PAYROLL"],
+      [50, 608, "09/15"], [100, 608, "0.12"], [180, 608, "INTEREST PAID"],
+      [50, 580, "Daily Balance Summary"],
+      [50, 566, "Date"], [100, 566, "Balance"], [200, 566, "Date"], [250, 566, "Balance"], [350, 566, "Date"], [400, 566, "Balance"],
+      [50, 552, "09/01"], [100, 552, "5,600.00"], [200, 552, "09/03"], [250, 552, "3,043.45"], [350, 552, "09/15"], [400, 552, "2,543.57"],
+      [50, 538, "09/02"], [100, 538, "3,377.79"], [200, 538, "09/08"], [250, 538, "2,543.45"], [350, 538, "09/30"], [400, 538, "2,532.57"],
+      [280, 60, "Page 2 of 2"]
+    ]
+  ]
+}

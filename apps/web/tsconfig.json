@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "outDir": "dist",
+    "noEmit": true,
+    "paths": {
+      "@finance-tracker/shared": ["../../packages/shared/src"]
+    }
+  },
+  "include": ["src/**/*"]
+}

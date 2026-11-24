@@ -1,0 +1,282 @@
+{
+  "format": "holdr.card-import",
+  "version": 2,
+  "contractVersion": 1,
+  "source": "amex-api-recent",
+  "parserVersion": "holdr-ext-amex@0.1.0",
+  "issuer": "amex",
+  "currency": "USD",
+  "owner": "casey",
+  "cards": [
+    "2999"
+  ],
+  "bindingId": "bnd_bbpoakhpcbbpganbmgjflbgihgdageoa",
+  "bindingVersion": 1,
+  "captureId": "cpt_nomhlanfaelicgnncncfgamlkdochhhm",
+  "observedAt": "2026-10-16T15:30:00.000Z",
+  "mode": "main-passive",
+  "coverage": [
+    {
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "status": "posted",
+      "requested": null,
+      "observed": {
+        "start": "2026-10-01",
+        "end": "2026-10-06",
+        "dateBasis": "transaction"
+      },
+      "completeness": "unknown",
+      "pageCount": 1,
+      "termination": "snapshot"
+    },
+    {
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "status": "pending",
+      "requested": null,
+      "observed": null,
+      "completeness": "unknown",
+      "pageCount": 1,
+      "termination": "snapshot"
+    },
+    {
+      "cardScopeId": "scp_cjighjhcjnnloaakgpnlkhiolcjgbign",
+      "status": "posted",
+      "requested": null,
+      "observed": {
+        "start": "2026-10-07",
+        "end": "2026-10-07",
+        "dateBasis": "transaction"
+      },
+      "completeness": "unknown",
+      "pageCount": 1,
+      "termination": "snapshot"
+    },
+    {
+      "cardScopeId": "scp_cjighjhcjnnloaakgpnlkhiolcjgbign",
+      "status": "pending",
+      "requested": null,
+      "observed": {
+        "start": "2026-10-16",
+        "end": "2026-10-16",
+        "dateBasis": "observation"
+      },
+      "completeness": "unknown",
+      "pageCount": 1,
+      "termination": "snapshot"
+    }
+  ],
+  "rejectedCount": 1,
+  "statement": null,
+  "totals": {
+    "posted": {
+      "count": 7,
+      "chargesMinor": 23840,
+      "creditsMinor": -128999,
+      "netMinor": -105159,
+      "byKind": {
+        "purchase": {
+          "count": 3,
+          "amountMinor": 14340
+        },
+        "refund": {
+          "count": 1,
+          "amountMinor": -1999
+        },
+        "payment": {
+          "count": 1,
+          "amountMinor": -125000
+        },
+        "fee": {
+          "count": 1,
+          "amountMinor": 9500
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 1,
+          "amountMinor": -2000
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    },
+    "pending": {
+      "count": 1,
+      "chargesMinor": 4200,
+      "creditsMinor": 0,
+      "netMinor": 4200,
+      "byKind": {
+        "purchase": {
+          "count": 1,
+          "amountMinor": 4200
+        },
+        "refund": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "payment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "transactionDate": "2026-10-01",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": 9500,
+      "kind": "fee",
+      "description": "ANNUAL MEMBERSHIP FEE",
+      "merchant": null,
+      "issuerCategory": "Fees & Adjustments",
+      "externalIdHash": null,
+      "fingerprint": "cfp1:ejjbccijecbcenpmnpggabohjlhfjeiblbhnncbjmkpmelcghfljijphgakleebc",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-02",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": 6420,
+      "kind": "purchase",
+      "description": "SYNTHETIC GROCERY MARKET",
+      "merchant": null,
+      "issuerCategory": "Merchandise & Supplies-Groceries",
+      "externalIdHash": null,
+      "fingerprint": "cfp1:ofckkjhinnbdmokgmonflljgoklnpgfgcfklkpmfbjkojkkgaepkegbohgcjhbaa",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-02",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": 6420,
+      "kind": "purchase",
+      "description": "SYNTHETIC GROCERY MARKET",
+      "merchant": null,
+      "issuerCategory": "Merchandise & Supplies-Groceries",
+      "externalIdHash": null,
+      "fingerprint": "cfp1:dbdcldepepdnmbbodhijpmmfbjldbihnhfbmkebdoobkigjgfbpjgipicgjecoin",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-05",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": -1999,
+      "kind": "refund",
+      "description": "EXAMPLE ONLINE STORE RETURN",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:jemnfnfkbdnfcmamigocpjpaflpabkeffmpmhimmnhhloilbadnnepgoijdgikbh",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-06",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": -125000,
+      "kind": "payment",
+      "description": "MOBILE PAYMENT - THANK YOU",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:hggkfnnmfbcfkfdjpljabefkodjkcdgcafblndofdcbgggidpcfpcjjmihmcggco",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-06",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": -2000,
+      "kind": "adjustment",
+      "description": "DIGITAL ENTERTAINMENT CREDIT",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:iggehcddacdheannnhffkajemimobdaabmhbplfcfbfnjeblipcojpfcfgbemljk",
+      "cardScopeId": "scp_mllnakafmckhkkiankfgehnhpbepjcnd",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-07",
+      "postedDate": null,
+      "status": "posted",
+      "amountMinor": 1500,
+      "kind": "purchase",
+      "description": "EXAMPLE PARKING GARAGE",
+      "merchant": null,
+      "issuerCategory": "Transportation-Parking",
+      "externalIdHash": null,
+      "fingerprint": "cfp1:eppcpigmhmmcchedjhhkdoadpadoacnjjhngkiomnicohdijehceefcelcckmfak",
+      "cardScopeId": "scp_cjighjhcjnnloaakgpnlkhiolcjgbign",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-12",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 4200,
+      "kind": "purchase",
+      "description": "SYNTHETIC BISTRO",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:nfopklifjhkfljodmedhakjmndjacljkffimjnclljemfpjdnpcoijbhacppegka",
+      "cardScopeId": "scp_cjighjhcjnnloaakgpnlkhiolcjgbign",
+      "identityNamespace": "amex-api-recent:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ]
+}

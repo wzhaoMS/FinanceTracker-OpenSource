@@ -1,0 +1,174 @@
+{
+  "type": "projected-bank-batch/v1",
+  "contractVersion": 1,
+  "issuer": "citi",
+  "contract": "citi.transactions.observe",
+  "streamHandle": "stm_deckhaeficniccibljpinaajkepgcnjk",
+  "sequence": 0,
+  "observedAt": "2026-10-16T17:45:12.000Z",
+  "currency": "USD",
+  "accounts": [
+    {
+      "ref": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "last4": "5502",
+      "productHint": "Example Cash Back Card"
+    }
+  ],
+  "transactions": [
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_bbdhiemcbobljmknihceekkkhbbhkfnp",
+      "cardLast4": null,
+      "transactionDate": "2026-09-28",
+      "postedDate": "2026-09-29",
+      "status": "posted",
+      "amountMinor": 12000,
+      "kind": "purchase",
+      "description": "SYNTHETIC HARDWARE STORE",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:aobaoalphgodkfceonchfbkppkfmoffikfibephckfebdiemcndmojelfadmoaph",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [
+        {
+          "namespace": "citi-api:citi-transaction:v1",
+          "idHash": "xid1:ehigpbdhhedoifojflacocjojeikfkjonolhfjiploacdanhnmcncceocdjmocik"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_bbdhiemcbobljmknihceekkkhbbhkfnp",
+      "cardLast4": null,
+      "transactionDate": "2026-10-01",
+      "postedDate": "2026-10-01",
+      "status": "posted",
+      "amountMinor": 789,
+      "kind": "interest",
+      "description": "INTEREST CHARGED ON PURCHASES",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:emlkcbjijloaehoghakbjecokdkpbnahkdpdlmgdjgcdhjcdlfnhjnempfpnacdo",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_bbdhiemcbobljmknihceekkkhbbhkfnp",
+      "cardLast4": null,
+      "transactionDate": "2026-10-02",
+      "postedDate": "2026-10-02",
+      "status": "posted",
+      "amountMinor": -30000,
+      "kind": "payment",
+      "description": "ONLINE PAYMENT, THANK YOU",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:lbnhfjcgidcfmgfghknlnbeogilhchefoigklicjnlipmdlfoegfgfdffoidfolo",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_mcgpcmfildaadfhenbckkajlgimaapkf",
+      "cardLast4": null,
+      "transactionDate": "2026-10-03",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 1845,
+      "kind": "purchase",
+      "description": "EXAMPLE BOOKSHOP",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:mlekbhjjbljhpgjadpdennbbkgiimogpokodphakhmhilojhljkpbifedblhdfbn",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [
+        {
+          "namespace": "citi-api:citi-transaction:v1",
+          "idHash": "xid1:ddlhdnefgdmfcnkicejpiopipefidcbbcnbngcijollpahdilbikfpfdbcanccme"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_mcgpcmfildaadfhenbckkajlgimaapkf",
+      "cardLast4": null,
+      "transactionDate": "2026-10-05",
+      "postedDate": "2026-10-06",
+      "status": "posted",
+      "amountMinor": -1845,
+      "kind": "refund",
+      "description": "EXAMPLE BOOKSHOP RETURN",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:alhaocgihmgahcdanclcifbdhcjnjhgkgcphhgipekmbhmcjcklffbjpcdmlikoa",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "holderRef": "hld_bbdhiemcbobljmknihceekkkhbbhkfnp",
+      "cardLast4": null,
+      "transactionDate": "2026-10-13",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 999,
+      "kind": "purchase",
+      "description": "EXAMPLE STREAMING SERVICE",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:midgcbjfhnngnmijaeleicocbnfdidphloibpddfcnoimkilnjjhajfejdjejabm",
+      "identityNamespace": "citi-api:transaction:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ],
+  "coverage": [
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "status": "posted",
+      "requested": {
+        "start": "2026-09-16",
+        "end": "2026-10-16",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-09-28",
+        "end": "2026-10-05",
+        "dateBasis": "transaction"
+      },
+      "completeness": "complete",
+      "pageCount": 1,
+      "termination": "end-marker"
+    },
+    {
+      "accountRef": "cnd_cmhhobdbbkfmbigigfflnjahpdkjcfko",
+      "status": "pending",
+      "requested": {
+        "start": "2026-10-16",
+        "end": "2026-10-16",
+        "dateBasis": "observation"
+      },
+      "observed": {
+        "start": "2026-10-13",
+        "end": "2026-10-13",
+        "dateBasis": "transaction"
+      },
+      "completeness": "complete",
+      "pageCount": 1,
+      "termination": "end-marker"
+    }
+  ],
+  "rejectedCount": 0
+}

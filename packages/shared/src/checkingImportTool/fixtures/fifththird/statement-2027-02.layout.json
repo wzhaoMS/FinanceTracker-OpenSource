@@ -1,0 +1,39 @@
+{
+  "note": "Synthetic Fifth Third checking statement whose Daily Balance Summary runs on its second page with a notice after its balances, laid out as Fifth Third prints one: a paragraph of prose that states a whole-dollar term (UP TO $25., no cents) and a full date. The February after statement-2027-01; every value is synthetic.",
+  "pages": [
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 760, "Statement Period Date: 2/1/2027 - 2/28/2027"],
+      [36, 746, "Account Type: 53 MOMENTUM CHECKING"],
+      [36, 732, "Account Number: 9990004321"],
+      [400, 718, "Questions? Visit 53.com"],
+      [36, 690, "Account Summary - 9990004321"],
+      [36, 676, "02/01"], [70, 676, "Beginning Balance"], [250, 676, "$9,538.57"], [350, 676, "Number of Days in Period"], [500, 676, "28"],
+      [84, 662, "Checks"],
+      [70, 648, "2"], [84, 648, "Withdrawals / Debits"], [250, 648, "$(261.00)"],
+      [70, 634, "1"], [84, 634, "Deposits / Credits"], [250, 634, "$3,200.00"],
+      [36, 620, "02/28"], [70, 620, "Ending Balance"], [250, 620, "$12,477.57"],
+      [280, 596, "Fee Summary"], [410, 596, "This Period"], [480, 596, "2027 Year To Date"],
+      [280, 582, "Total Overdraft Fees"], [410, 582, "($0.00)"], [480, 582, "($0.00)"],
+      [280, 568, "Total Returned Item Fees"], [410, 568, "($0.00)"], [480, 568, "($0.00)"],
+      [36, 540, "Withdrawals / Debits"], [300, 540, "2 items totaling $261.00"],
+      [36, 526, "Date"], [141, 526, "Amount"], [202, 526, "Description"],
+      [36, 512, "02/03"], [141, 512, "250.00"], [204, 512, "WEB INITIATED PAYMENT AT CHASE CREDIT CRD EPAY"],
+      [36, 498, "02/26"], [145.5, 498, "11.00"], [204, 498, "MONTHLY SERVICE FEE"],
+      [36, 470, "Deposits / Credits"], [300, 470, "1 items totaling $3,200.00"],
+      [36, 456, "Date"], [141, 456, "Amount"], [202, 456, "Description"],
+      [36, 442, "02/01"], [132, 442, "3,200.00"], [204, 442, "DIRECT DEPOSIT CONTOSO PAYROLL"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 1 of 2"]
+    ],
+    [
+      [36, 780, "0000000000000000000"],
+      [36, 680, "Daily Balance Summary"],
+      [36, 666, "Date"], [80, 666, "Amount"], [200, 666, "Date"], [244, 666, "Amount"], [364, 666, "Date"], [408, 666, "Amount"],
+      [36, 652, "02/01"], [67.5, 652, "12,738.57"], [200, 652, "02/03"], [231.5, 652, "12,488.57"], [364, 652, "02/26"], [395.5, 652, "12,477.57"],
+      [43, 600, "IF AN ITEM WOULD OVERDRAW YOUR ACCOUNT ON OR AFTER 3/15/2027, THE PER ITEM FEE FOR EACH OVERDRAFT"],
+      [43, 590, "WILL BE UP TO $25. USE THE FIFTH THIRD MOBILE APP TO SET ALERTS ON YOUR BALANCE AND"],
+      [43, 580, "LEARN WAYS TO AVOID OVERDRAFT FEES"],
+      [36, 22, "For more information about your account visit www.53.com"], [500, 22, "Page 2 of 2"]
+    ]
+  ]
+}

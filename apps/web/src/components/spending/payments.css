@@ -1,0 +1,128 @@
+/* =====================================================================
+ * Card payments and checking (components/spending/PaymentReconciliationPanel.tsx) and a payment's place in its
+ * details (PaymentMatchSection.tsx). The reading floors (plan D1), in the panel's own CSS: 16px for what is read (the
+ * headline, the breakdown, every payment and withdrawal row), 14px for help, status (the "Confirmed by you" badge
+ * included: status is never a 13px badge), warnings and every action. Only the palette's tokens, and the type tokens
+ * with their values as fallbacks.
+ *
+ * Component CSS loads before styles.css and modes.css (main.tsx imports App first), so every rule here is scoped
+ * under the panel, or the details section, with more classes than the global rule it overrides.
+ * ==================================================================== */
+
+.spending-panel.spending-payments { gap: 12px; }
+.spending-panel.spending-payments > .payments-head { display: grid; justify-content: stretch; gap: 2px; }
+/* The title is a section head: T1's token, 18px, and 20px from 1280px (beside its spinner while the panel reads again). */
+.spending-panel.spending-payments > .payments-head h3 { font-size: var(--text-section, 18px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-payments .payments-scope {
+  margin: 0; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+
+/* The compact state: the next action, then each other line in its own unit; the folds below it. */
+.spending-panel.spending-payments .payments-summary { display: grid; gap: 4px; min-width: 0; }
+.spending-panel.spending-payments .payments-headline {
+  margin: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650;
+}
+.spending-panel.spending-payments .payments-lines {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 2px;
+  color: var(--text); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.spending-panel.spending-payments .payments-note,
+.spending-panel.spending-payments .payments-help,
+.spending-detail-suggestions.payment-match .payment-match-consequence {
+  margin: 0; max-width: var(--measure, 65ch); color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5);
+}
+.spending-panel.spending-payments .spending-error { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-payments > .spending-error:focus { outline: none; }
+.spending-panel.spending-payments > .spending-error:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.spending-panel.spending-payments > .payments-read-again { justify-self: start; }
+
+/* The last answer, in sight with its Undo after its row has gone from the list. */
+.spending-panel.spending-payments .payments-saved {
+  margin: 0; padding: 8px 12px; border: 1px solid color-mix(in srgb, var(--gain) 45%, var(--line)); border-radius: 10px;
+  background: color-mix(in srgb, var(--gain) 8%, transparent); color: var(--text);
+  font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); overflow-wrap: anywhere;
+}
+.spending-panel.spending-payments .payments-saved:focus { outline: none; }
+.spending-panel.spending-payments .payments-saved:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* The panel's two folds (components/Disclosure.tsx): Review is its one action, Details the quiet one. */
+.spending-panel.spending-payments .payments-fold > .fold-toggle {
+  min-height: 36px; color: var(--text); font-size: var(--text-help, 14px); line-height: 20px; font-weight: 600;
+}
+.spending-panel.spending-payments .payments-review-fold > .fold-toggle {
+  padding: 6px 14px 6px 10px; border: 1px solid color-mix(in srgb, var(--brand) 55%, var(--line)); color: var(--brand);
+}
+.spending-panel.spending-payments .payments-review-fold > .fold-toggle:hover { color: var(--brand); }
+.spending-panel.spending-payments .payments-fold > .fold-content { display: grid; gap: 16px; padding-top: 10px; min-width: 0; }
+/* Rows stay within reach of their amounts and buttons on a wide screen: the folds' content stops at 64rem. */
+.spending-panel.spending-payments .payments-review,
+.spending-panel.spending-payments .payments-details { display: grid; gap: 16px; min-width: 0; max-width: 64rem; }
+.spending-panel.spending-payments .payments-review-count {
+  margin: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650;
+}
+.spending-panel.spending-payments .payments-block { display: grid; gap: 10px; min-width: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.spending-panel.spending-payments .payments-block > h4 {
+  margin: 0; color: var(--text); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650;
+}
+.spending-panel.spending-payments .payments-breakdown { display: grid; gap: 4px; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-payments .payments-breakdown > p { margin: 0; }
+.spending-panel.spending-payments .payments-breakdown > ul { margin: 0; padding-left: 22px; display: grid; gap: 2px; }
+
+/* Rows are read: 16px; what is said about a row (its reason, its masked text) is help: 14px. */
+.spending-panel.spending-payments .spending-payments-open,
+.spending-panel.spending-payments .spending-payments-debit,
+.spending-panel.spending-payments .spending-payments-item,
+.spending-panel.spending-payments .spending-payments-answer,
+.spending-panel.spending-payments .spending-payments-accounts { font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-payments .spending-payments-open:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.spending-panel.spending-payments .spending-muted,
+.spending-panel.spending-payments .spending-detail-suggestion-text { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.spending-panel.spending-payments .spending-payments-group { gap: 10px; padding: 10px 12px; }
+.spending-panel.spending-payments .spending-payments-options { gap: 10px; }
+/*
+ * In a group held for the owner, each card payment is its own part: ruled off, labeled "Card payment", and the
+ * withdrawals that could pay it under its own label, held to it by a rule down their left.
+ */
+.spending-panel.spending-payments .payments-candidates { gap: 6px; padding-top: 10px; border-top: 1px solid var(--line); }
+.spending-panel.spending-payments .payments-part-label {
+  margin: 0; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); font-weight: 600;
+}
+.spending-panel.spending-payments .payments-candidates > .spending-payments-open { font-weight: 600; }
+.spending-panel.spending-payments .payments-candidates > .spending-payments-options { padding-left: 10px; border-left: 2px solid var(--line); }
+/* Items and pairs in a list are ruled off from each other, so each answer stays with its own row. */
+.spending-panel.spending-payments .payments-block > .spending-payments-item + .spending-payments-item,
+.spending-panel.spending-payments .spending-payments-options > li.spending-payments-pair + li.spending-payments-pair {
+  padding-top: 10px; border-top: 1px solid var(--line);
+}
+/* Why Holdr matched a pair from evidence: help under the pair, across its whole row. */
+.spending-panel.spending-payments .spending-payments-why { grid-column: 1 / -1; margin: 0; }
+.spending-panel.spending-payments .spending-payments-buttons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.spending-panel.spending-payments .spending-button,
+.spending-panel.spending-payments .spending-link { font-size: var(--text-help, 14px); line-height: 20px; }
+.spending-panel.spending-payments .spending-payments-buttons .spending-button,
+.spending-panel.spending-payments .spending-payments-item > .spending-button,
+.spending-panel.spending-payments .spending-payments-options > li > .spending-button { padding: 6px 12px; }
+.spending-panel.spending-payments .spending-payments-options > li > .spending-button { justify-self: start; }
+.spending-panel.spending-payments .spending-badge { font-size: var(--text-help, 14px); line-height: 20px; }
+
+/* A payment's place in its details: status and help, so 14px, its actions too. */
+.spending-detail-suggestions.payment-match { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.spending-detail-suggestions.payment-match .spending-detail-suggestion-text { font-size: var(--text-help, 14px); }
+.spending-detail-suggestions.payment-match .spending-button,
+.spending-detail-suggestions.payment-match .spending-link { font-size: var(--text-help, 14px); line-height: 20px; }
+.spending-detail-suggestions.payment-match li > .spending-button { justify-self: start; }
+
+@media (pointer: coarse) {
+  .spending-panel.spending-payments .payments-fold > .fold-toggle,
+  .spending-panel.spending-payments .spending-payments-buttons .spending-button,
+  .spending-panel.spending-payments .spending-payments-item > .spending-button,
+  .spending-panel.spending-payments .spending-payments-options > li > .spending-button,
+  .spending-detail-suggestions.payment-match .spending-button { min-height: 44px; }
+}
+@media (max-width: 720px) {
+  /* On a phone a withdrawal's two answers share a line: the group box and the indents give them the room. */
+  .spending-panel.spending-payments .spending-payments-group { padding: 10px 8px; }
+  .spending-panel.spending-payments .spending-payments-options { padding-left: 8px; }
+  .spending-panel.spending-payments .payments-candidates > .spending-payments-options { padding-left: 6px; }
+  .spending-panel.spending-payments .spending-payments-buttons .spending-button { padding: 6px 10px; }
+}

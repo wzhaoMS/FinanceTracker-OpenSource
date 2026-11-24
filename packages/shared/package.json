@@ -1,0 +1,57 @@
+{
+  "name": "@finance-tracker/shared",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./card-import-tool": { "types": "./dist/cardImportTool/index.d.ts", "import": "./dist/cardImportTool/index.js" },
+    "./checking-import-tool": { "types": "./dist/checkingImportTool/index.d.ts", "import": "./dist/checkingImportTool/index.js" },
+    "./retail-import-tool": { "types": "./dist/retailImportTool/index.d.ts", "import": "./dist/retailImportTool/index.js" },
+    "./retail-import-payload": { "types": "./dist/retailImportTool/payload.d.ts", "import": "./dist/retailImportTool/payload.js" },
+    "./metals-ledger": { "types": "./dist/metalsLedger/index.d.ts", "import": "./dist/metalsLedger/index.js" },
+    "./metals-ledger-fixtures": { "types": "./dist/metalsLedger/__fixtures__/metalsPayloads.d.ts", "import": "./dist/metalsLedger/__fixtures__/metalsPayloads.js" },
+    "./metals-api": { "types": "./dist/metalsApi.d.ts", "import": "./dist/metalsApi.js" },
+    "./retail-api": { "types": "./dist/retailApi.d.ts", "import": "./dist/retailApi.js" },
+    "./metals-rewards": { "types": "./dist/metalsRewards.d.ts", "import": "./dist/metalsRewards.js" },
+    "./metals-convert": { "types": "./dist/metalsLedger/converters/index.d.ts", "import": "./dist/metalsLedger/converters/index.js" },
+    "./metals-convert-fixtures": { "types": "./dist/metalsLedger/converters/__fixtures__/index.d.ts", "import": "./dist/metalsLedger/converters/__fixtures__/index.js" },
+    "./retail-capture-fixtures": { "types": "./dist/retailImportTool/__fixtures__/costcoCapture.d.ts", "import": "./dist/retailImportTool/__fixtures__/costcoCapture.js" },
+    "./card-sync-fixtures": { "types": "./dist/cardSync/__fixtures__/index.d.ts", "import": "./dist/cardSync/__fixtures__/index.js" },
+    "./card-statement-fixtures": { "types": "./dist/cardImportTool/__fixtures__/discoverStatements.d.ts", "import": "./dist/cardImportTool/__fixtures__/discoverStatements.js" },
+    "./spending-fixtures": { "types": "./dist/__fixtures__/syntheticSpendingLedger.d.ts", "import": "./dist/__fixtures__/syntheticSpendingLedger.js" },
+    "./web-release": { "types": "./dist/webRelease/manifest.d.ts", "import": "./dist/webRelease/manifest.js" },
+    "./web-release/files": { "types": "./dist/webRelease/files.d.ts", "import": "./dist/webRelease/files.js" },
+    "./tailnet": { "types": "./dist/tailnet.d.ts", "import": "./dist/tailnet.js" },
+    "./lan-https": { "types": "./dist/lanHttps.d.ts", "import": "./dist/lanHttps.js" },
+    "./upstream-keep-alive": { "types": "./dist/upstreamKeepAlive.d.ts", "import": "./dist/upstreamKeepAlive.js" }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node ../../scripts/run-tsx-tests.mjs src .test.ts --import=../../scripts/loopback-only.mjs",
+    "clean": "node ../../scripts/rm.mjs dist .turbo"
+  },
+  "peerDependencies": {
+    "css-tree": "3.1.0",
+    "parse5": "7.3.0"
+  },
+  "peerDependenciesMeta": {
+    "css-tree": {
+      "optional": true
+    },
+    "parse5": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/css-tree": "3.2.0",
+    "css-tree": "3.1.0",
+    "parse5": "7.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

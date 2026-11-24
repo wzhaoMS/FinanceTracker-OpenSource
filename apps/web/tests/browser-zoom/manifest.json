@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "Holdr e2e browser zoom (test-only)",
+  "version": "1.0.0",
+  "description": "Test-only, never shipped: lets the web e2e set a tab's real browser zoom with chrome.tabs.setZoom.",
+  "permissions": ["tabs"],
+  "background": { "service_worker": "background.js" }
+}

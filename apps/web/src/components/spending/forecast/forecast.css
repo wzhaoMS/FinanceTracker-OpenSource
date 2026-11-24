@@ -1,0 +1,205 @@
+/* =====================================================================
+ * Spending: patterns and forecast (components/spending/forecast/SpendingForecast.tsx).
+ * Only the palette's tokens; tints are color-mix() of tokens, so another
+ * palette carries over.
+ *
+ * Type (readability D1), through the shared scale's tokens with their values
+ * as fallbacks: 16px for what is read (sentences, row names, the parts, the
+ * bills, the caveats), 14px for help, labels, status and actionable links,
+ * 18px (20px from 1280px) for the panel's heading, line-height 1.5, prose at
+ * most 65ch. This file loads before styles.css and modes.css (main.tsx
+ * imports App first), so its overrides of shared classes are scoped under
+ * `.spending-panel.forecast` and win on specificity, not order.
+ * ==================================================================== */
+
+.spending-panel.forecast { position: relative; line-height: var(--leading, 1.5); }
+
+/* The heading, then the scope line under it: whose cards, as of when, and which filters apply. */
+.spending-panel.forecast > .forecast-head { display: grid; justify-content: stretch; gap: 4px; }
+.spending-panel.forecast > .forecast-head h3 { font-size: var(--text-section, 18px); line-height: 1.35; }
+@media (min-width: 1280px) {
+  .spending-panel.forecast > .forecast-head h3 { font-size: max(var(--text-section, 20px), 20px); }
+}
+.forecast-scope {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  max-width: var(--measure, 65ch);
+  margin: 0;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.spending-panel.forecast .spending-error { max-width: var(--measure, 65ch); font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.spending-panel.forecast .spending-muted { max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+
+/* The lead: this month's estimate with its range beside it; its parts beside it on a wide screen, under it on a narrow one. */
+.forecast-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px 40px;
+  align-items: start;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+@media (min-width: 900px) {
+  /* Capped, so a label and its amount stay within a glance of each other on a wide screen. */
+  .forecast-lead { grid-template-columns: minmax(0, 36rem) minmax(0, 30rem); justify-content: start; }
+}
+.forecast-lead > .forecast-status { grid-column: 1 / -1; }
+.forecast-lead-main { display: grid; gap: 8px; min-width: 0; }
+.forecast-lead h4,
+.forecast-card h4 { margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650; overflow-wrap: anywhere; }
+.forecast-figure { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; min-width: 0; max-width: var(--measure, 65ch); margin: 0; }
+.forecast-figure-value { font-size: 32px; line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; }
+.forecast-figure-label { min-width: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); color: var(--text-muted); overflow-wrap: anywhere; }
+/* The range moves to its own line as a whole rather than splitting, unless even a line is too narrow for it. */
+.forecast-figure-range { display: inline-block; max-width: 100%; color: var(--text); font-weight: 650; }
+
+/* The missing history: never folded, in a warning tint, right under the lead. */
+.forecast-caveats {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px 16px;
+  border: 1px solid color-mix(in srgb, var(--warning) 45%, var(--line));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--warning) 8%, var(--surface-2));
+  font-size: var(--text-read, 16px);
+  line-height: var(--leading, 1.5);
+}
+.forecast-gaps { display: grid; gap: 4px; min-width: 0; }
+.forecast-gaps ul { display: grid; gap: 4px; margin: 0; padding-left: 20px; max-width: var(--measure, 65ch); }
+.forecast-gaps li { overflow-wrap: anywhere; }
+.forecast-caveat-cards { max-width: var(--measure, 65ch); margin: 0; overflow-wrap: anywhere; }
+
+.forecast-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px; min-width: 0; }
+.forecast-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+/* One idea to a line: an answer is read at 16px; help and status beside it at 14px. */
+.forecast-sentences {
+  display: grid;
+  gap: 8px;
+  max-width: var(--measure, 65ch);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-read, 16px);
+  line-height: var(--leading, 1.5);
+}
+.forecast-sentences li { overflow-wrap: anywhere; }
+.forecast-sentences.forecast-help,
+.forecast-help { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.forecast-sentences.forecast-status { gap: 4px; font-size: var(--text-help, 14px); }
+.forecast-show { margin-left: 8px; }
+.spending-panel.forecast .spending-link { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); justify-self: start; }
+.spending-panel.forecast .spending-link.inline { font-size: inherit; }
+
+/* Spending without large one-offs so far (fill), the estimate's 80% range (band), the estimate (mark) and a typical month (tick). */
+.forecast-track { position: relative; height: 8px; margin: 4px 0 8px; border-radius: 999px; background: color-mix(in srgb, var(--line) 70%, transparent); }
+.forecast-track-spent { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--brand); }
+.forecast-track-band { position: absolute; top: 0; bottom: 0; border-radius: inherit; background: color-mix(in srgb, var(--brand) 30%, transparent); }
+.forecast-track-point { position: absolute; top: -3px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--text); }
+.forecast-track-typical { position: absolute; top: calc(100% + 1px); margin-left: -4px; border: 4px solid transparent; border-top: 0; border-bottom-color: var(--text-muted); }
+
+/* The month's parts, one to a line, each labelled with what it holds. */
+.forecast-parts { display: grid; min-width: 0; margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.forecast-parts > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0 12px;
+  min-width: 0;
+  padding: 6px 0;
+  border-top: 1px solid var(--line);
+}
+.forecast-parts > div:first-child { border-top: 0; padding-top: 0; }
+/* A label wraps within its share before its value leaves the line. */
+.forecast-parts dt { flex: 1 1 10em; min-width: 0; color: var(--text-muted); overflow-wrap: anywhere; }
+.forecast-parts dd { flex: 0 1 auto; margin: 0 0 0 auto; text-align: right; }
+.forecast-parts dd small { display: block; font-family: inherit; font-size: var(--text-help, 14px); color: var(--text-muted); }
+
+/* Positioned, so the table scrolls inside its card; the row names stay in view while it does, and keep a readable width. */
+.forecast-table-wrap { position: relative; overflow-x: auto; min-width: 0; }
+.forecast-table { width: 100%; max-width: 48rem; border-collapse: collapse; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.forecast-table caption { padding: 0 0 6px; text-align: left; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.forecast-table th, .forecast-table td { padding: 8px 10px; text-align: right; vertical-align: top; border-bottom: 1px solid var(--line); }
+.forecast-table th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 8.5em;
+  padding-left: 0;
+  background: var(--surface-2);
+  text-align: left;
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+.forecast-table thead th { font-size: var(--text-help, 14px); font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.forecast-table thead th:first-child { white-space: normal; }
+.forecast-table tr.total th, .forecast-table tr.total td { font-weight: 650; }
+.forecast-table td.forecast-none { text-align: left; color: var(--text-muted); }
+.forecast-cell-range { display: block; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); font-weight: 400; color: var(--text-muted); white-space: nowrap; }
+.forecast-note { display: block; font-size: var(--text-help, 14px); font-weight: 400; color: var(--text-muted); }
+
+.forecast-category { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; overflow-wrap: anywhere; }
+.forecast-category:hover { color: var(--brand); }
+.forecast-category:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 2px; }
+
+/* A bill: its day, merchant and amount on one line; its rhythm, or that it is late or not in the record yet, under them. */
+.forecast-bills { display: grid; margin: 0; padding: 0; list-style: none; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.forecast-bill {
+  display: grid;
+  grid-template-columns: 3.75em minmax(0, 1fr) auto;
+  grid-template-areas: 'date merchant amount' '. note note';
+  gap: 0 10px;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.forecast-bill > * { min-width: 0; overflow-wrap: anywhere; }
+.forecast-bill:last-child { border-bottom: 0; }
+.forecast-bill-date { grid-area: date; font-size: var(--text-help, 14px); color: var(--text-muted); }
+.forecast-bill-merchant { grid-area: merchant; }
+.forecast-bill-amount { grid-area: amount; text-align: right; white-space: nowrap; }
+.forecast-bill-note { grid-area: note; font-size: var(--text-help, 14px); color: var(--text-muted); }
+.forecast-bill[data-late] .forecast-bill-note { color: var(--warning); font-weight: 600; }
+@media (max-width: 480px) {
+  /* Narrow: the merchant gets the line with the amount; the day goes under it, beside the rhythm. */
+  .forecast-bill { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'merchant merchant amount' 'date note note'; }
+}
+
+/* The one fold: how the estimates were made. */
+.spending-panel.forecast .forecast-how > .fold-toggle { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.forecast-how-body { display: grid; gap: 16px; min-width: 0; padding: 8px 0 0 22px; }
+.forecast-how-body section { display: grid; gap: 8px; min-width: 0; }
+.forecast-how-body h4 { margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-weight: 650; }
+/* Where the caveats' "Which cards, and why" lands: a focus target, ringed only for the keyboard. */
+.forecast-how-body h4:focus { outline: none; }
+.forecast-how-body h4:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 4px; }
+.forecast-how-text { max-width: var(--measure, 65ch); margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.forecast-how-subject { font-weight: 600; }
+@media (max-width: 480px) {
+  .forecast-how-body { padding-left: 0; }
+}
+
+@media (forced-colors: active) {
+  .forecast-track-spent, .forecast-track-point { background: CanvasText; }
+  .forecast-track-band { background: Highlight; }
+  .forecast-track-typical { border-bottom-color: CanvasText; }
+  .forecast-caveats { border-color: CanvasText; }
+}

@@ -1,0 +1,14 @@
+# Managed files that Holdr's code no longer ships and that a deployment removes from the live tree (design §11.4 step 16a;
+# deviation B-D24 as revised after the B2 review, finding 5). One path relative to the tree per line; '#' starts a comment.
+# deploy-apply.sh deletes each listed regular file or symlink that exists in T (never a directory, never anything unlisted),
+# and validate-offline refuses a tree that still contains a file its own list retires. A revert restores the snapshot, which
+# keeps the old files. Add an entry whenever a commit deletes a file that could be installed on a deployment host.
+
+# B1 (O13): one-off writers that opened better-sqlite3 directly, without openWriterDb and the lifecycle lease.
+scripts/update-alex-brokeragelink-2026-05-18.mjs
+scripts/update-casey-brokeragelink-2026-05-12.mjs
+scripts/update-casey-brokeragelink-activity-2026-05-12.mjs
+
+# W19 (F1): the retired issuer-recon page observer of the Holdr Card Sync extension (its MAIN-world hook and bridge).
+tools/holdr-card-sync/extension/hook.js
+tools/holdr-card-sync/extension/bridge.js

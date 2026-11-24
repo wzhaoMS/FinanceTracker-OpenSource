@@ -1,0 +1,209 @@
+{
+  "format": "holdr.card-import",
+  "version": 2,
+  "contractVersion": 1,
+  "source": "wf-dom",
+  "parserVersion": "holdr-ext-wf@0.1.0",
+  "issuer": "wellsfargo",
+  "currency": "USD",
+  "owner": "alex",
+  "cards": [
+    "8086"
+  ],
+  "bindingId": "bnd_anloojfnapmmjeofnchgnghinicfnnaj",
+  "bindingVersion": 1,
+  "captureId": "cpt_ngjbhhidcdedaelkleokajgmbcbgndng",
+  "observedAt": "2026-10-16T18:20:45.999Z",
+  "mode": "dom-passive",
+  "coverage": [
+    {
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "status": "posted",
+      "requested": null,
+      "observed": {
+        "start": "2026-10-09",
+        "end": "2026-10-11",
+        "dateBasis": "posted"
+      },
+      "completeness": "partial",
+      "pageCount": 1,
+      "termination": "more-available"
+    },
+    {
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "status": "pending",
+      "requested": null,
+      "observed": {
+        "start": "2026-10-16",
+        "end": "2026-10-16",
+        "dateBasis": "observation"
+      },
+      "completeness": "unknown",
+      "pageCount": 1,
+      "termination": "snapshot"
+    }
+  ],
+  "rejectedCount": 0,
+  "statement": null,
+  "totals": {
+    "posted": {
+      "count": 4,
+      "chargesMinor": 1050,
+      "creditsMinor": -23000,
+      "netMinor": -21950,
+      "byKind": {
+        "purchase": {
+          "count": 2,
+          "amountMinor": 1050
+        },
+        "refund": {
+          "count": 1,
+          "amountMinor": -3000
+        },
+        "payment": {
+          "count": 1,
+          "amountMinor": -20000
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    },
+    "pending": {
+      "count": 1,
+      "chargesMinor": 6130,
+      "creditsMinor": 0,
+      "netMinor": 6130,
+      "byKind": {
+        "purchase": {
+          "count": 1,
+          "amountMinor": 6130
+        },
+        "refund": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "payment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "transactionDate": "2026-10-08",
+      "postedDate": "2026-10-09",
+      "status": "posted",
+      "amountMinor": 525,
+      "kind": "purchase",
+      "description": "SYNTHETIC COFFEE CART",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:koocplpkpnpbmeickofkaljcbjoadmbhneaagecibhnkfbfagonngmjepbhglbel",
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "identityNamespace": "wf-dom:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-08",
+      "postedDate": "2026-10-09",
+      "status": "posted",
+      "amountMinor": 525,
+      "kind": "purchase",
+      "description": "SYNTHETIC COFFEE CART",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:ildnoomajbpcgokdocekbaacaijifakcnfdlleponnmildaiccjnbplboocollog",
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "identityNamespace": "wf-dom:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-10",
+      "postedDate": "2026-10-11",
+      "status": "posted",
+      "amountMinor": -3000,
+      "kind": "refund",
+      "description": "EXAMPLE SHOE STORE CREDIT",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:nomkhmihmohnaldgimmeipncplocnbnjfigdkjhljopknhgndigojidohlioekcf",
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "identityNamespace": "wf-dom:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-11",
+      "postedDate": "2026-10-11",
+      "status": "posted",
+      "amountMinor": -20000,
+      "kind": "payment",
+      "description": "ONLINE PAYMENT THANK YOU",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:anbjicecplglegeepnfileibdlleblgdgpdieojbbfdbheklaccjlbbplkndifap",
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "identityNamespace": "wf-dom:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-15",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 6130,
+      "kind": "purchase",
+      "description": "EXAMPLE GROCERY",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:flfoohdfdcbmgcoednihdlokenfdeflodldlpeahgligaknglhdghfbfdmcmpepg",
+      "cardScopeId": "scp_abigglmlffaahadamdbpamklmpmkbdld",
+      "identityNamespace": "wf-dom:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+/* ---- Investing › Portfolio: the portfolio value, holdings, AI allocation, overnight prices and Performance ----
+ * Readability round I1 (plan v2, D1): 16px for row names and reading text; 14px for help, labels, status and
+ * warning text and every control; 13px only for short badges and desktop dense-table column heads. Sizes go through
+ * T1's type tokens (--text-read, --text-help, --text-badge, --text-section, --leading, --measure), with the agreed
+ * values as fallbacks.
+ * Components import this file, so it loads before styles.css (App's imports come first in main.tsx): every rule is
+ * scoped under the page root, .breakdown, to outrank the global rule it replaces. T2 removes what these make dead. */
+
+.breakdown {
+  --estimate-text: var(--color-gold, #facc15);
+  --warning-text: var(--color-warn, #fbbf24);
+}
+
+/* ---- The portfolio value card: overnight status and the gain/loss line under the value ---- */
+.breakdown .portfolio-value-meta {
+  margin-top: 6px;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.breakdown .portfolio-value-meta .gain,
+.breakdown .portfolio-value-meta .loss,
+.breakdown .portfolio-value-meta .gl-zero { font-family: var(--font-mono); font-weight: 600; }
+.breakdown .portfolio-overnight-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  max-width: 72ch;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--estimate-text) 55%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--estimate-text) 9%, transparent);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+.breakdown .portfolio-overnight-status .indicative-banner-label { color: var(--estimate-text); }
+.breakdown .portfolio-overnight-text { flex: 1 1 32ch; min-width: 0; color: var(--text); }
+.breakdown .portfolio-overnight-off {
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--text-help, 14px);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.breakdown .portfolio-overnight-off:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* ---- Card headers (the holdings card and each account) ---- */
+.breakdown .account-meta { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .account-totals { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .holdings-total-label,
+.breakdown .account-gl-label,
+.breakdown .holdings-total-note,
+.breakdown .account-total-note { color: var(--text-muted); }
+.breakdown .holdings-total-gain .gain,
+.breakdown .holdings-total-gain .loss,
+.breakdown .holdings-total-gain .gl-zero,
+.breakdown .account-gl .gain,
+.breakdown .account-gl .loss,
+.breakdown .account-gl .gl-zero { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+/* An unknown gain/loss percent reads "(—)" with its reason on a line of its own, at its line's size, never as 0%. */
+.breakdown .gl-percent-unknown {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  white-space: normal;
+}
+.breakdown .portfolio-value-meta .gl-percent-unknown { display: inline; margin-left: 0.5ch; }
+/* A gain/loss's arrow, amount and percent stay together: on a phone its label wraps before them, never between them.
+   A zero ("$0.00 (0.00%)") takes gl-zero: the figures' type, neither colour, no arrow. */
+.breakdown .portfolio-value-gl > :is(.gain, .loss, .gl-zero),
+.breakdown .account-gl > :is(.gain, .loss, .gl-zero),
+.breakdown .holdings-total-gain > :is(.gain, .loss, .gl-zero),
+.breakdown .portfolio-value-count { white-space: nowrap; }
+.breakdown .holdings-overnight-note {
+  max-width: var(--measure, 65ch);
+  margin: 6px 0 0;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--estimate-text);
+}
+
+/* ---- Holdings toolbar: Sort and Day change (Dollars / Percent) ---- */
+.breakdown .combined-toolbar .segmented { flex-wrap: wrap; max-width: 100%; font-size: var(--text-help, 14px); }
+.breakdown .combined-toolbar .segmented-label { font-size: var(--text-help, 14px); }
+.breakdown .combined-toolbar .segmented .seg { white-space: nowrap; }
+.breakdown .holdings-phone-hint { display: none; }
+
+/* ---- Holdings tables (combined and per account) ---- */
+.breakdown .holdings th { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); vertical-align: bottom; }
+.breakdown .holdings .holdings-head-sub { display: block; font-weight: 400; }
+.breakdown .holdings td { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .holdings td.sym { font-size: var(--text-read, 16px); }
+.breakdown .account:not(.combined) .holdings.compact thead { display: table-header-group; }
+
+.breakdown .holding-symbol-main { flex-wrap: wrap; gap: 4px 8px; }
+.breakdown .holding-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.breakdown .holding-toggle:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.breakdown .holding-toggle .holding-symbol { display: inline-block; min-width: 54px; }
+.breakdown .holding-badge { font-size: var(--text-badge, 13px); font-weight: 600; line-height: 1.3; padding: 1px 7px; }
+
+/* A price that is missing, stale or an overnight estimate says so under its symbol, in words. */
+.breakdown .holding-price-note {
+  display: block;
+  max-width: 34ch;
+  margin-top: 3px;
+  font-family: var(--font-sans);
+  font-size: var(--text-help, 14px);
+  font-weight: 500;
+  line-height: var(--leading, 1.5);
+  white-space: normal;
+}
+.breakdown .holding-price-note.missing,
+.breakdown .holding-price-note.stale { color: var(--warning-text); }
+.breakdown .holding-price-note.overnight { color: var(--estimate-text); }
+
+/* The day change's basis when it is not the regular session against the prior close. */
+.breakdown .day-change-note {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: var(--text-help, 14px);
+  font-weight: 500;
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.breakdown .option-cell-label,
+.breakdown .option-mark-label { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+
+/* Held-in rows under an open holding: the account's name is a row name, read at 16px (it wraps on a phone, at 1.5);
+ * the figures beside it stay at 14px. */
+.breakdown .holdings tr.contributor-row > td { font-size: var(--text-help, 14px); }
+.breakdown .holdings tr.contributor-row > td.contributor-name-cell { font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.breakdown .contributor-quantity { display: none; }
+.breakdown .price-day-change { display: none; }
+
+/* A holding's details: phones only (desktop shows every column). */
+.breakdown .holdings tr.holding-details-row { display: none; }
+.breakdown table.holdings tr.holding-details-row > td {
+  position: static;
+  padding: 4px 14px 12px 34px;
+  background: var(--surface-expanded);
+  box-shadow: none;
+  font-size: var(--text-help, 14px);
+  white-space: normal;
+}
+.breakdown .holding-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+  margin: 0 0 10px;
+}
+.breakdown .holding-details > div { min-width: 0; }
+.breakdown .holding-details dt { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.breakdown .holding-details dd {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-read, 16px);
+  line-height: var(--leading, 1.5);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.breakdown .holding-details .holding-details-gl { grid-column: 1 / -1; }
+.breakdown .holdings .chart-toggle.holding-details-chart {
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  margin: 0;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* The chart pill on tablets and phones: room for its 14px label. */
+.breakdown .mobile-chart-label { font-size: var(--text-help, 14px); font-weight: 700; }
+@media (max-width: 900px) {
+  .breakdown .holdings .trend-col,
+  .breakdown .holdings .trend-cell { width: 96px; min-width: 96px; }
+  .breakdown .holding-chart-controls { width: auto; }
+  .breakdown .trend-cell .chart-toggle { width: auto; }
+}
+
+/* ---- Phones: a holding is its symbol, its price with the day's change, and its value; Details hold the rest ---- */
+@media (max-width: 768px) {
+  .breakdown table.holdings td { font-size: var(--text-help, 14px); }
+  .breakdown table.holdings td.sym { font-size: var(--text-read, 16px); }
+}
+@media (max-width: 600px) {
+  .breakdown .holdings-phone-hint {
+    display: block;
+    margin: 0;
+    padding: 10px 14px 0;
+    font-size: var(--text-help, 14px);
+    line-height: var(--leading, 1.5);
+    color: var(--text-muted);
+  }
+  .breakdown .account.combined .holdings .col-trend,
+  .breakdown .account.combined .holdings .col-qty,
+  .breakdown .account.combined .holdings .col-avg,
+  .breakdown .account.combined .holdings .col-day,
+  .breakdown .account.combined .holdings .col-gl,
+  .breakdown .account.combined .holdings .col-pct { display: none; }
+  /* Three columns of set widths, so a long name or note wraps under the symbol instead of pushing the value off. */
+  .breakdown .account.combined table.holdings { table-layout: fixed; }
+  .breakdown .account.combined table.holdings th.col-sym { width: 40%; }
+  .breakdown .account.combined table.holdings th.col-price { width: 25%; }
+  .breakdown .account.combined table.holdings th.col-value { width: 35%; }
+  .breakdown .account.combined table.holdings td.col-sym { white-space: normal; }
+  .breakdown .account.combined .holding-symbol-main { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .breakdown .account.combined .holding-price-note { max-width: none; }
+  .breakdown .account.combined .holdings tr.contributor-row .contributor-name { white-space: normal; overflow-wrap: anywhere; }
+  .breakdown .account.combined .holdings tr.contributor-row > td.contributor-name-cell { padding-left: 24px; }
+  .breakdown .account.combined .holdings tr.contributor-row .contributor-rail { left: 14px; }
+  /* Nothing scrolls sideways now: the symbol column needs no sticky, solid background of its own. */
+  .breakdown .account.combined table.holdings tr.holding-row > td.col-sym { position: static; background: transparent; }
+  .breakdown .account.combined table.holdings tr.contributor-row > td.col-sym { position: relative; background: var(--brand-tint); }
+  .breakdown .account.combined table.holdings thead th.col-sym { position: static; background: rgba(0, 0, 0, 0.15); }
+  .breakdown .account.combined .holdings tr.holding-details-row { display: table-row; }
+  .breakdown .account.combined .holdings .price-day-change { display: block; margin-top: 2px; font-size: var(--text-help, 14px); }
+  .breakdown .account.combined table.holdings tr.holding-row > td.col-value { font-size: var(--text-read, 16px); }
+  /* Room above and below a row's text. */
+  .breakdown .account.combined table.holdings tr.holding-row > td { padding-top: 10px; padding-bottom: 10px; }
+  .breakdown .contributor-quantity { display: block; color: var(--text-muted); font-size: var(--text-help, 14px); font-weight: 400; line-height: var(--leading, 1.5); }
+}
+
+/* ---- AI allocation ---- */
+.breakdown .ai-thesis-title {
+  font-size: var(--text-section, 18px);
+  font-weight: 600;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: normal;
+}
+.breakdown .ai-thesis-grid span { font-size: var(--text-help, 14px); font-weight: 500; }
+.breakdown .ai-thesis-grid strong { font-size: 18px; }
+.breakdown .ai-thesis-grid em { font-size: var(--text-help, 14px); }
+.breakdown .ai-thesis-unavailable { max-width: var(--measure, 65ch); margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+
+/* ---- Overnight prices ---- */
+/* min-width 0: a grid item would otherwise take its table's width and widen the page; the table's wrap scrolls. */
+.breakdown .indicative-panel { min-width: 0; padding: 2px 14px; border: 1px solid var(--line); border-radius: 10px; }
+.breakdown .indicative-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 8px 0; }
+.breakdown .indicative-disclosure {
+  display: flex;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.breakdown .indicative-chevron { display: inline-flex; color: var(--text-muted); }
+.breakdown .indicative-title { font-size: var(--text-section, 18px); font-weight: 600; }
+.breakdown .indicative-tag { font-size: var(--text-help, 14px); opacity: 1; padding: 1px 8px; color: var(--estimate-text); }
+.breakdown .indicative-count { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.breakdown .indicative-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--text-help, 14px);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.breakdown .indicative-switch.on { color: var(--text); }
+.breakdown .indicative-disclosure:focus-visible,
+.breakdown .indicative-switch:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 6px; }
+.breakdown .indicative-switch-track {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(128, 128, 128, 0.4);
+  transition: background 0.15s;
+}
+.breakdown .indicative-switch.on .indicative-switch-track { background: var(--estimate-text); }
+.breakdown .indicative-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.15s;
+}
+.breakdown .indicative-switch.on .indicative-switch-thumb { left: 19px; }
+.breakdown .indicative-effect {
+  flex: 1 0 100%;
+  max-width: var(--measure, 65ch);
+  margin: -4px 0 0;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.breakdown .indicative-body { padding-bottom: 12px; }
+/* The expanded body: its explanation and its table are reading text (16px); the column heads and the time and
+ * confidence notes under a price, 14px. */
+.breakdown .indicative-explainer { max-width: var(--measure, 65ch); margin: 0 0 8px; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.breakdown .indicative-table-wrap { overflow-x: auto; overscroll-behavior-x: contain; }
+.breakdown .indicative-table { width: 100%; border-collapse: collapse; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); font-variant-numeric: tabular-nums; }
+.breakdown .indicative-table th,
+.breakdown .indicative-table td { padding: 6px 8px; border-top: 1px solid rgba(128, 128, 128, 0.15); text-align: left; vertical-align: top; }
+.breakdown .indicative-table thead th { border-top: 0; font-size: var(--text-help, 14px); font-weight: 500; color: var(--text-muted); }
+.breakdown .indicative-table tbody th { font-weight: 600; }
+.breakdown .indicative-table .num { text-align: right; font-family: var(--font-mono); white-space: nowrap; }
+.breakdown .indicative-sub { display: block; font-family: var(--font-sans); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.breakdown .indicative-sub.loss { color: var(--loss); }
+@media (max-width: 600px) {
+  .breakdown .indicative-switch { margin-left: 0; }
+  /* On a phone the overnight prices read down, not across, like Performance's: each symbol is a block, its name
+   * first, then one line per column, "Last close ........ $25.00", every value with its column's name beside it and
+   * nothing past the panel's edge (no page scrolls sideways). The column heads stay for screen readers: the table
+   * keeps explicit roles in IndicativePanel.tsx. */
+  .breakdown .indicative-table-wrap { overflow: visible; }
+  .breakdown .indicative-table,
+  .breakdown .indicative-table > tbody { display: block; width: 100%; }
+  .breakdown .indicative-table > thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .breakdown .indicative-table > tbody > tr {
+    display: grid;
+    gap: 4px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.15);
+  }
+  .breakdown .indicative-table > tbody > tr > th,
+  .breakdown .indicative-table > tbody > tr > td {
+    display: block;
+    padding: 0;
+    border: 0;
+    text-align: left;
+    white-space: normal;
+  }
+  .breakdown .indicative-table > tbody > tr > th { margin-bottom: 2px; }
+  /* A value line: its column's name, then the value (and its note under it) at the line's end. */
+  .breakdown .indicative-table > tbody > tr > td {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: baseline;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+  .breakdown .indicative-table > tbody > tr > td::before {
+    content: attr(data-label);
+    content: attr(data-label) / '';
+    grid-column: 1;
+    font-family: var(--font-sans);
+    font-size: var(--text-help, 14px);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: left;
+  }
+  .breakdown .indicative-table > tbody > tr > td > * { grid-column: 2; }
+}
+
+/* ---- Performance: results in view, the method folded under "How returns are calculated" ---- */
+.breakdown .performance-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: var(--surface);
+}
+.breakdown .performance-card:focus { outline: none; }
+.breakdown .performance-card:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.breakdown .performance-card-title { margin: 0; font-size: calc(var(--text-section, 18px) + 2px); font-weight: 600; letter-spacing: -0.02em; }
+.breakdown .performance-card .performance-panel { padding-top: 0; border-top: 0; }
+.breakdown .performance-status { max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .performance-heading h3 { font-size: var(--text-section, 18px); color: var(--text); }
+.breakdown .performance-heading p { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .performance-table { font-size: var(--text-help, 14px); }
+/* A period's or year's name is a row name: 16px, like the holdings' symbols; its "from" date and tag stay at 14px. */
+.breakdown .performance-table tbody th { font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.breakdown .performance-table thead th { font-size: var(--text-help, 14px); }
+.breakdown .performance-sub { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .performance-unit { font-size: inherit; }
+.breakdown .performance-tag { font-size: var(--text-help, 14px); }
+.breakdown .performance-footnote { max-width: var(--measure, 65ch); margin: 0; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); color: var(--text-muted); }
+.breakdown .performance-goal-stat span,
+.breakdown .performance-goal-stat small { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .performance-goal-inputs label { font-size: var(--text-help, 14px); }
+.breakdown .performance-goal-inputs input { font-size: var(--text-read, 16px); }
+.breakdown .performance-goal-note { max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.breakdown .performance-notes,
+.breakdown .performance-notes .fold-toggle { font-size: var(--text-help, 14px); }
+.breakdown .performance-notes ul { max-width: var(--measure, 65ch); margin: 6px 0 0; padding-left: 18px; line-height: var(--leading, 1.5); }
+@media (max-width: 600px) {
+  .breakdown .performance-card { padding: 14px; }
+  /* On a phone the comparison reads down, not across (Astra's review of #246): each period or year is a block, its
+   * name first, then one line per measure, "QQQ ........ -12.84%", every value with its column's name beside it and
+   * nothing past the card's edge. The column heads stay for screen readers (the table keeps explicit roles). */
+  .breakdown .performance-table-wrap { overflow: visible; }
+  .breakdown .performance-table,
+  .breakdown .performance-table > tbody { display: block; width: 100%; }
+  .breakdown .performance-table > thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .breakdown .performance-table > tbody > tr {
+    display: grid;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .breakdown .performance-table > tbody > tr:last-child { border-bottom: 0; }
+  .breakdown .performance-table > tbody > tr > th,
+  .breakdown .performance-table > tbody > tr > td {
+    display: block;
+    padding: 0;
+    border: 0;
+    text-align: left;
+    white-space: normal;
+  }
+  .breakdown .performance-table > tbody > tr > th { margin-bottom: 2px; }
+  .breakdown .performance-table > tbody > tr > td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .breakdown .performance-table > tbody > tr > td::before {
+    content: attr(data-label);
+    content: attr(data-label) / '';
+    flex: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .breakdown .performance-table .performance-value { min-width: 0; text-align: right; overflow-wrap: anywhere; }
+}
+
+/* ---- Wide screens (1280px and up): section heads 20px; the dense tables' column heads may be 13px ---- */
+@media (min-width: 1280px) {
+  .breakdown .ai-thesis-title,
+  .breakdown .indicative-title { font-size: 20px; }
+  .breakdown .holdings th,
+  .breakdown .performance-table thead th { font-size: var(--text-badge, 13px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breakdown .indicative-switch-track,
+  .breakdown .indicative-switch-thumb { transition: none; }
+}
+
+/* A holding's sparkline whose net change reads zero at the price's cents (a flat price) draws in neither colour. */
+.sparkline.neutral { color: var(--text-muted); }

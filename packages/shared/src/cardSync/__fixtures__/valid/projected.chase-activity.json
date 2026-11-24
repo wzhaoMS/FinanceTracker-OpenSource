@@ -1,0 +1,215 @@
+{
+  "type": "projected-bank-batch/v1",
+  "contractVersion": 1,
+  "issuer": "chase",
+  "contract": "chase.activity",
+  "streamHandle": "stm_nkhaondebajpfcgnpelffckaikdekipg",
+  "sequence": 1,
+  "observedAt": "2026-10-16T14:05:09.123Z",
+  "currency": "USD",
+  "accounts": [
+    {
+      "ref": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "last4": "3391",
+      "productHint": "Synthetic Rewards Visa"
+    }
+  ],
+  "transactions": [
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "3391",
+      "transactionDate": "2026-09-14",
+      "postedDate": "2026-09-15",
+      "status": "posted",
+      "amountMinor": 1234,
+      "kind": "purchase",
+      "description": "SYNTHETIC COFFEE ROASTERS #42 OAKLAND CA",
+      "merchant": "Synthetic Coffee Roasters",
+      "issuerCategory": "Food & Drink",
+      "externalIdHash": "xid1:iilgmolbajgiibcinkhcabpiljflmcelkfkipkghopdhnjihilgbfmliolmkpmib",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:jelchdhgagbabnphgcplkgfcnjbhfnjllnihfhonedjnpfbcdipdjhfcldgnddjc"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "3391",
+      "transactionDate": "2026-09-20",
+      "postedDate": "2026-09-22",
+      "status": "posted",
+      "amountMinor": -4500,
+      "kind": "refund",
+      "description": "RETURN: EXAMPLE OUTDOOR GEAR",
+      "merchant": "Example Outdoor Gear",
+      "issuerCategory": "Shopping",
+      "externalIdHash": "xid1:boaplbfdgchndebojnebikfbmjkmppdeijpedcmelcehjoiahbpcpgeppelhcead",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:kggfenjjgfpkcfglbiolfchajpbpkdilacndmiejhnhmkfbgmfmdcpgdilakbjbm"
+        }
+      ],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "3391",
+      "transactionDate": "2026-09-25",
+      "postedDate": "2026-09-25",
+      "status": "posted",
+      "amountMinor": -150000,
+      "kind": "payment",
+      "description": "AUTOMATIC PAYMENT - THANK YOU",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:fngjcghjhmhfpmenbelhciakpdpnojgfcjdjcbgoncpgodegdkjiadphenafdjla",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "3391",
+      "transactionDate": "2026-10-01",
+      "postedDate": "2026-10-01",
+      "status": "posted",
+      "amountMinor": 321,
+      "kind": "interest",
+      "description": "PURCHASE INTEREST CHARGE",
+      "merchant": null,
+      "issuerCategory": "Fees & Adjustments",
+      "externalIdHash": "xid1:meobbcdkphkblliogdddobdaekgagidlomghhhpbjmnjnpcmmpjipfomplinlfcl",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "7720",
+      "transactionDate": "2026-10-03",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 3900,
+      "kind": "purchase",
+      "description": "CAFE EXEMPLAIRE PARIS FR",
+      "merchant": "Cafe Exemplaire",
+      "issuerCategory": "Food & Drink",
+      "externalIdHash": "xid1:kfblgkchhmgoffonplgoekamhblpmphnfbknlldfkbaoganojgiddjejfoppkdkf",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [
+        {
+          "namespace": "chase-api:derived:v1",
+          "idHash": "xid1:lnljmilikngcjllakgnafbmjoeghmblmoagjlbmfjoiemgpkanpablcpbfhljmaf"
+        }
+      ],
+      "originalAmountMinor": 3550,
+      "originalCurrency": "EUR"
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "7720",
+      "transactionDate": "2026-10-03",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 117,
+      "kind": "fee",
+      "description": "FOREIGN TRANSACTION FEE",
+      "merchant": null,
+      "issuerCategory": "Fees & Adjustments",
+      "externalIdHash": "xid1:cdmfdlfagidlfjnemjeococblagofnagbohkikoakjmbigdphmpkgpfidkgpoiek",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "3391",
+      "transactionDate": "2026-10-14",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 875,
+      "kind": "purchase",
+      "description": "SYNTHETIC CORNER MARKET",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:acnfefbbgddccoimbdkefdeafoldfdgjbdhjemcakcodiojdjdkficeeknbhnnef",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "holderRef": null,
+      "cardLast4": "7720",
+      "transactionDate": "2026-10-15",
+      "postedDate": null,
+      "status": "pending",
+      "amountMinor": 2310,
+      "kind": "purchase",
+      "description": "EXAMPLE FUEL STOP 0042",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:kncaepmlaopbmgnfmjbomloobmkigndlgaehpdlofogfmgboliammkbdfeijamcp",
+      "identityNamespace": "chase-api:sor:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ],
+  "coverage": [
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "status": "posted",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-09-14",
+        "end": "2026-10-03",
+        "dateBasis": "transaction"
+      },
+      "completeness": "complete",
+      "pageCount": 2,
+      "termination": "end-marker"
+    },
+    {
+      "accountRef": "cnd_cfdcehdccnagdiomeiedmlddekpapmop",
+      "status": "pending",
+      "requested": {
+        "start": "2026-09-14",
+        "end": "2026-10-14",
+        "dateBasis": "transaction"
+      },
+      "observed": {
+        "start": "2026-10-14",
+        "end": "2026-10-15",
+        "dateBasis": "transaction"
+      },
+      "completeness": "partial",
+      "pageCount": 2,
+      "termination": "end-marker"
+    }
+  ],
+  "rejectedCount": 0
+}

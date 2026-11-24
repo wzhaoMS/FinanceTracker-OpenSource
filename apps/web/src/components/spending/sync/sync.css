@@ -1,0 +1,85 @@
+/* =====================================================================
+ * Spending: card sync (components/spending/sync/*): Sync & coverage, Extension & devices, every dialog they open,
+ * the notice in Card transactions and the areas' own tab row.
+ *
+ * Readability floors (plan D1), applied here: 16px for reading text (prose, card and row names, the two lines a
+ * connected card leads with), 14px or more for help, labels, status and warning text and anything to act on, and
+ * 13px only for the short count badge on a tab. Line height 1.5; prose stops at about 65 characters.
+ *
+ * The shared rules in styles.css and modes.css load after this file, so every selector here starts at `.spending`
+ * to outrank them. Sizes come from the type-scale tokens when they exist, with the floor itself as the fallback.
+ * ==================================================================== */
+
+.spending :is(.sync-area, .sync-dialog, .sync-waiting) { line-height: var(--leading, 1.5); }
+.spending :is(.sync-area, .sync-dialog) :is(p, li, dt, dd, legend, label, .spending-muted, .sync-expiry) { line-height: var(--leading, 1.5); }
+.spending :is(.sync-area, .sync-dialog) :is(p, .sync-lines) { max-width: var(--measure, 65ch); }
+/* Controls and chips may sit tighter (1.25 to 1.5); a fold's toggle wraps on a phone, so not tighter than that. */
+.spending :is(.sync-area, .sync-dialog) .fold-toggle { line-height: var(--leading, 1.5); }
+/* Without Holdr's sync the notice is the whole area (modes.css); its explanation is running text all the same. */
+.app .spending .sync-area > .sync-banners:only-child > .sync-banner.tone-info:only-child { line-height: var(--leading, 1.5); }
+
+/* ---- Reading text: 16px ---- */
+.spending :is(.sync-area, .sync-dialog) :is(
+  .sync-text, .sync-lead, .sync-card-name, .sync-row-text > strong, .sync-steps strong, .sync-switch strong, .sync-scopes,
+  .sync-option, .sync-item legend, .sync-result > strong, .sync-approval > strong, .sync-banner > strong, .sync-group h4,
+  .sync-subhead, .sync-plan h4, .sync-quota-group > strong
+) {
+  font-size: var(--text-read, 16px);
+}
+
+/* ---- Help, labels, status and warnings, and every control: 14px ---- */
+.spending :is(.sync-area, .sync-dialog) :is(
+  .spending-muted, .sync-expiry, .sync-done, .sync-status, .sync-flag, .sync-lines, .sync-coverage, .sync-coverage ul,
+  .sync-coverage-list, .sync-row-text, .sync-steps li, .sync-steps li p, .sync-step-mark, .sync-auto-devices li,
+  .sync-regrant-form legend, .sync-reason, .sync-caption, .sync-counts, .sync-effects, .sync-mono, .sync-results,
+  .sync-retention, .sync-quota-group, .sync-quota, .sync-banner, .sync-json, .sync-address, .sync-result, .spending-link,
+  .spending-button, .spending-toggle, .spending-detail-fields, .spending-choice, .spending-choice legend,
+  .spending-detail-form label, .spending-error, .spending-select, .fold-toggle
+) {
+  font-size: var(--text-help, 14px);
+}
+.spending :is(.sync-area, .sync-dialog) .sync-step-mark { width: 24px; height: 24px; }
+.spending :is(.sync-area, .sync-dialog) .sync-steps li { grid-template-columns: 26px minmax(0, 1fr); }
+.spending :is(.sync-area, .sync-dialog) :is(.sync-status, .sync-flag) { padding: 2px 10px; line-height: var(--leading, 1.5); }
+/* Form controls keep the browser's own smaller font unless told otherwise. */
+.spending :is(.sync-area, .sync-dialog) :is(select, input, textarea) { font-family: inherit; font-size: var(--text-help, 14px); }
+
+/* ---- The notice in Card transactions, and the tab row's count: a short badge may be 13px ---- */
+.spending .sync-waiting { font-size: var(--text-help, 14px); }
+.spending .sync-waiting > strong { font-size: var(--text-read, 16px); }
+.spending .sync-waiting .spending-link { font-size: inherit; }
+.spending .spending-areas .spending-area-tab { line-height: 1.4; }
+.spending .spending-areas .spending-area-badge { min-width: 20px; padding: 0 7px; font-size: var(--text-badge, 13px); line-height: 1.5; }
+
+/* ---- A connected card: when it last received something, then the next step, then the rest ---- */
+.spending .sync-area .sync-binding { gap: 10px; }
+.spending .sync-area .sync-card-name { margin: 0; font-weight: 650; overflow-wrap: anywhere; }
+.spending .sync-area .sync-lead { margin: 0; color: var(--text); overflow-wrap: anywhere; }
+.spending .sync-area .sync-received { font-weight: 600; }
+.spending :is(.sync-area, .sync-dialog) .sync-next-label { font-weight: 650; }
+.spending .sync-area .sync-next-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; min-width: 0; }
+.spending .sync-area .sync-next-row > .sync-lead { flex: 1 1 18rem; min-width: 0; }
+.spending .sync-area .sync-details > .fold-content { display: grid; gap: 10px; padding: 2px 0 0 20px; min-width: 0; }
+.spending .sync-area .sync-details .sync-coverage li { gap: 2px 12px; }
+/* On a phone the folded facts stack, label over value, rather than squeeze a label into a narrow column. */
+@media (max-width: 720px) {
+  .spending .sync-area .sync-details .sync-facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .spending .sync-area .sync-details .sync-facts > :is(dt, dd):nth-child(n) { grid-column: auto; margin-top: 0; }
+  .spending .sync-area .sync-details .sync-facts > dd:nth-child(n) { margin-bottom: 8px; }
+}
+
+/* ---- Consent: what the owner agrees to is read in full, at reading size, never squeezed into a pill ---- */
+.spending :is(.sync-area, .sync-dialog) :is(.sync-consent, .sync-approval, .sync-banner, .spending-detail-form) > .spending-toggle {
+  font-size: var(--text-read, 16px);
+  color: var(--text);
+}
+@media (max-width: 720px) {
+  .spending :is(.sync-area, .sync-dialog) .spending-toggle { padding: 6px 0; border: 0; border-radius: 0; }
+}
+
+/* ---- Short lines: one fact, rule or instruction each ---- */
+.spending :is(.sync-area, .sync-dialog) .sync-lines { margin: 0; padding-left: 1.25em; display: grid; gap: 2px; color: var(--text-muted); }
+.spending :is(.sync-area, .sync-dialog) .sync-lines.numbered { list-style: decimal; }
+.spending .sync-area .sync-binding > .sync-lines { color: var(--text); }
+.spending .sync-area .sync-header-text { display: grid; gap: 2px; min-width: 0; }
+.spending .sync-area .sync-switch > div { display: grid; gap: 4px; min-width: 0; }

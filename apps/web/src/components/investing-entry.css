@@ -1,0 +1,517 @@
+/* ---- Investing entry: Add, Import, Accounts, Transactions and sign-in (readability I2) ----
+ * D1 floors through T1's tokens (agreed values as fallbacks): 16px reading text, 14px help, labels, status and
+ * controls; running text at line-height 1.5 within 65ch. Components import this file, so it loads before styles.css:
+ * every rule is scoped to outrank the global rule it replaces. T2 removes what these make dead. */
+
+/* ---- Add a transaction: a heading, the trade, then its quantity and price, then one button ---- */
+form.add.add-transaction { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+form.add.add-transaction .add-transaction-title {
+  margin: 0;
+  font-size: calc(var(--text-section, 18px) + 2px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+form.add.add-transaction .add-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+form.add.add-transaction .add-group legend {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: var(--text-read, 16px);
+  font-weight: 600;
+  color: var(--text);
+}
+form.add.add-transaction label { color: var(--text-muted); }
+form.add.add-transaction .form-hint { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+form.add.add-transaction .form-error { font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+@media (max-width: 600px) {
+  form.add.add-transaction .add-group { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- Accounts: one "Manual prices" heading (the panel's own), at the section size ---- */
+.manual-prices .account-header h3.manual-prices-title { margin: 0; font-size: var(--text-section, 18px); }
+.manual-prices .account-header .manual-prices-intro {
+  max-width: var(--measure, 65ch);
+  margin: 4px 0 0;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+
+/* ---- Accounts: a card's caveats are text now ("Includes $X cash", "Price unavailable for N holdings, so no total"),
+ * so on a phone the value and its notes go under the name, as styles.css already does under 360px: the name and its
+ * masked number keep the card's width and are never cut (T1's check). ---- */
+.accounts-card .accounts-card-cash-secondary { line-height: var(--leading, 1.5); }
+@media (max-width: 600px) {
+  .accounts-card .accounts-card-header { grid-template-columns: 36px minmax(0, 1fr) auto; row-gap: 4px; }
+  .accounts-card .accounts-card-cash { grid-column: 2; grid-row: 2; text-align: left; }
+  .accounts-card .accounts-card-menu { grid-column: 3; grid-row: 1; }
+}
+
+/* ---- Empty states: the next step, as one or two buttons ---- */
+.empty-state .empty-state-body { line-height: var(--leading, 1.5); }
+.empty-state .empty-state-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 8px; }
+.empty-state .empty-state-actions .empty-state-cta { margin-top: 0; }
+.empty-state .empty-state-actions .empty-state-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-help, 14px);
+  font-weight: 600;
+  cursor: pointer;
+}
+.empty-state .empty-state-actions .empty-state-secondary:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* ---- Transactions: a row is the symbol, Bought or Sold and the amount; then the date and the account ----
+ * The summary (.tx-row-main) is one control; the drawer under it holds quantity and price (editable), source and the
+ * rest. On every width line 1 reads symbol, Bought/Sold, amount and line 2 date · owner account; a sell's realized
+ * P/L sits under its amount (on a phone, on a line of its own). When line 1 is short of room (a phone under 360px,
+ * or a long amount) Bought/Sold drops under the amount, never the amount under the symbol. The selectors outrank
+ * styles.css's (the old date column and #198's phone subgrid), which T2 removes. */
+.tx-rows > .tx-row {
+  grid-template-columns: [check] 24px [main] minmax(0, 1fr) [menu] auto [end];
+  grid-template-rows: [line1] auto [drawer] auto [last];
+  column-gap: 12px;
+  row-gap: 0;
+}
+.tx-rows > .tx-row > .tx-row-check { grid-column: check; grid-row: line1; }
+.tx-rows > .tx-row > .tx-row-menu { grid-column: menu; grid-row: line1; justify-self: center; align-self: center; }
+.tx-rows > .tx-row > .tx-row-drawer { grid-column: main / end; grid-row: drawer; min-width: 0; }
+.tx-rows > .tx-row > .tx-row-main {
+  grid-column: main;
+  grid-row: line1;
+  display: grid;
+  grid-template-columns: minmax(min-content, 1fr) auto;
+  grid-template-rows: none;
+  column-gap: 16px;
+  row-gap: 2px;
+  align-items: start;
+  min-width: 0;
+}
+.tx-rows .tx-row-main > .tx-row-title { grid-column: 1; grid-row: 1; align-self: start; min-width: 0; }
+.tx-rows .tx-row-title > .tx-status-badge { margin-left: 0; }
+.tx-rows .tx-row-main > .tx-row-amount {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px 8px;
+  align-self: start;
+}
+.tx-rows .tx-row-amount > .tx-amount-verb { margin: 0; white-space: nowrap; vertical-align: baseline; }
+.tx-rows .tx-row-amount > .tx-amount-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-read, 16px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  white-space: nowrap;
+}
+.tx-rows .tx-row-main > .tx-row-meta {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 6px;
+  min-width: 0;
+  margin: 0;
+  overflow: visible;
+  color: var(--text-muted);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  white-space: normal;
+}
+.tx-rows .tx-row-meta > .tx-row-date { flex: none; width: auto; line-height: inherit; white-space: nowrap; }
+.tx-rows .tx-row-meta > .tx-owner-pill { flex: none; margin: 0; }
+/* A long account name wraps onto its own line rather than being cut. */
+.tx-rows .tx-row-meta > .tx-account-short {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: none;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+.tx-rows .tx-row-main > .tx-realized { grid-column: 2; grid-row: 2; justify-self: end; margin: 0; white-space: nowrap; }
+
+/* The drawer: label and value pairs, the values at the reading size. */
+.tx-rows .tx-row-drawer > .tx-drawer-facts { display: grid; gap: 6px; margin: 0; }
+.tx-rows .tx-drawer-facts > .tx-drawer-row { grid-template-columns: 8.5em minmax(0, 1fr); }
+.tx-rows .tx-drawer-facts .tx-drawer-label { font-size: var(--text-help, 14px); }
+.tx-rows .tx-drawer-facts .tx-drawer-value { margin: 0; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.tx-rows .tx-drawer-facts .tx-drawer-value.mono { font-size: var(--text-help, 14px); }
+.tx-rows .tx-row-drawer > .tx-drawer-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+.tx-rows .tx-drawer-edit > .tx-undo-edit { min-height: 32px; font-size: var(--text-help, 14px); }
+
+@media (max-width: 600px) {
+  .tx-rows > .tx-row {
+    grid-template-columns: [check] 28px [main] minmax(0, 1fr) [menu] 28px [end];
+    grid-template-rows: [line1] auto [drawer] auto [last];
+    column-gap: 8px;
+    row-gap: 0;
+    padding: 10px 12px;
+  }
+  .tx-rows > .tx-row > .tx-row-check { grid-row: line1; }
+  .tx-rows > .tx-row > .tx-row-menu { align-self: start; }
+  .tx-rows > .tx-row > .tx-row-main { column-gap: 12px; row-gap: 0; }
+  /* Line 2 takes the summary's width, under the amount too; a sell's realized P/L gets a line of its own. */
+  .tx-rows .tx-row-main > .tx-row-meta { grid-column: 1 / -1; }
+  .tx-rows .tx-row-main > .tx-realized { grid-column: 1 / -1; grid-row: 3; }
+  .tx-rows .tx-drawer-facts > .tx-drawer-row { grid-template-columns: 7.5em minmax(0, 1fr); }
+}
+
+/* ---- Import: one question, then the chosen flow; the technical routes under Advanced ----
+ * "What do you want to import?" first; holdings (or trades) for an account: account, date and the pasted table, then
+ * a preview and one "Import N transactions"; or a broker statement: the file, a preview, then "Import statement
+ * value". The table's format, the bookmarklet and the bridge pulls fold under Advanced, each preview beside its
+ * route. Every text at its floor (the pasted table at 14px, no longer 13px), running text at 1.5 within 65ch. */
+fieldset.import-panel { margin: 0; padding: 0; border: 0; min-width: 0; }
+.import-panel > .import-choice {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.import-panel > .import-choice > legend {
+  padding: 0 6px;
+  font-size: var(--text-section, 18px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+.import-choice > .import-choice-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 2px;
+  align-items: center;
+}
+.import-choice-option > input[type='radio'] { grid-row: 1; grid-column: 1; width: 18px; height: 18px; margin: 0; accent-color: var(--brand); }
+.import-choice-option > label {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: var(--text-read, 16px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+  cursor: pointer;
+}
+.import-choice-option > .import-choice-hint,
+.import-choice > .import-choice-note {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.import-choice-option > .import-choice-hint { grid-row: 2; grid-column: 2; }
+.import-choice > .import-choice-note { color: var(--text); }
+@media (pointer: coarse) {
+  .import-choice-option > label { display: flex; align-items: center; min-height: 44px; }
+}
+
+.import-panel > .import-step { display: grid; gap: 16px; min-width: 0; }
+.import-panel form.add.import-holdings-form textarea {
+  min-height: 160px;
+  font-family: var(--font-mono);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+.import-panel form.add.import-holdings-form .import-table-help {
+  display: block;
+  grid-column: 1 / -1;
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+.import-panel .import-error { white-space: pre-wrap; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); overflow-wrap: anywhere; }
+.import-panel p.import-done {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  color: var(--gain);
+  font-size: var(--text-read, 16px);
+  font-weight: 600;
+  line-height: var(--leading, 1.5);
+}
+.import-panel .import-no-accounts { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+
+/* The account an import goes into, in full (name, type and masked number), wrapping rather than cut: under the
+ * holdings' and the statement's selects, which can cut a long account short, in the preview's title and on each
+ * found account's button (Astra's review of #248). The account field takes the form's width, so its select cuts less. */
+.import-panel form.add.import-holdings-form .import-account-field { grid-column: 1 / -1; display: grid; gap: 6px; min-width: 0; }
+.import-panel .import-destination {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.import-panel .import-destination-account { color: var(--text); font-weight: 600; }
+.import-panel .nav-statement-preview > .import-destination { margin-top: 10px; }
+
+/* A preview: what will be saved and where, then the one action that saves it. */
+.import-panel .preview.import-preview > h3 { margin: 4px 0 0; color: var(--text); overflow-wrap: anywhere; }
+.import-panel .import-preview > p {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.import-panel .import-preview > p.import-preview-note { color: var(--text); font-weight: 600; }
+.import-panel .import-preview .import-preview-detail { font-size: var(--text-help, 14px); }
+.import-panel .preview > button.commit,
+.import-panel .import-section-actions > button.commit,
+.import-panel .import-activity-actions > button.commit { justify-self: start; min-height: 44px; padding: 10px 18px; }
+/* A found account's button names its account in full, so it wraps rather than run past the card. */
+.import-panel .import-section-actions > button.commit { max-width: 100%; white-space: normal; text-align: left; overflow-wrap: anywhere; }
+
+/* Advanced: the table's format and the bridge routes, each with its preview. */
+.import-panel .import-advanced > .fold-toggle { color: var(--text); font-weight: 600; }
+.import-panel .import-advanced > .fold-content { display: grid; gap: 16px; margin-top: 12px; min-width: 0; }
+.import-panel .import-format { display: grid; gap: 8px; min-width: 0; }
+.import-panel .import-format > h3 { margin: 0; }
+.import-panel .import-format > p,
+.import-panel .import-source > p,
+.import-panel .import-sections > .import-sections-intro {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.import-panel .import-source > p { margin-bottom: 12px; }
+.import-panel .import-source > p.import-source-note { margin: 12px 0 0; }
+.import-panel .import-source > legend { font-size: var(--text-read, 16px); }
+.import-panel .import-sample {
+  margin: 0;
+  padding: 12px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+}
+.import-panel .import-sample > code { padding: 0; background: none; font-size: inherit; }
+.import-panel .import-format > .import-action { justify-self: start; }
+
+/* Several accounts found on one broker page: one box each. Its one column is the box's width, so a select sized to
+   its longest account name never pushes the suggestion, the select or the button past the box on a phone. */
+.import-panel .import-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 0;
+  padding: 12px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.import-panel .import-section.is-left-out { border-style: dashed; }
+.import-panel .import-section.is-imported { border-color: color-mix(in srgb, var(--gain) 45%, var(--line)); }
+.import-panel .import-section > legend { padding: 0 6px; font-size: var(--text-read, 16px); font-weight: 600; }
+.import-panel .import-section-include { display: inline-flex; align-items: center; gap: 8px; }
+.import-panel .import-section-map { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 12px; min-width: 0; }
+.import-panel .import-section-account {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  flex: 1 1 240px;
+  gap: 4px;
+  min-width: 0;
+  font-size: var(--text-help, 14px);
+  color: var(--text-muted);
+}
+.import-panel .import-section-account > select {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.import-panel .import-section > p {
+  margin: 0;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.import-panel .import-section-map > p.import-section-suggestion {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.import-panel .import-section-skipped ul { margin: 4px 0 0; padding-left: 18px; font-size: var(--text-help, 14px); line-height: var(--leading, 1.5); }
+.import-panel .import-section-positions {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-help, 14px);
+}
+.import-panel .import-section-positions > li { display: flex; justify-content: space-between; gap: 12px; }
+
+/* The activity preview: counts as chips, then the rows with each one's status and its reason in words. */
+.import-panel .import-activity-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.import-panel .import-activity-head > h3 { margin: 0 8px 0 0; color: var(--text); }
+.import-panel .import-activity-head > .import-activity-source {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+.import-panel .import-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: var(--chip-radius, 999px);
+  font-size: var(--text-help, 14px);
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: var(--chip-case, none);
+  letter-spacing: var(--chip-tracking, normal);
+}
+.import-panel .import-chip.kind-new { color: var(--gain); background: var(--gain-soft); }
+.import-panel .import-chip.kind-duplicate { color: var(--text-muted); background: rgba(148, 163, 184, 0.14); }
+.import-panel .import-chip.kind-skip-cash { color: var(--info); background: var(--info-soft); }
+.import-panel .import-chip.kind-skip-sweep { color: var(--text-muted); background: rgba(148, 163, 184, 0.14); }
+.import-panel .import-chip.kind-ambiguous { color: var(--warning); background: var(--warning-soft); }
+.import-panel .import-chip.kind-reject { color: var(--loss); background: var(--loss-soft); }
+.import-panel .import-activity-table { min-width: 0; overflow-x: auto; }
+.import-panel .import-activity-scroll { min-width: 0; overflow-x: auto; }
+.import-panel table.holdings.import-activity-table { font-size: var(--text-help, 14px); }
+.import-panel .import-activity-table td { vertical-align: top; }
+.import-panel .import-activity-table .import-activity-check { width: 28px; }
+.import-panel .import-activity-table .import-activity-nowrap { white-space: nowrap; }
+/* A matched account is named in full; on a wide screen it wraps within its column (on a phone each value has a line). */
+@media (min-width: 601px) {
+  .import-panel .import-activity-table .import-activity-account { min-width: 14ch; max-width: 28ch; white-space: normal; overflow-wrap: anywhere; line-height: var(--leading, 1.5); }
+}
+.import-panel .import-activity-table .import-activity-description { min-width: 200px; max-width: 360px; font-size: var(--text-read, 16px); line-height: var(--leading, 1.5); }
+.import-panel .import-activity-table tr.is-left-out > td { color: var(--text-muted); }
+.import-panel .import-activity-table tr.is-imported > td { background: color-mix(in srgb, var(--gain) 6%, transparent); }
+.import-panel .import-activity-table .import-activity-empty { padding: 24px; text-align: center; }
+.import-panel .import-status { display: grid; gap: 2px; min-width: 12ch; }
+.import-panel .import-status > .import-status-label { font-weight: 600; }
+.import-panel .import-status.kind-new > .import-status-label,
+.import-panel .import-status.kind-imported > .import-status-label { color: var(--gain); }
+.import-panel .import-status.kind-duplicate > .import-status-label { color: var(--text-muted); }
+.import-panel .import-status.kind-ambiguous > .import-status-label { color: var(--warning); }
+.import-panel .import-status.kind-reject > .import-status-label { color: var(--loss); }
+.import-panel .import-status.kind-skip > .import-status-label { color: var(--text-muted); font-weight: 500; }
+.import-panel .import-status > .import-status-reason {
+  color: var(--text-muted);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  white-space: normal;
+}
+.import-panel .import-activity-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+/* On a phone the activity preview reads down, not across: each row is a block, its description first (the row's name,
+ * 16px), then one labelled line per column, "Amount ........ -$10.00", nothing past the card's edge and nothing
+ * scrolled sideways. The column heads stay for screen readers (the table keeps explicit roles). */
+@media (max-width: 600px) {
+  .import-panel .import-activity-scroll { overflow: visible; }
+  .import-panel table.import-activity-table,
+  .import-panel table.import-activity-table > tbody { display: block; width: 100%; }
+  .import-panel table.import-activity-table > thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .import-panel table.import-activity-table > tbody > tr {
+    display: grid;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .import-panel table.import-activity-table > tbody > tr > td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+    border: 0;
+    text-align: right;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .import-panel table.import-activity-table > tbody > tr > td::before {
+    content: attr(data-label);
+    content: attr(data-label) / '';
+    flex: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: left;
+  }
+  .import-panel table.import-activity-table > tbody > tr > td.import-activity-description { order: -1; display: block; text-align: left; }
+  .import-panel table.import-activity-table > tbody > tr > td.import-activity-description::before { content: none; }
+  .import-panel table.import-activity-table > tbody > tr > td.import-activity-check:empty { display: none; }
+  .import-panel table.import-activity-table > tbody > tr > td.import-activity-empty { display: block; text-align: center; }
+  .import-panel table.import-activity-table > tbody > tr > td.import-activity-empty::before { content: none; }
+  .import-panel table.import-activity-table .import-status { justify-items: end; text-align: right; }
+}
+
+/* A broker statement: the intro and the match notes as running text. */
+.import-panel > .nav-statement-import { margin: 0; }
+.import-panel > .nav-statement-import > .nav-statement-intro {
+  margin: 0 0 12px;
+  max-width: var(--measure, 65ch);
+  font-size: var(--text-help, 14px);
+  line-height: var(--leading, 1.5);
+  color: var(--text-muted);
+}
+.import-panel .nav-statement-preview .nav-statement-warning,
+.import-panel .nav-statement-preview .nav-statement-match { line-height: var(--leading, 1.5); }

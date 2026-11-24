@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Holdr (npm run start:local) as a LaunchAgent: it starts when you log in, runs as you, and listens on 127.0.0.1 only.
+  Replace the three placeholders, save the result as ~/Library/LaunchAgents/local.holdr.start.plist, then load it
+  (docs/getting-started.md, "Start Holdr automatically", has the commands that do all of it):
+    __NODE__   full path of node, as `command -v node` prints it in your Terminal (Homebrew, nvm or the installer);
+               run the sed command again after installing another Node.js
+    __REPO__   full path of this repository checkout
+    __HOME__   your home folder ($HOME)
+  `npm run start:local` runs exactly `node scripts/start-local.mjs`, which starts everything else with that same node.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.holdr.start</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>__NODE__</string>
+    <string>__REPO__/scripts/start-local.mjs</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>__REPO__</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+  <key>ExitTimeOut</key>
+  <integer>30</integer>
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/Holdr/holdr.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/Holdr/holdr.log</string>
+</dict>
+</plist>

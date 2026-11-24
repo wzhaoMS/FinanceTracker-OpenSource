@@ -1,0 +1,180 @@
+{
+  "format": "holdr.card-import",
+  "version": 2,
+  "contractVersion": 1,
+  "source": "amex-api-rest",
+  "parserVersion": "holdr-ext-amex@0.1.0",
+  "issuer": "amex",
+  "currency": "USD",
+  "owner": "alex",
+  "cards": [
+    "2008"
+  ],
+  "bindingId": "bnd_dnidmlficecahecoeeeoljodhdibofeh",
+  "bindingVersion": 2,
+  "captureId": "cpt_hamdfonjjpjcdigfgadjjefijpndnbbl",
+  "observedAt": "2026-10-16T16:00:00.500Z",
+  "mode": "isolated-read",
+  "coverage": [
+    {
+      "cardScopeId": "scp_iccneheaomdkckanhkleghpepnoekdfd",
+      "status": "posted",
+      "requested": {
+        "start": "2026-09-17",
+        "end": "2026-10-16",
+        "dateBasis": "posted"
+      },
+      "observed": {
+        "start": "2026-10-01",
+        "end": "2026-10-04",
+        "dateBasis": "posted"
+      },
+      "completeness": "partial",
+      "pageCount": 10,
+      "termination": "cap"
+    },
+    {
+      "cardScopeId": "scp_iccneheaomdkckanhkleghpepnoekdfd",
+      "status": "pending",
+      "requested": null,
+      "observed": null,
+      "completeness": "unknown",
+      "pageCount": 0,
+      "termination": "not-read"
+    }
+  ],
+  "rejectedCount": 0,
+  "statement": null,
+  "totals": {
+    "posted": {
+      "count": 3,
+      "chargesMinor": 21315,
+      "creditsMinor": -5800,
+      "netMinor": 15515,
+      "byKind": {
+        "purchase": {
+          "count": 2,
+          "amountMinor": 21315
+        },
+        "refund": {
+          "count": 1,
+          "amountMinor": -5800
+        },
+        "payment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    },
+    "pending": {
+      "count": 0,
+      "chargesMinor": 0,
+      "creditsMinor": 0,
+      "netMinor": 0,
+      "byKind": {
+        "purchase": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "refund": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "payment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "fee": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "interest": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "adjustment": {
+          "count": 0,
+          "amountMinor": 0
+        },
+        "other": {
+          "count": 0,
+          "amountMinor": 0
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "transactionDate": "2026-09-30",
+      "postedDate": "2026-10-01",
+      "status": "posted",
+      "amountMinor": 21040,
+      "kind": "purchase",
+      "description": "EXAMPLE HOTEL TOKYO",
+      "merchant": "Example Hotel",
+      "issuerCategory": null,
+      "externalIdHash": "xid1:ifbbllggnomnmpmdgechjngjojkdldndedhejpemkdpjhkfjfgmflakgchliegkf",
+      "fingerprint": null,
+      "cardScopeId": "scp_iccneheaomdkckanhkleghpepnoekdfd",
+      "identityNamespace": "amex-api-rest:identifier:v1",
+      "secondaryIds": [
+        {
+          "namespace": "amex-api-rest:reference:v1",
+          "idHash": "xid1:ofdnhefldinmingafcdboidghpmdokdajlmfecmggoienbmlihcgdhcjahgeljgn"
+        }
+      ],
+      "originalAmountMinor": 31200,
+      "originalCurrency": "JPY"
+    },
+    {
+      "transactionDate": "2026-10-02",
+      "postedDate": "2026-10-03",
+      "status": "posted",
+      "amountMinor": -5800,
+      "kind": "refund",
+      "description": "EXAMPLE AIRLINE REFUND",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": "xid1:bjnhojiollaamjpbogpklkkgibagfdicdoahfjdcnpcdajobghdhonhlefngbcpa",
+      "fingerprint": null,
+      "cardScopeId": "scp_iccneheaomdkckanhkleghpepnoekdfd",
+      "identityNamespace": "amex-api-rest:identifier:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    },
+    {
+      "transactionDate": "2026-10-04",
+      "postedDate": "2026-10-04",
+      "status": "posted",
+      "amountMinor": 275,
+      "kind": "purchase",
+      "description": "SYNTHETIC TRANSIT FARE",
+      "merchant": null,
+      "issuerCategory": null,
+      "externalIdHash": null,
+      "fingerprint": "cfp1:kbfbcbdnalnfbkookfkillnkanfbbljbemmbdihhppehhabghfmbkodlfnkehade",
+      "cardScopeId": "scp_iccneheaomdkckanhkleghpepnoekdfd",
+      "identityNamespace": "amex-api-rest:capture:v1",
+      "secondaryIds": [],
+      "originalAmountMinor": null,
+      "originalCurrency": null
+    }
+  ]
+}

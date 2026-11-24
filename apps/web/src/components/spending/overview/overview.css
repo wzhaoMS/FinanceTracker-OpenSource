@@ -1,0 +1,291 @@
+/* =====================================================================
+ * Spending: the overview's parts (components/spending/overview) and the
+ * Spending tab's own lines around them (SpendingPanel, SpendingInsights).
+ * Only Everyday's palette tokens (modes.css). Every state is also said in
+ * words (a part's name, "partial" in a month's label); colour and hatching
+ * only repeat it, so forced colours (the end of this file) lose nothing.
+ *
+ * Type floors (plan D1), through the shared tokens where they exist: 16px
+ * reading text (rows, figures, sentences), 14px help, labels, status and
+ * actionable chips (the months' names on a phone are their initials, never
+ * smaller type); section heads 18px (20px from 1280px); line-height 1.5 for
+ * running text that can wrap, 1.25–1.5 for headings and single-line
+ * controls; prose 65ch.
+ * ==================================================================== */
+
+.spending-overview {
+  --ov-read: var(--text-read, 16px);
+  --ov-help: var(--text-help, 14px);
+  --ov-section: var(--text-section, 18px);
+  --ov-leading: var(--leading, 1.5);
+  --ov-measure: var(--measure, 65ch);
+  display: grid; gap: 14px; min-width: 0;
+}
+/* The page's own help lines outside the overview (Insights, Recurring, Imported dates) share them. */
+.spending { --ov-help: var(--text-help, 14px); --ov-leading: var(--leading, 1.5); --ov-measure: var(--measure, 65ch); }
+
+/* Muted details inside the overview's rows read at the help size, whatever the shared rule says. */
+.spending .spending-overview .spending-muted { font-size: var(--ov-help); line-height: var(--ov-leading); }
+
+/* ---- Headline: the total, its one comparison, what is not in it ---- */
+.overview-headline { grid-template-columns: minmax(0, 1fr); gap: 18px 36px; }
+@media (min-width: 1024px) {
+  .overview-headline { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+}
+.overview-headline-total, .overview-headline-compare, .overview-out { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.overview-headline-label, .overview-block h3 { margin: 0; font-size: var(--ov-section); font-weight: 600; line-height: 1.3; }
+@media (min-width: 1280px) {
+  .overview-headline-label, .overview-block h3 { font-size: 20px; }
+}
+.overview-total-line { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+/* The label and, while the headline is read again, its one spinner. */
+.overview-headline-head { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; min-width: 0; }
+/* The total not read yet: a spinner the figure's height, so nothing moves when the figure comes. */
+.overview-total-line .overview-total-spinner { font-size: 28px; min-height: 45px; align-self: center; }
+/* The total also carries the summary cards' hook class: its own size here, never cut short. */
+.overview-headline .overview-total.spending-card-value {
+  font-size: 36px; line-height: 1.25; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  overflow: visible; white-space: normal; text-overflow: clip;
+}
+.overview-so-far { font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); }
+.overview-scope, .overview-other-currencies, .overview-help, .overview-scope-line {
+  margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); max-width: var(--ov-measure);
+}
+.overview-other-currencies { color: var(--text); }
+.overview-waiting { margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--warning); max-width: var(--ov-measure); }
+.overview-matching { margin: 4px 0 0; }
+.overview-jump, .overview-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; color: var(--brand);
+  font: inherit; font-size: var(--ov-help); line-height: var(--ov-leading); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  justify-self: start; text-align: left;
+}
+.overview-jump { font-size: var(--ov-read); }
+.overview-jump:hover, .overview-link:hover { color: var(--text); }
+.overview-jump:focus-visible, .overview-link:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); border-radius: 4px; }
+@media (pointer: coarse) {
+  .overview-jump, .overview-link { min-height: 44px; }
+}
+
+.overview-compared-text { margin: 0; font-size: var(--ov-read); font-weight: 600; line-height: var(--ov-leading); }
+.overview-compared[data-tone='less'] .overview-compared-text { color: var(--gain); }
+.overview-not-comparable { display: grid; gap: 6px; min-width: 0; }
+.overview-not-comparable-reason { margin: 0; font-size: var(--ov-read); line-height: var(--ov-leading); max-width: var(--ov-measure); }
+.overview-not-comparable-reason strong { font-weight: 600; }
+.overview-figures { margin: 0; display: grid; gap: 2px; max-width: 30rem; }
+.overview-figure { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; font-size: var(--ov-read); line-height: var(--ov-leading); }
+.overview-figure dt { color: var(--text-muted); min-width: 0; }
+.overview-figure dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.overview-out h4 { margin: 0; font-size: var(--ov-read); font-weight: 600; line-height: var(--ov-leading); }
+.overview-out-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+/* An amount column, then what it is: the amounts line up down the list. */
+.overview-out-row {
+  display: grid; grid-template-columns: minmax(6rem, max-content) minmax(0, 1fr); align-items: baseline; column-gap: 12px;
+  font-size: var(--ov-read); line-height: var(--ov-leading);
+}
+.overview-out-amount { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.overview-out .overview-out-amount.spending-card-value { font-size: inherit; letter-spacing: normal; overflow: visible; white-space: nowrap; }
+.overview-out-text { min-width: 0; overflow-wrap: anywhere; }
+.overview-out-note { grid-column: 2; font-size: var(--ov-help); color: var(--text-muted); }
+
+/* ---- Notes: a window that may be incomplete, and why two can't be compared ---- */
+.overview-note { justify-self: start; min-width: 0; }
+.overview-note-fold > .fold-toggle, .overview-why > .fold-toggle {
+  min-height: 32px; padding-block: 2px; font-size: var(--ov-help); line-height: var(--ov-leading); text-align: left;
+}
+.overview-note-fold > .fold-toggle, .overview-note-fold > .fold-toggle:hover, .overview-note-fold > .fold-toggle .fold-chevron { color: var(--warning); }
+.overview-note-fold .fold-summary { display: inline-flex; align-items: center; gap: 6px; }
+.overview-note-icon { flex: none; }
+.overview-note-reasons {
+  margin: 0 0 4px; padding-left: 40px; display: grid; gap: 2px; font-size: var(--ov-help); line-height: var(--ov-leading);
+  color: var(--text-muted); max-width: var(--ov-measure);
+}
+@media (pointer: coarse) {
+  .overview-note-fold > .fold-toggle, .overview-why > .fold-toggle { min-height: 44px; }
+}
+.overview-opened-note { margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); }
+.overview-error { margin: 0; color: var(--loss); font-size: var(--ov-help); line-height: var(--ov-leading); max-width: var(--ov-measure); }
+/* A period whose spending is not on record, said in place of its parts and categories: never $0. */
+.overview-unknown { margin: 0; font-size: var(--ov-read); line-height: var(--ov-leading); max-width: var(--ov-measure); }
+
+/* ---- Toggles (what changed's baselines; by category or merchant; months by type or person) ---- */
+.overview-toggle {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: 2px 12px; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: transparent; color: var(--text); font: inherit; font-size: var(--ov-help); line-height: 1.4; cursor: pointer;
+}
+.overview-toggle:hover { background: var(--surface-2); }
+.overview-toggle.active { border-color: color-mix(in srgb, var(--brand) 60%, var(--line)); background: var(--brand-soft); }
+.overview-toggle:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+@media (pointer: coarse) {
+  .overview-toggle, .overview-part { min-height: 44px; }
+}
+
+/* ---- Blocks ---- */
+.overview-pair { gap: 18px 40px; }
+@media (min-width: 1024px) {
+  .overview-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+@media (max-width: 1023px) {
+  .overview-pair > .overview-block + .overview-block { padding-top: 14px; border-top: 1px solid var(--line); }
+}
+.overview-block { display: grid; gap: 10px; min-width: 0; }
+.overview-block-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; }
+.overview-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- Where it went ---- */
+.overview-bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--surface-2); }
+.overview-bar-part { display: block; height: 100%; }
+/* The parts' colours, and by person the owners' (Everyday's person tokens, as its person legend draws them). */
+.ov-other { --part: var(--brand); }
+.ov-recurring { --part: var(--cat-dining); }
+.ov-oneOffs { --part: var(--cat-shopping); }
+.ov-alex { --part: var(--owner-alex, var(--brand)); }
+.ov-casey { --part: var(--owner-casey, var(--color-warn-strong)); }
+.ov-joint { --part: var(--owner-joint, var(--warning)); }
+.overview-bar-part, .overview-month-part { background: var(--part); }
+.overview-parts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+.overview-part {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; color: var(--text); font: inherit; font-size: var(--ov-read); line-height: 1.4; cursor: pointer;
+}
+.overview-part[aria-expanded='true'] { background: var(--brand-soft); border-color: color-mix(in srgb, var(--brand) 50%, var(--line)); }
+.overview-part:focus-visible, .overview-row:focus-visible, .overview-month:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.overview-swatch { width: 10px; height: 10px; border-radius: 3px; background: var(--part); }
+
+/* ---- Lists: name, detail, amount ----
+ * Each row is its own grid, so the amount column has a floor: rows with shorter amounts keep the same columns and
+ * their details line up down the list. */
+.overview-list, .overview-changes { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.overview-list > li, .overview-changes > li, .overview-row {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) minmax(6.5rem, auto); align-items: baseline; gap: 2px 12px;
+  padding: 6px; font-size: var(--ov-read); line-height: var(--ov-leading);
+}
+.overview-list > li:has(> .overview-row) { padding: 0; display: block; }
+.overview-row {
+  width: 100%; border: 0; border-radius: 6px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.overview-row:hover { background: color-mix(in srgb, var(--line) 50%, transparent); }
+.overview-list > li > span:first-child, .overview-row > span:first-child,
+.overview-changes > li > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* A driver's merchants, on their own line under its figures. */
+.overview-changes > li > .overview-merchants { grid-column: 1 / -1; overflow-wrap: anywhere; }
+.overview-changes-head { margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); max-width: var(--ov-measure); }
+.overview-list .spending-link { justify-self: start; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; font-size: inherit; }
+.overview-list strong, .overview-changes strong { text-align: right; font-weight: 600; }
+.overview-list-total { border-top: 1px solid var(--line); font-weight: 600; }
+/* ---- The one category view: rows that open in place ---- */
+/* The category view reads down one column: its rows (and what opens under them) no wider than this, so on a wide
+ * screen a name, its charges and its amount stay together. */
+.overview-categories .overview-rows { max-width: 56rem; }
+.overview-rows > li.open { background: color-mix(in srgb, var(--line) 28%, transparent); border-radius: 8px; }
+/* A chevron for the eye only: its alternative text is empty, so a row's name stays its own (aria-expanded says the rest). */
+.overview-row-name::before { content: '\203A'; content: '\203A' / ''; display: inline-block; width: 1em; color: var(--text-muted); transition: transform 0.15s ease; }
+.overview-row[aria-expanded='true'] .overview-row-name::before { transform: rotate(90deg); }
+.overview-detail { display: grid; gap: 8px; min-width: 0; padding: 2px 6px 10px 1.5em; }
+.overview-filter { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; max-width: var(--ov-measure); line-height: var(--ov-leading); }
+.overview-filter .overview-help { display: inline; }
+.overview-items {
+  margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; padding: 6px; border-radius: 6px;
+  font-size: var(--ov-read); line-height: var(--ov-leading); max-width: var(--ov-measure); background: var(--surface-2);
+}
+.overview-items strong { font-weight: 600; }
+.overview-amazon-coverage { display: grid; gap: 2px; min-width: 0; }
+.overview-amazon-coverage p { margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); max-width: var(--ov-measure); overflow-wrap: anywhere; }
+.overview-charges { padding-left: 1em; }
+/* An open "N other merchants" row of a category: its merchant lines, set in under it as a line's charges are. */
+.overview-others { padding-left: 1em; }
+.overview-categories .spending-category-basis-line { line-height: var(--ov-leading); }
+
+/* ---- Months ---- */
+.overview-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: var(--ov-help); line-height: var(--ov-leading); }
+.overview-legend span::before {
+  content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 4px; border-radius: 2px; background: var(--part);
+}
+/* The axis beside the bars, its amounts at the top, the middle and the base of the bars' area. */
+.overview-chart { --ov-chart-h: 150px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; align-items: start; min-width: 0; }
+.overview-axis { position: relative; height: var(--ov-chart-h); font-size: var(--ov-help); line-height: 1.25; color: var(--text-muted); }
+/* Laid out by its widest amount, the ticks themselves placed on the bars' scale. */
+.overview-axis::before { content: ''; display: block; width: 3.2em; }
+.overview-axis-tick { position: absolute; right: 0; transform: translateY(50%); white-space: nowrap; }
+.overview-months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 4px; align-items: start; min-width: 0; }
+.overview-month {
+  display: grid; grid-template-rows: var(--ov-chart-h) auto auto; gap: 4px; min-width: 0; padding: 0 0 4px; border: 0;
+  border-radius: 6px; background: transparent; color: var(--text-muted); font: inherit; font-size: var(--ov-help); line-height: 1.3; cursor: pointer;
+}
+.overview-month.selected { color: var(--text); background: var(--brand-soft); }
+.overview-month-stack {
+  position: relative; display: flex; flex-direction: column-reverse; justify-content: flex-start; min-height: 0; padding: 0 3px;
+  /* The axis's top and middle, faintly across the bars; the base is the bars' own edge. */
+  background: linear-gradient(var(--line), var(--line)) 0 0 / 100% 1px no-repeat, linear-gradient(var(--line), var(--line)) 0 50% / 100% 1px no-repeat;
+  border-bottom: 1px solid var(--line-strong);
+}
+.overview-month-part { display: block; width: 100%; }
+.overview-month-part:last-child { border-radius: 3px 3px 0 0; }
+.overview-month.partial .overview-month-stack::after {
+  content: ''; position: absolute; inset: 0 3px; border-radius: 3px;
+  background: repeating-linear-gradient(135deg, transparent 0 4px, color-mix(in srgb, var(--bg) 70%, transparent) 4px 7px);
+  border: 1px dashed var(--warning);
+}
+/* No card expected in the month. Not `.empty`: that is the app's empty-state box (32px of padding), which made such a
+ * month 64px wide and pushed a phone's page sideways. */
+.overview-month.no-cards .overview-month-label { opacity: 0.6; }
+.overview-month-label { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.overview-month-initial { display: none; }
+/* A month's state in words, on it where the columns have room (1280px and wider), else in one line under the chart. */
+.overview-month-state { display: none; padding: 0 2px; font-size: var(--ov-help); line-height: var(--ov-leading); text-align: center; color: var(--text-muted); }
+.overview-month-state.incomplete { color: var(--warning); }
+.overview-month-states { margin: 0; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); max-width: var(--ov-measure); }
+@media (min-width: 1280px) {
+  .overview-month-state { display: block; }
+  .overview-month-states { display: none; }
+}
+/* Missing history: which cards keep months from counting, folded under its count. */
+.overview-missing > .fold-toggle { min-height: 32px; padding-block: 2px; font-size: var(--ov-help); line-height: var(--ov-leading); text-align: left; }
+.overview-missing > .fold-content { display: grid; gap: 6px; padding: 2px 0 4px 22px; }
+@media (pointer: coarse) {
+  .overview-missing > .fold-toggle { min-height: 44px; }
+}
+.overview-chart-note { font-size: var(--ov-help); line-height: var(--ov-leading); max-width: var(--ov-measure); }
+.overview-chart-note .spending-link { font-size: inherit; }
+.overview-gaps { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); max-width: var(--ov-measure); }
+.overview-opened { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: var(--ov-help); line-height: var(--ov-leading); color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .overview-list > li, .overview-changes > li, .overview-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .overview-list > li > span:nth-child(2), .overview-changes > li > span:nth-child(2), .overview-row > span:nth-child(2) {
+    grid-column: 1 / -1; grid-row: 2;
+  }
+  .overview-chart { --ov-chart-h: 120px; gap: 4px; }
+  .overview-months { gap: 2px; }
+  /* Twelve months across a phone: each by its initial, at the help size, so none is cut short. */
+  .overview-month-name { display: none; }
+  .overview-month-initial { display: inline; }
+}
+
+/* ---- The Spending tab's own lines: filter chips, scope lines, Imported dates ---- */
+.spending .spending-active-filters .spending-chip { font-size: var(--ov-help); line-height: 1.4; max-width: 100%; }
+.spending .spending-active-filters .spending-chip button { min-width: 28px; min-height: 28px; justify-content: center; }
+@media (pointer: coarse) {
+  .spending .spending-active-filters .spending-chip button { min-width: 40px; min-height: 40px; }
+}
+.spending-transactions:focus, .spending-insights:focus { outline: none; }
+.spending-transactions:focus-visible, .spending-insights:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.spending-coverage-fold > .fold-toggle { min-height: 36px; font-size: var(--ov-help); }
+.spending-coverage > .spending-panel-head .spending-link { font-size: var(--ov-help); line-height: var(--ov-leading); }
+@media (pointer: coarse) {
+  .spending-coverage-fold > .fold-toggle { min-height: 44px; }
+}
+.spending-coverage-fold ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.spending .spending-coverage-fold .spending-coverage-row { font-size: var(--ov-help); line-height: var(--ov-leading); }
+.spending .spending-coverage-fold .spending-muted { font-size: var(--ov-help); line-height: var(--ov-leading); }
+.spending .spending-coverage-fold .spending-coverage-range, .spending .spending-coverage-fold .spending-coverage-gap { font-size: var(--ov-help); }
+
+@media (forced-colors: active) {
+  .overview-bar-part, .overview-month-part, .overview-swatch, .overview-legend span::before { forced-color-adjust: none; background: CanvasText; }
+  /* The axis's lines are kept, in the user's grey. */
+  .overview-month-stack {
+    forced-color-adjust: none; border-bottom-color: CanvasText;
+    background: linear-gradient(GrayText, GrayText) 0 0 / 100% 1px no-repeat, linear-gradient(GrayText, GrayText) 0 50% / 100% 1px no-repeat;
+  }
+  .overview-month.partial .overview-month-stack::after { border-color: Highlight; background: none; }
+}

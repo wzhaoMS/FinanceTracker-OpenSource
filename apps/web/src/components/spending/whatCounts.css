@@ -1,0 +1,114 @@
+/* =====================================================================
+ * What counts (components/spending/WhatCountsPanel.tsx): its compact line, the charges waiting for the owner's word,
+ * the card activity as a statement (counted as spending, not counted, all card activity) and the owner's rules.
+ * Reading floors: 16px reading text; 14px for everything else, help, dates, status, actions and the tier badge alike
+ * (how likely a charge is metals is status, not a secondary badge); the title 18px, 20px from 1280px wide; line
+ * height 1.5; prose at most 65 characters wide.
+ * Only the palette's tokens. Every selector starts at `.spending-panel.spending-what-counts`, so it holds over the
+ * shared spending rules and the modes' restyles of them, which load after this file.
+ * ==================================================================== */
+
+.spending-panel.spending-what-counts { line-height: 1.5; }
+
+/* ---- The title is the panel's toggle; its scope beside it ---- */
+.spending-panel.spending-what-counts .what-counts-head { align-items: center; }
+.spending-panel.spending-what-counts .what-counts-head h3 { margin: 0; font-size: var(--text-section, 18px); line-height: 1.5; }
+.spending-panel.spending-what-counts .what-counts-toggle {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 4px 10px 4px 2px;
+  border: 0; border-radius: 8px; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.spending-panel.spending-what-counts .what-counts-toggle:hover { background: color-mix(in srgb, var(--line) 35%, transparent); }
+.spending-panel.spending-what-counts .what-counts-toggle:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.spending-panel.spending-what-counts .what-counts-chevron { flex: none; color: var(--brand); transition: transform 160ms ease; }
+.spending-panel.spending-what-counts[data-open='true'] .what-counts-chevron { transform: rotate(90deg); }
+.spending-panel.spending-what-counts .what-counts-scope { font-size: var(--text-help, 14px); line-height: 1.5; }
+
+/* ---- Folded: one line, what waits and Review ---- */
+.spending-panel.spending-what-counts .what-counts-compact {
+  margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  font-size: var(--text-read, 16px); line-height: 1.5;
+}
+.spending-panel.spending-what-counts .what-counts-waiting { color: var(--warning); font-weight: 650; }
+.spending-panel.spending-what-counts .what-counts-settled { color: var(--text-muted); }
+
+.spending-panel.spending-what-counts .what-counts-body { display: grid; gap: 18px; min-width: 0; }
+.spending-panel.spending-what-counts .spending-error { font-size: var(--text-read, 16px); line-height: 1.5; }
+.spending-panel.spending-what-counts .spending-muted { font-size: var(--text-help, 14px); line-height: 1.5; }
+.spending-panel.spending-what-counts .what-counts-lede { margin: 0; max-width: var(--measure, 65ch); font-size: var(--text-read, 16px); line-height: 1.5; }
+.spending-panel.spending-what-counts .what-counts-help { max-width: var(--measure, 65ch); }
+.spending-panel.spending-what-counts .spending-button { font-size: var(--text-help, 14px); }
+.spending-panel.spending-what-counts .spending-link { font-size: var(--text-read, 16px); }
+
+/* ---- To confirm ---- */
+.spending-panel.spending-what-counts .spending-what-counts-queue { gap: 8px; }
+.spending-panel.spending-what-counts .spending-what-counts-queue h4 {
+  margin: 0; font-size: var(--text-read, 16px); line-height: 1.5; font-weight: 650; color: var(--warning);
+}
+.spending-panel.spending-what-counts .spending-what-counts-queue h4:focus-visible { outline: var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
+/* A waiting charge (and a precious-metals row): the merchant reads at 16px, the date, why and the tier at 14px.
+ * The date column is wide enough for "Sep 28" at 14px. */
+.spending-panel.spending-what-counts .spending-what-counts-open { font-size: var(--text-read, 16px); line-height: 1.5; }
+.spending-panel.spending-what-counts .spending-row-date { font-size: var(--text-help, 14px); }
+.spending-panel.spending-what-counts .spending-row-description { font-size: var(--text-help, 14px); line-height: 1.5; }
+.spending-panel.spending-what-counts .spending-row-original { font-size: var(--text-help, 14px); }
+.spending-panel.spending-what-counts .spending-badge { font-size: var(--text-help, 14px); line-height: 1.5; }
+@media (min-width: 1001px) {
+  .spending-panel.spending-what-counts .spending-what-counts-list { grid-template-columns: 56px minmax(12rem, 1fr) auto minmax(6.5rem, auto) auto; }
+}
+@media (max-width: 1000px) {
+  .spending-panel.spending-what-counts .spending-what-counts-open { grid-template-columns: 56px minmax(0, 1fr) auto; }
+  .spending-panel.spending-what-counts .spending-what-counts-buttons { padding-left: 74px; }
+}
+@media (max-width: 720px) {
+  .spending-panel.spending-what-counts .spending-what-counts-open { grid-template-columns: 50px minmax(0, 1fr) auto; }
+  .spending-panel.spending-what-counts .spending-what-counts-buttons { padding-left: 64px; }
+}
+/* The narrowest phones: the date sets its month over its day, so a merchant's longest word fits its column whole. */
+@media (max-width: 359px) {
+  .spending-panel.spending-what-counts .spending-what-counts-open { grid-template-columns: 32px minmax(0, 1fr) auto; column-gap: 8px; }
+  .spending-panel.spending-what-counts .spending-what-counts-open > .spending-row-date { white-space: normal; }
+  .spending-panel.spending-what-counts .spending-what-counts-buttons { padding-left: 44px; }
+}
+
+/* ---- The statement: two groups of lines, a label and its signed amount, then all card activity under a rule. The
+ * figures end on one edge, near their labels on a wide screen. ---- */
+.spending-panel.spending-what-counts .what-counts-statement { display: grid; gap: 12px; max-width: 40rem; min-width: 0; }
+.spending-panel.spending-what-counts .what-counts-group { display: grid; min-width: 0; }
+.spending-panel.spending-what-counts .what-counts-group-head { margin: 0 0 2px; font-size: var(--text-read, 16px); line-height: 1.5; font-weight: 650; }
+.spending-panel.spending-what-counts .what-counts-row {
+  margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 2px 16px;
+  padding: 3px 0 3px 16px; font-size: var(--text-read, 16px); line-height: 1.5;
+}
+.spending-panel.spending-what-counts .what-counts-label { min-width: 0; overflow-wrap: break-word; }
+.spending-panel.spending-what-counts .what-counts-note { display: block; color: var(--text-muted); font-size: var(--text-help, 14px); line-height: 1.5; }
+.spending-panel.spending-what-counts .what-counts-note .spending-link.inline { font-size: inherit; }
+/* What counts couldn't be read: its error at the help size, its Try again with it. */
+.spending-panel.spending-what-counts .overview-error .spending-link.inline { font-size: inherit; }
+.spending-panel.spending-what-counts .what-counts-figure { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.spending-panel.spending-what-counts .what-counts-total {
+  margin-top: 2px; padding: 8px 0 0; border-top: 1px solid var(--line-strong, var(--line)); font-weight: 650;
+}
+.spending-panel.spending-what-counts .what-counts-part { display: grid; min-width: 0; }
+/* The precious-metals rows, opened under their line: set in, apart from the statement's figures. */
+.spending-panel.spending-what-counts .what-counts-part > .spending-what-counts-list {
+  margin: 4px 0 6px 16px; padding-left: 10px; border-left: 2px solid var(--line);
+}
+
+/* ---- The owner's rules, folded, and making one ---- */
+.spending-panel.spending-what-counts .what-counts-rules-fold > .fold-toggle { font-size: var(--text-read, 16px); line-height: 1.5; color: var(--text); }
+.spending-panel.spending-what-counts .what-counts-rules-fold > .fold-content { padding: 4px 0 0 22px; }
+.spending-panel.spending-what-counts .spending-what-counts-rules { gap: 10px; font-size: var(--text-read, 16px); line-height: 1.5; }
+.spending-panel.spending-what-counts .spending-what-counts-rule { gap: 8px; font-size: var(--text-read, 16px); line-height: 1.5; }
+.spending-panel.spending-what-counts .spending-what-counts-rule select,
+.spending-panel.spending-what-counts .spending-what-counts-rule input { font: inherit; font-size: var(--text-read, 16px); }
+.spending-panel.spending-what-counts .spending-what-counts-rule input { width: 120px; }
+
+@media (min-width: 1280px) {
+  .spending-panel.spending-what-counts .what-counts-head h3 { font-size: 20px; }
+}
+@media (pointer: coarse) {
+  .spending-panel.spending-what-counts .what-counts-toggle { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spending-panel.spending-what-counts .what-counts-chevron { transition: none; }
+}

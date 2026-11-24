@@ -1,0 +1,3 @@
+# The pairing key the receiver writes for the extension (and its temporary files): private to this computer.
+extension/local-key.json
+extension/.local-key.json.*

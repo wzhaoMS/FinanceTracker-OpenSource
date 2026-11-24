@@ -1,0 +1,41 @@
+# Holdr (FinanceTracker)
+
+> Holdr is a self-hosted personal finance app for one U.S. household: investments (brokerage, Roth IRA, 401(k), HSA),
+> physical gold and silver, everyday credit-card spending, card benefits and statement credits, and spending forecasts.
+> It runs on the owner's Windows or macOS computer with a local SQLite database, listens on 127.0.0.1 only, and has no
+> telemetry.
+
+The web app is for people. AI agents read Holdr through the read-only MCP server in `agents/mcp` (nine tools: portfolio,
+positions, investment activity, gold and silver, spending summary, card transactions, card benefits, spending forecast,
+health) or through the loopback REST API, both with Holdr's agent token (`<data folder>/agent-token`), which Holdr
+allows GET and HEAD on a reviewed list of read routes and nothing else. Both work only on the computer that runs Holdr;
+never expose Holdr to the internet, and never give an agent the service token (`service-token`), which can change data.
+Experiment with the synthetic demo (`npm run demo`; API on 127.0.0.1:4001) rather than a real household's data.
+
+## Docs
+
+- [README](README.md): what Holdr does, the privacy model, requirements, the demo, quick start, imports, phone access through Tailscale Serve, backups
+- [Getting started](docs/getting-started.md): installing Holdr on Windows or macOS and running it with your own data, step by step
+- [The demo](docs/demo.md): `npm run demo`, a fictional household with its own data folder and ports, offline
+- [Use Holdr with AI agents](docs/agents.md): the read-only agent token, the MCP server's tools, setup for GitHub Copilot CLI, VS Code, Claude Desktop and Cursor, the REST API, the security model, token rotation, limitations
+- [Architecture and limitations](docs/architecture.md): components, storage, authentication, networking, privacy boundaries
+- [Deployment](docs/deployment.md): development, single computer, private HTTPS for your devices, the hardened macOS deployment, settings, backups, upgrades
+- [Importing data](docs/importing-data.md): offline converters and preview-first imports for cards, checking, receipts and gold and silver
+- [Card sync agent](docs/sync-agent.md): the experimental American Express statement receiver and browser extension
+- [Documentation index](docs/README.md): every guide, grouped by task
+
+## Contributing
+
+- [AGENTS.md](AGENTS.md): instructions for AI coding agents: layout, setup, build and test commands, conventions, privacy rules, pull request checklist
+- [CONTRIBUTING.md](CONTRIBUTING.md): setup, checks, the privacy scan, privacy requirements
+- [SECURITY.md](SECURITY.md): reporting vulnerabilities and deployment expectations
+- [MCP server](agents/mcp/README.md): the code layout of the read-only MCP server and how to add a tool
+
+## Optional
+
+- [Costco receipts](docs/costco-receipts.md): the optional receipt workflow
+- [Retail item categories](docs/retail-operator.md): the advanced, local-only workflow that files receipt items under categories
+- [Staged upgrades of the hardened macOS deployment](docs/e0i-ingress.md): the upgrade procedure for the hardened macOS host
+- [Brand guide](docs/brand.md): the name, logo files, colors, type and rules for screenshots
+- [Card sync agent code](agents/card-sync/README.md): the receiver's code layout and tests
+- [Browser extension](apps/extension/README.md): the developer-preview extension shell

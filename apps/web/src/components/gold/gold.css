@@ -1,0 +1,334 @@
+/* ---- Investing › Gold: the precious-metals ledger's page (design v8 §11) ----
+ * Readability (the reading tokens in styles.css): 16px for prose, row names and figures
+ * (--text-read); 14px for labels, metadata, help, status and warnings (--text-help); section heads at --text-section;
+ * running text at --leading, paragraphs no wider than --measure. Phones are solved by layout, never by smaller type:
+ * rows stack their parts and wrap between words; nothing is cut; targets are 44px on touch screens.
+ * Components import this file before styles.css loads, so every rule is scoped under the page root, .gold. */
+
+.gold {
+  --gold-accent: var(--color-gold, #facc15);
+  --gold-warning-text: var(--color-warn, #fbbf24);
+  --gold-cost: var(--color-info, #38bdf8);
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  font-size: var(--text-read);
+  line-height: var(--leading);
+}
+.gold p { margin: 0; max-width: var(--measure); line-height: var(--leading); }
+.gold ul { margin: 0; padding: 0; list-style: none; }
+.gold dl, .gold dd { margin: 0; }
+.gold code { font-family: var(--font-mono); font-size: inherit; overflow-wrap: anywhere; }
+.gold :is(h2, h3, h4) { margin: 0; line-height: 1.3; overflow-wrap: break-word; }
+.gold h3 { font-size: var(--text-section); font-weight: 600; letter-spacing: -0.005em; }
+.gold h4 { font-size: var(--text-read); font-weight: 600; }
+.gold .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.gold .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- The page head: the metal's name and the switch ---- */
+.gold .gold-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.gold .gold-title { font-size: var(--text-section); font-weight: 650; letter-spacing: -0.01em; }
+
+/* ---- Chips: the metal switch, the period and the chart's view; their pressed state is announced ---- */
+.gold .gold-switch,
+.gold .gold-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.gold .gold-chip {
+  min-height: 36px;
+  padding: 4px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--chip-radius);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--text-help);
+  line-height: var(--leading);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.gold .gold-chip:hover { color: var(--text); border-color: color-mix(in srgb, var(--text-muted) 45%, transparent); }
+.gold .gold-chip.active { color: var(--text); border-color: var(--gold-accent); background: color-mix(in srgb, var(--gold-accent) 14%, transparent); }
+.gold .gold-chip:focus-visible,
+.gold .gold-button:focus-visible,
+.gold .gold-link:focus-visible,
+.gold .gold-row-toggle:focus-visible,
+.gold [tabindex='-1']:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+
+/* ---- Cards ---- */
+.gold .gold-card {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.gold .gold-section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.gold .gold-scope,
+.gold .gold-help,
+.gold .gold-note,
+.gold .gold-row-meta,
+.gold .gold-basis { font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-help-inline { display: block; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-asof { font-weight: 400; color: var(--text-muted); }
+.gold .gold-warning {
+  font-size: var(--text-help);
+  color: var(--gold-warning-text);
+}
+.gold .gold-warning::before { content: '⚠\FE0E'; margin-right: 6px; }
+.gold .gold-error-text { font-size: var(--text-help); color: var(--loss); }
+.gold .gold-error { display: grid; gap: 10px; padding: 16px 20px; border-radius: 14px; background: var(--surface); }
+.gold .gold-loading { padding: 24px 20px; }
+
+/* ---- Figures and their state words: a partial or unknown figure says so beside it ---- */
+.gold .gold-figure { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.gold .gold-state {
+  font-family: var(--font-sans);
+  font-size: var(--text-help);
+  font-weight: 500;
+  color: var(--gold-warning-text);
+}
+.gold .gold-zero { color: var(--text); }
+.gold .gold-reconciliation { display: grid; gap: 2px; font-size: var(--text-help); color: var(--text-muted); }
+
+/* ---- Links and buttons ---- */
+.gold .gold-link {
+  display: inline;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gold-accent);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.gold .gold-button {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-help);
+  line-height: var(--leading);
+  cursor: pointer;
+}
+.gold .gold-button.primary { border-color: var(--gold-accent); background: color-mix(in srgb, var(--gold-accent) 22%, var(--surface-2)); }
+.gold .gold-button:disabled { opacity: 0.55; cursor: not-allowed; }
+/* Busy: still focusable, so keyboard and screen-reader users stay where they were while the request runs. */
+.gold .gold-button[aria-disabled='true'] { opacity: 0.55; cursor: progress; }
+.gold .gold-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 4px; }
+
+/* ---- To check ---- */
+.gold .gold-tocheck-group { display: grid; gap: 4px; }
+.gold .gold-tocheck-group ul { display: grid; gap: 4px; padding-left: 0; }
+.gold .gold-tocheck-group li { font-size: var(--text-read); }
+
+/* ---- What products contain ---- */
+.gold .gold-confirm-list { display: grid; gap: 12px; }
+.gold .gold-confirm-row {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow-wrap: break-word;
+}
+.gold .gold-confirm-row[data-drift='true'] { border-color: color-mix(in srgb, var(--gold-warning-text) 60%, transparent); }
+.gold .gold-proposal { font-weight: 600; }
+.gold .gold-field { display: grid; gap: 4px; max-width: 22rem; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-field input {
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--text-read);
+  line-height: var(--leading);
+}
+.gold .gold-preview { display: grid; gap: 6px; padding: 10px 12px; border-radius: 10px; background: color-mix(in srgb, var(--gold-accent) 10%, transparent); }
+.gold .gold-confirmed { color: var(--text); }
+.gold .gold-said { font-size: var(--text-help); color: var(--gain); }
+.gold .gold-confirm-all { display: grid; gap: 8px; margin-bottom: 12px; }
+.gold .gold-confirm-all-list { display: grid; gap: 6px; }
+.gold .gold-confirm-all-list > li { display: grid; gap: 2px; }
+
+/* ---- Labelled details ---- */
+.gold .gold-details { display: grid; gap: 6px; }
+.gold .gold-details > div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; min-width: 0; }
+.gold .gold-details dt { font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-details dd { font-size: var(--text-read); overflow-wrap: break-word; }
+@media (min-width: 900px) {
+  .gold .gold-details > div { grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
+}
+
+/* ---- The redesign (Astra's accepted mock): the period, the summary, rewards, the two charts, Details ---- */
+.gold .gold-periods { display: grid; gap: 6px; }
+.gold .gold-row-sub { display: block; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-summary { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 12px; align-items: start; }
+.gold .gold-summary.single { grid-template-columns: minmax(0, 1fr); }
+.gold .gold-summary > .gold-summary-warning { grid-column: 1 / -1; }
+.gold .gold-result, .gold .gold-holding {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  min-width: 0;
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.gold .gold-result {
+  background: var(--surface);
+}
+.gold .gold-result h3, .gold .gold-holding h3 { font-weight: 600; color: var(--text-muted); }
+.gold .gold-money-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; }
+.gold .gold-money-list.compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gold .gold-money-list > div { display: grid; gap: 2px; min-width: 0; }
+.gold .gold-money-list dt { font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-money-list dd { display: grid; gap: 2px; margin: 0; min-width: 0; }
+.gold .gold-money { font-size: 1.5rem; font-weight: 650; line-height: 1.25; overflow-wrap: anywhere; }
+.gold .gold-money-list.compact .gold-money { font-size: 1.15rem; }
+.gold .gold-money.big { font-size: 2.5rem; font-weight: 700; }
+.gold .gold-money.gain .num { color: var(--gain); }
+.gold .gold-money.loss .num { color: var(--loss); }
+.gold .gold-money .gold-state { font-size: var(--text-help); font-weight: 600; }
+.gold .gold-result-main { display: grid; gap: 2px; padding-top: 10px; border-top: 1px solid var(--line); }
+.gold .gold-result-label { font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-rewards { display: grid; gap: 6px; }
+.gold .gold-rewards-line { font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-rewards-label { color: var(--text); font-weight: 600; }
+.gold .gold-rewards-list, .gold .gold-rewards-notes { display: grid; gap: 6px; padding-left: 0; }
+.gold .gold-rewards-list > li { display: grid; gap: 2px; padding: 6px 0; border-top: 1px solid var(--line); }
+.gold .gold-rewards-notes { padding-left: 18px; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-confirm-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.gold .gold-confirm-body { display: grid; gap: 10px; }
+.gold .gold-confirm-group { display: grid; gap: 4px; padding: 10px 0; border-top: 1px solid var(--line); }
+.gold .gold-chart-card { display: grid; gap: 10px; }
+.gold .gold-chart-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.gold .gold-chart-facts { font-size: var(--text-help); }
+.gold .gold-plot { width: 100%; min-width: 0; }
+.gold .gold-plot svg { display: block; overflow: visible; }
+.gold .gold-plot-grid { stroke: color-mix(in srgb, var(--line) 75%, transparent); stroke-width: 1; }
+.gold .gold-plot-axis { fill: var(--text-muted); font-size: 14px; font-family: var(--font-mono); }
+.gold .gold-plot-gap rect { fill: color-mix(in srgb, var(--text-muted) 12%, transparent); }
+.gold .gold-plot-spot { stroke: var(--gold-accent); stroke-width: 2; }
+.gold .gold-plot-cost { stroke: var(--gold-cost); stroke-width: 2.25; }
+.gold .gold-plot-value { stroke: var(--gold-accent); stroke-width: 2.25; }
+.gold circle.gold-plot-cost.dot { fill: var(--gold-cost); }
+.gold circle.gold-plot-value.dot, .gold circle.gold-plot-spot.dot { fill: var(--gold-accent); }
+.gold .gold-plot-buy { fill: var(--gold-cost); stroke: var(--bg); stroke-width: 1.5; }
+.gold .gold-plot-sell { fill: var(--gain); stroke: var(--bg); stroke-width: 1.5; }
+.gold .gold-plot-endpoint { fill: var(--gold-accent); stroke: var(--bg); stroke-width: 1.5; }
+.gold .gold-plot-tick-buy { stroke: var(--gold-cost); stroke-width: 2; }
+.gold .gold-plot-tick-sell { stroke: var(--gain); stroke-width: 2; }
+.gold .gold-plot svg [tabindex='0']:focus-visible { outline: var(--focus-ring); }
+.gold .gold-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; padding-left: 0; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-legend > li { display: inline-flex; align-items: center; gap: 6px; }
+.gold .gold-swatch { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
+.gold .gold-swatch.spot, .gold .gold-swatch.value { background: var(--gold-accent); }
+.gold .gold-swatch.cost { background: var(--gold-cost); }
+.gold .gold-swatch.buy { width: 10px; height: 10px; border-radius: 50%; background: var(--gold-cost); }
+.gold .gold-swatch.sell { width: 0; height: 0; border-radius: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--gain); }
+.gold .gold-swatch.tick { width: 2px; height: 10px; border-radius: 0; background: var(--text-muted); }
+.gold .gold-swatch.gap { width: 14px; height: 10px; border-radius: 2px; background: color-mix(in srgb, var(--text-muted) 22%, transparent); }
+.gold .gold-details-all { border-top: 1px solid var(--line); padding-top: 4px; }
+.gold .gold-details-all > summary { cursor: pointer; padding: 12px 0; font-size: var(--text-section); font-weight: 600; }
+.gold .gold-details-all > summary:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-ring-offset); }
+.gold .gold-details-body { display: grid; gap: 16px; }
+@media (max-width: 900px) {
+  .gold .gold-summary { grid-template-columns: minmax(0, 1fr); }
+  .gold .gold-money-list.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .gold .gold-money-list, .gold .gold-money-list.compact { grid-template-columns: minmax(0, 1fr); }
+  .gold .gold-money.big { font-size: 1.9rem; }
+}
+/* ---- The totals (Alex's three numbers): all recorded history, above the period ---- */
+.gold .gold-totals {
+  display: grid;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--gold-accent) 28%, var(--line));
+  border-radius: 14px;
+  min-width: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--gold-accent) 8%, var(--surface)), var(--surface));
+  box-shadow: inset 0 1px 0 rgba(250, 204, 21, 0.12);
+}
+.gold .gold-totals-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; }
+.gold .gold-totals-head h3 { font-weight: 600; }
+.gold .gold-totals-words { font-size: var(--text-read); font-weight: 600; line-height: var(--leading); overflow-wrap: break-word; }
+/* A period with no sale recorded says so in words where its figures would be, as the totals do (Astra's R5). */
+.gold .gold-period-words { font-size: var(--text-read); font-weight: 600; line-height: var(--leading); overflow-wrap: break-word; }
+/* Each figure's limitation in short, beside it (under it when the line is too narrow); every reason in full is folded. */
+.gold .gold-totals-figure { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; min-width: 0; }
+.gold .gold-totals-short { font-size: var(--text-help); font-weight: 600; color: var(--gold-warning-text); overflow-wrap: break-word; }
+.gold .gold-totals-lead { margin: 0; font-size: var(--text-help); color: var(--text-muted); overflow-wrap: break-word; }
+.gold .gold-why { display: grid; gap: 8px; max-width: var(--measure); margin: 0; padding-left: 0; list-style: none; font-size: var(--text-help); }
+.gold .gold-why > li { display: grid; gap: 2px; min-width: 0; overflow-wrap: break-word; }
+.gold .gold-why-for { color: var(--text-muted); }
+/* A figure for only some of the sales: how many, right under its label. */
+.gold .gold-result-scope { font-size: var(--text-help); font-weight: 600; color: var(--gold-warning-text); overflow-wrap: break-word; }
+.gold .gold-result-lines { display: grid; gap: 2px; margin: 0; padding-left: 0; list-style: none; font-size: var(--text-help); color: var(--text-muted); }
+.gold .gold-totals .fold, .gold .gold-totals-combined, .gold .gold-totals-why { min-width: 0; }
+/* ---- Holdings ---- */
+.gold .gold-holdings-groups { display: grid; gap: 16px; }
+.gold .gold-group { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.gold .gold-list { display: grid; gap: 10px; }
+.gold .gold-list > li { display: grid; gap: 2px; min-width: 0; }
+.gold .gold-sublist { display: grid; gap: 2px; font-size: var(--text-help); color: var(--text-muted); }
+@media (min-width: 1280px) {
+  .gold .gold-holdings-groups { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+/* ---- Sales and purchases: a row's summary opens its labelled details ---- */
+.gold .gold-rows { display: grid; gap: 6px; }
+.gold .gold-row { border-radius: 10px; background: color-mix(in srgb, var(--line) 22%, transparent); }
+.gold .gold-row-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  line-height: var(--leading);
+  text-align: left;
+  cursor: pointer;
+}
+.gold .gold-row-toggle:hover { background: color-mix(in srgb, var(--line) 40%, transparent); }
+.gold .gold-row-text { display: grid; flex: 1 1 auto; min-width: 0; }
+.gold .gold-row-name { font-size: var(--text-read); color: var(--text); overflow-wrap: break-word; }
+.gold .gold-row-chevron { flex: none; color: var(--gold-accent); transition: transform 160ms ease; }
+.gold .gold-row[data-open='true'] .gold-row-chevron { transform: rotate(90deg); }
+.gold .gold-row-details { display: grid; gap: 10px; padding: 4px 12px 14px; }
+.gold .gold-cycles { display: grid; gap: 8px; }
+.gold .gold-cycles-head { font-weight: 600; }
+.gold .gold-cycle { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); }
+.gold .gold-receipts { display: grid; gap: 2px; padding: 10px 12px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--gold-accent) 45%, transparent); }
+
+/* ---- Touch screens: finger-sized targets ---- */
+@media (pointer: coarse) {
+  .gold .gold-chip,
+  .gold .gold-button { min-height: 44px; }
+  .gold .gold-link { display: inline-block; min-width: 44px; min-height: 44px; padding: 10px 0; line-height: var(--leading); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold .gold-row-chevron { transition: none; }
+}
+@media (forced-colors: active) {
+  .gold .gold-swatch, .gold .gold-plot-gap rect { background: CanvasText; fill: CanvasText; }
+  .gold .gold-chip.active { border-color: Highlight; }
+}
